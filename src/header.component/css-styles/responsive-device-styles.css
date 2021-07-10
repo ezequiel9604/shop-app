@@ -1,0 +1,263 @@
+
+@media only screen and (max-width: 1024px){
+
+	/* ------------ GENERAL CSS STYLES ------------ */
+	div.ctn-l{
+		width: 95%;
+		margin: 5px auto;
+	}
+	/* ----------- END OF GENERAL CSS STYLES ------ */
+
+	div.promo-banner-content div p{
+		font-size: 15px;
+		font-family: "raleway-medium", sans-serif;
+	}
+
+	/*second part*/
+	div.second-part div > p{
+		padding: 0 5px;
+		font-family: "raleway-regular", sans-serif;
+		font-size: 13px;
+	}
+
+	div.second-part div > button{
+		font-family: "raleway-medium", sans-serif;	
+		font-size: 13px;
+	}
+
+	/*first part*/
+	div.first-part{
+		width: 100%;
+	}
+
+	/*searcher container*/
+	div.search-content{
+		width: 60%;
+	}
+
+	div.dropdown-category > p{
+		padding-left: 6px;
+		font-family: "raleway-medium", sans-serif;	
+		font-size: 13px;
+	}
+
+	/*dropdown category list*/
+	ul.dropdown-category-list > li{
+		font-family: "raleway-medium", sans-serif;	
+		font-size: 13px;
+	}
+
+	/*searcher input*/
+	div.search-content > input{
+		padding: 10px 10px;
+		font-family: "raleway-medium", sans-serif;	
+		font-size: 13px;
+	}
+
+	/*searcher button*/
+	div.search-content > button > span{
+		font-size: 22px;
+	}
+
+	/*cart container*/
+	div.cart-favorite-buttons > button span{
+		margin-left: 8px;
+		font-size: 22px;
+	}
+
+	div.cart-favorite-buttons > button i{
+		font-family: "raleway-regular", sans-serif;	
+		font-size: 15px;
+	}
+
+}
+
+
+@media only screen and (max-width: 834px){
+
+	div.promo-banner-content div span{
+		font-size: 28px;
+	}
+	div.promo-banner-content div p{
+		font-size: 13px;
+		font-family: "raleway-medium", sans-serif;
+	}
+	div.promo-banner-content button span{
+		font-size: 22px;
+	}
+
+	/* NOTE: SECOND PART WILL NOT SHOW UP ON TABLETS AND SMARTPHONE;
+	*/
+	div.second-part{
+		display: none;
+	}
+
+	/*first part*/
+	div.first-part{
+		width: 100%;
+		margin: 5px 0;
+	}
+
+	div.logo-content img{
+		width: 120px;
+		height: 25px;
+	}
+
+	/* NOTE: SIDE BAR BUTTON WILL SHOW UP ON TABLETS AND SMARTPHONE;
+	*/
+	button.btn-sidebar-open{
+		width: 55px;
+		height: 35px;
+		display: block; /*this will change*/
+		margin-right: 10px;
+	}
+	button.btn-sidebar-open > div{
+		width:45px;
+		height: 4px;
+		margin: 5px auto;
+	}
+
+	/* NOTE: DROPDOWN CATEGORY WILL NOT SHOW UP ON TABLETS AND SMARTPHONE;
+	*/
+	div.dropdown-category{
+		display: none; /*this will change*/
+	}
+
+	/*searcher container*/
+	div.search-content{
+		width: 50%;
+	}
+
+	/*searcher input*/
+	div.search-content > input{
+		width: 90%;
+		padding: 8px 8px;
+		font-family: "raleway-medium", sans-serif;	
+		font-size: 13px;
+	}
+
+	/*searcher button*/
+	div.search-content > button{
+		width: 10%;
+	}
+
+	/*searcher button*/
+	div.search-content > button > span{
+		font-size: 20px;
+	}
+
+	/*cart container*/
+	div.cart-favorite-buttons > button span{
+		margin-left: 2px;
+		font-size: 20px;
+	}
+
+	div.cart-favorite-buttons > button i{
+		font-family: "raleway-regular", sans-serif;	
+		font-size: 14px;
+	}
+
+}
+
+@media only screen and (max-width: 425px){
+
+	/* ------------ GENERAL CSS STYLES ------------ */
+	div.ctn-l{
+		width: 100%;
+		margin: 0px auto;
+	}
+	/* ----------- END OF GENERAL CSS STYLES ------ */
+
+	div.promo-banner-content div span{
+		font-size: 25px;
+	}
+	div.promo-banner-content div p{
+		font-size: 12px;
+		font-family: "raleway-medium", sans-serif;
+	}
+	div.promo-banner-content button span{
+		font-size: 20px;
+	}
+
+	/*first part*/
+	div.first-part{
+		width: 100%;
+		margin: 0px 0;
+	}
+
+	/*inside container*/
+	div.inside-content{
+		display: block;
+	}
+
+	/*logo container*/
+	div.logo-content{
+		/*border: 1px solid;*/
+		width: 90%;
+		margin: 10px auto;
+		display: flex;
+	}
+
+	button.btn-sidebar-open{
+		margin-right: 0px;
+	}
+
+	/*image container*/
+	div.logo-content a{
+		display: block;
+		align-self: center;
+	}
+
+	/*searcher container*/
+	div.search-content{
+		/*border: 1px solid;*/
+		width: 90%;
+		margin: 10px auto;
+	}
+
+	/*cart container*/
+	div.cart-favorite-buttons{
+		/*border: 1px solid;*/
+		width: 100%;
+		display: flex;
+		align-items: stretch;
+	}
+
+	div.cart-favorite-buttons > button{
+		width: 50%;
+		display: block;
+		align-items: center;
+		position: relative;
+
+		padding: 5px 5px;
+		margin: 0;
+
+		border: 1px solid #0099cc;
+		background-color: #0099cc;
+		outline: none;
+		border-radius: 0px;
+	}
+
+	div.cart-favorite-buttons > button:first-child{
+		border-right: 1px solid #ffffff;
+	}
+
+	div.cart-favorite-buttons > button span{
+		border: none;
+		display: inline-block;
+		margin-left: 0px;
+		font-size: 25px;
+		color: #ffffff;
+	}
+	div.cart-favorite-buttons > button i{
+		border: none;
+		display: inline-block;
+		margin: 0px;
+
+		font-family: "raleway-regular", sans-serif;	
+		font-size: 14px;
+		color: #0099cc;
+		background-color: #ffffff;
+	}
+
+}

@@ -1,0 +1,262 @@
+
+div.ctn-l{
+	border: 1px dashed transparent;
+	width: 98%;
+	margin: 5px auto;
+	box-sizing: border-box;
+	z-index: 0;
+}
+
+/*PROMO BANNER CONTAINER*/
+div.promo-banner{
+	/*border: 1px solid red;*/
+	width: 100%;
+
+	background-color: #dddddd;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+div.promo-banner-content{
+	width: 98%;
+	margin: 5px auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+div.promo-banner-content div{
+	/*border: 1px solid;*/
+	box-sizing: border-box;
+	width: 90%;
+
+	display: flex;
+	align-items: center;
+}
+
+div.promo-banner-content div span{
+	display: inline-block;
+	font-size: 30px;
+	padding: 0;
+	margin: 2px;
+	color: #4d4d4d;
+}
+
+div.promo-banner-content div p{
+	display: inline-block;
+	font-size: 16px;
+	font-family: "raleway-medium", sans-serif;
+	line-height: 20px;
+	padding: 0;
+	margin-left: 10px;
+	color: #4d4d4d;
+}
+
+div.promo-banner-content button{
+	box-sizing: border-box;
+	width: fit-content;
+	display: flex;
+	padding: 0;
+	margin: 2px;
+
+	border: 0;
+	background-color: transparent;
+	outline: none;
+}
+
+div.promo-banner-content button span{
+	display: inline-block;
+	font-size: 25px;
+	padding: 0;
+	margin: 0;
+}
+
+/*HEADER CONTAINER*/
+header.top-main-header{
+	/*border: 1px solid red;*/
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	width: 100%;
+	margin-bottom: 20px;	
+	position: sticky;
+	position: -webkit-sticky; /* Safari */
+	top: 0;
+	box-sizing: border-box;
+	z-index: 0;
+
+	background-color: #ffffff;
+}
+
+/*second part*/
+div.second-part{
+	border-bottom: 1px solid #dddddd;
+	width: 100%;
+	box-sizing: border-box;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+div.second-part div{
+	/*border: 1px solid red;*/
+	width: fit-content;
+	display: flex;
+	box-sizing: border-box;
+}
+
+div.second-part div > p{
+	/*border: 1px solid;*/
+	display: flex;
+	align-items: center;	
+
+	padding: 0 5px;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+}
+/*
+	NOTE: INSIDE OF A BUTTON CANNOT BE ANOTHER BUTTON
+*/
+div.second-part div > button{
+	box-sizing: border-box;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	padding: 5px;
+	margin: 3px 5px;
+
+	border: 1px solid #dddddd;
+	background-color: transparent;
+	outline: none;
+
+	font-family: "raleway-medium", sans-serif;	
+	font-size: 14px;
+	color: #4d4d4d;
+	border-radius: 2px;
+}
+
+div.second-part div > button:hover{
+	box-shadow: 0px 1px 1px #dddddd;
+}
+
+div.second-part div > button > a{
+	display: block;
+	text-decoration: none;
+	color: #4d4d4d;
+}
+
+div.second-part div > button > img{
+	/*border: 1px solid;*/
+	display: block;
+	width: 22px;
+	height: 22px;
+
+	margin: 0 4px;
+
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+/*
+	NOTE: INSIDE OF A BUTTON CANNOT BE MORE THAN ONE SPAN TAG
+	SPAN TAGS ARE ONLY FOR ICONS.
+*/
+div.second-part div > button > span{
+	/*border: 1px solid;*/
+	display: block;
+	width: 22px;
+	height: 22px;
+	margin: 0 4px;
+
+	background-color: #dddddd;
+	font-size: 20px;
+	color: #4d4d4d;
+
+	border-radius: 50%;
+}
+
+div.second-part div > button > p{
+	/*border: 1px solid;*/
+	display: block;
+	margin: 0 4px;
+}
+
+
+/*option account list*/
+ul.option-account-list{
+	display: none; /*this will change*/
+	border: 1px solid #dddddd;
+	width: 150px;
+
+	position: absolute;
+	top: 32px;
+	right: -1px;
+
+	background-color: #ffffff;
+	border-radius: 2px 0 2px 2px;
+
+	z-index: 1;
+}
+
+ul.option-account-list a.links{
+	border-top: 1px solid #dddddd;
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+
+	padding: 4px 0;
+	padding-left: 10px;
+
+	text-align: left;
+	font-family: "raleway-medium", sans-serif;	
+	font-size: 14px;
+	color: #4d4d4d;
+
+	outline: none;
+}
+
+ul.option-account-list a.links:hover{
+	background-color: #fafafa;
+	box-shadow: 0px 1px 2px #dddddd;
+}
+
+ul.option-account-list a.btn-sign-in{
+	display: block;
+	width: 80%;
+	margin: 8px auto;
+
+	padding: 4px;
+
+	border: 1px solid #dddddd;
+	background-color: transparent;
+	outline: none;
+
+	font-family: "raleway-medium", sans-serif;	
+	font-size: 14px;
+	color: #4d4d4d;
+	border-radius: 2px;
+}
+
+ul.option-account-list a.btn-sign-in:hover{
+	background-color: #0099cc;
+	border-color: #0099cc;
+	color: #ffffff;
+}
+
+button#btn-header-signin:hover ul.option-account-list{
+	display: block;
+}
+
+/*.brigde{
+	display: none;
+	width: 88px;
+	height: 5px;
+	background-color: #ffffff;
+
+	position: absolute;
+	top: -3px;
+	right: 0;
+}*/
+
