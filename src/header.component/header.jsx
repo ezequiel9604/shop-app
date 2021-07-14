@@ -10,11 +10,11 @@ class Header extends Component {
     state = { 
         user:{
             name: "Sarah Doe",
-            Image: userImage,
+            image: userImage,
             counterCart: 4,
             counterFavorites: 13,
         },
-        isUserLog: true
+        isUserLog: false
     }
 
     render() { 
@@ -177,7 +177,7 @@ class Header extends Component {
 
         // If user is logged in, it will return an objects with this properties.
         let userIsLog = {
-            imageUser: <img src={this.state.user.Image} alt="User Image"/>,
+            imageUser: <img src={this.state.user.image} alt="User Image"/>,
             nameUser: this.state.user.name,
             buttonSignup: <a href={'/'} className="btn-sign-up">Cerrar session!</a>,
             buttonSignin: undefined
