@@ -1,32 +1,91 @@
+
 import React, { Component } from 'react';
-import './css-styles/css-reset.css';
-import './css-styles/first-part-styles.css';
-import logo from './images/profile2.png';
-import userImage from './images/paris-1.jpg';
-import PromoBanner from './promo-banner';
+
+import '../css/css_reset.css';
+import '../css/general_styles.css';
+
+import './css-styles/first_part_styles.css';
+import './css-styles/second_part_styles.css';
+
+import manAvatar from '../images/placeholder-man.png';
+import womanAvatar from '../images/placeholder-woman.png';
+import userImage from '../images/user-image.jpg';
+
+import PromoBanner from './promoBanner';
 
 class Header extends Component {
-    
-    state = { 
-        user:{
-            name: "Sarah Doe",
-            image: userImage,
-            counterCart: 4,
-            counterFavorites: 13,
-        },
-        isUserLog: false
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            user: null,
+            /*user: {
+                code: 'USR-025489', 
+                image: userImage,
+                firstName: 'Natalie', lastName: 'Portman', 
+                cartArticles: ['Audi', 'Hyundai', 'Toyota', 'Nissan'],
+                favoriteArticles: ['Mercedes', 'Mclaren', 'Ferrari']
+            },*/
+            departments : [
+                'Ford', 'Toyota', 'Honda', 'Mercedes', 'Tesla', 
+                'Nissan', 'Mclaren', 'BMW', 'Alfa Romero', 'Abarth',
+                'Aston martin', 'Audi', 'Bentley', 'Chevrolet', 'Citroen',
+                'Ferrari', 'Fiat', 'Hyundai', 'Jaguar', ],
+                      
+            suggestions: []
+        }
     }
 
-    render() { 
-        return (  
+    isUserLogin = () => {
+        const { user } = this.state;
+
+        if(user === null){
+            return (
+                <React.Fragment>
+                    <img src={womanAvatar} />
+                    <p>Entrar</p>
+                </React.Fragment>
+            )
+        }
+        return (
+            <React.Fragment>
+                <img src={user.image} />
+                <p>{user.firstName}</p>
+            </React.Fragment>
+        )
+    }
+
+    findSuggestions = (event) => {
+        let {departments } = this.state;
+        let sugs = [];
+        let keyWord = event.target.value.toLowerCase();
+
+        for(let d of departments){
+            let element = d.toLowerCase();
+            if(element.search(keyWord) !== -1 && keyWord !== ''){
+                sugs.push(d);
+            }
+        }
+
+        this.setState({ suggestions : sugs});
+    }
+
+    isSuggestionsEmpty = () =>{
+        if(this.state.suggestions.length === 0){
+            return {display: 'none'};
+        }
+        return {display: 'block'};
+    }
+    
+    render(){
+        return (
             <React.Fragment>
 
                 <PromoBanner />
 
-                <header className="top-main-header">
+                <header id="top-main-header">
 	
-                <div className="ctn-l">
-                    
                     <div className="second-part">
                             
                         <div>
@@ -35,158 +94,97 @@ class Header extends Component {
                         </div>
 
                         <div>
-                            <button type="button" id="btn-header-signin">
+                            <button type="button" id="btn-header-login">
 
-                                {this.checkUserLog().imageUser}
-                                
-                                <p>{this.checkUserLog().nameUser}</p>
+                                {this.isUserLogin()}
 
                                 <ul className="option-account-list">
-                                    <article className="brigde"></article>
+                                    
+                                    {this.state.user === null? 
+                                    <a href="/login" className="header-principal-links">Identifícate</a> : null}
 
-                                    {this.checkUserLog().buttonSignin}
-
-                                    <a href={'/'} className="links">Mi perfil</a>
-                                    <a href={'/'} className="links">Mis pedidos</a>
-                                    <a href={'/'} className="links">Mis favoritos</a>
-                                    <a href={'/'} className="links">Rastrear pedido</a>
+                                    <a href="/profile" className="header-links">Mi perfil</a>
+                                    <a href="orders" className="header-links">Mis pedidos</a>
+                                    <a href="favorites" className="header-links">Mi lista favoritos</a>
+                                    <a href="trackOrder" className="header-links">Rastrear pedido</a>
                                 </ul>
 
                             </button>
                             <button type="button">
-                                {this.checkUserLog().buttonSignup}
+                            {
+                                this.state.user === null? 
+                                <a href="/signup" id="btn-header-signup">Registrarse!</a> : 
+                                <a href="/logout" id="btn-header-signup">Cerrar Sessión</a> }
+                               
                             </button>
-                            
                         </div>
 
                     </div>
 
                     <div className="first-part">
-
-                        <div className="inside-content">
                             
-                            <div className="logo-content">
+                        <div className="header-logo">
 
-                                <button type="button" className="btn-sidebar-open">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </button> 
+                            <button type="button" id="btn-open-sidebar">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </button> 
 
-                                <a href={'/'}>
-                                    <img src={logo} alt="Logo" />
-                                </a>
+                            <a href="/">Zigzol</a>
+                        </div>
+
+                        <form action='/search' method='get' className="header-search">
+                            
+                            <div className="dropdown-department">
+                                    
+                                <p>Departamentos</p>
+                                <span className="material-icons-sharp">arrow_drop_down</span>
+
+                                <ul className="dropdown-department-list">
+                                {
+                                    this.state.departments.map((val, ind, arr) => {
+                                        return  <a href={'/search?keyword='+val} key={ind}>{val}</a>;
+                                    })
+                                }
+                                </ul>
+                            </div>	
+
+                            <input type="search" name='keyword' onChange={this.findSuggestions} autoComplete='off' placeholder="Que buscas?" />
+
+                            <div className="header-search-suggestions" style={this.isSuggestionsEmpty()}>
+                                {
+                                    this.state.suggestions.map((val, ind, arr) =>  {
+                                       return <a href={'/search?keyword='+val} key={ind}>{val}</a>;
+                                    })
+                                }
                             </div>
 
-                            <div className="search-content">
-                                
-                                <div className="dropdown-category">
-                                        
-                                    <p>Departamentos</p>
-                                    <span className="material-icons-sharp">arrow_drop_down</span>
+                            <button type="submit">
+                                <span className="material-icons-sharp">search</span>
+                            </button>
 
-                                    <ul className="dropdown-category-list">
-                                        <li>
-                                            Link 1 
+                        </form>
 
-                                            <ul className="subdropdown-category-list">
-                                                <li>Link 1.1</li>
-                                                <li>Link 1.2</li>
-                                                <li>Link 1.3</li>
-                                            </ul>
+                        <div className="header-cart-favorite">
+                            <a href="/cart">
+                                <span className="material-icons-outlined">shopping_cart</span>	
+                                <i>{this.state.user === null? 0 : this.state.user.cartArticles.length}</i>
+                            </a>
+                            <a href="/favorites">
+                                <span className="material-icons-outlined">favorite_border</span>	
+                                <i>{this.state.user === null? 0 : this.state.user.favoriteArticles.length}</i>
+                            </a>
+                        </div>
 
-                                        </li>
-                                        <li>
-                                            Link 2 
-                                            <ul className="subdropdown-category-list">
-                                                <li>Link 2.1</li>
-                                                <li>Link 2.2</li>
-                                                <li>Link 2.3</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            Link 3 
-                                            <ul className="subdropdown-category-list">
-                                                <li>Link 3.1</li>
-                                                <li>Link 3.2</li>
-                                                <li>Link 3.3</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            Link 4 
-                                            <ul className="subdropdown-category-list">
-                                                <li>Link 4.1</li>
-                                                <li>Link 4.2</li>
-                                                <li>Link 4.3</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            Link 5 
-                                            <ul className="subdropdown-category-list">
-                                                <li>Link 5.1</li>
-                                                <li>Link 5.2</li>
-                                                <li>Link 5.3</li>
-                                            </ul>
-                                        </li>
+                    </div> 
 
-                                    </ul>
-                                </div>	
-
-                                <input type="search" name="" placeholder="Que buscas?" />
-
-                                <button type="button">
-                                    <span className="material-icons-sharp">search</span>
-                                </button>
-
-                            </div>
-
-                            <div className="cart-favorite-buttons">
-
-                                <button type="button">
-                                    <span className="material-icons-outlined">shopping_cart</span>	
-                                    <i>{this.state.user.counterCart}</i>
-                                </button>
-                                <button type="button">
-                                    <span className="material-icons-outlined">favorite_border</span>	
-                                    <i>{this.state.user.counterFavorites}</i>
-                                </button>
-
-                            </div>
-
-                        </div>	
-
-                    </div>
-
-                </div>	
-
-                </header>
+                </header>	
 
             </React.Fragment>
-
-        );
+        )
     }
 
-    checkUserLog(){    
-        // If user is not logged in, it will return an objects with this properties.
-        let userNotLog = {
-            imageUser: <span className="material-icons-sharp icon-accnt">person</span>,
-            nameUser: "Entrar",
-            buttonSignup:  <a href={'/'} className="btn-sign-up">Registrarse!</a>,
-            buttonSignin: <a href={'/'} className="btn-sign-in">Identifícate</a>
-        }
-
-        // If user is logged in, it will return an objects with this properties.
-        let userIsLog = {
-            imageUser: <img src={this.state.user.image} alt="User Image"/>,
-            nameUser: this.state.user.name,
-            buttonSignup: <a href={'/'} className="btn-sign-up">Cerrar session!</a>,
-            buttonSignin: undefined
-        }
-
-        // Based on user status (log in or not) it will return an object with propierties 
-        // and related values to be show up on header component.
-        return this.state.isUserLog === false? userNotLog : userIsLog; 
-    }
 
 }
  

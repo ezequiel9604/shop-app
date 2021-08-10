@@ -1,0 +1,616 @@
+
+/* --------------- MAIN CONTAINERS STYLES ---------------------- */
+
+div.ctn-l{
+	border: 1px dashed red;
+	width: 100%;
+	margin: 5px auto;
+	box-sizing: border-box;
+	
+	position: relative;
+
+	z-index: 0;
+	background-color: #f2f2f2;
+}
+
+main{
+	/*border: 1px solid;*/
+	width: 90%; 
+	margin: 20px auto;
+	background-color: #ffffff;
+	overflow: hidden;
+	z-index: 0;
+}
+
+/* --------------- TITLE STYLES ---------------------- */
+
+
+div.title-container{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 10px auto;
+	box-sizing: border-box;
+	
+	padding: 30px 40px;
+
+	overflow: hidden;
+	background-color: #ffffff;
+}
+
+div.title-container h2{
+	font-family: "raleway-semibold";
+	font-size: 22px;
+	color: #4d4d4d;	
+}
+
+/* --------------- BUTTON MOVE SLIDE STYLES ---------------------- */
+
+button.button-move-slide{
+	display: block;
+	width: 38px;
+
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	position: absolute;
+	z-index: 1;
+
+	cursor: pointer;
+}
+button.button-move-slide:first-child{
+	top: 120px;
+	left: 20px;
+}
+
+button.button-move-slide span{
+	/*border: 1px solid;*/
+	display: block;
+	font-size: 30px;
+	color: #4d4d4d;
+}
+
+
+/* --------------- SLIDES STYLES ---------------------- */
+
+div.slides-container{
+	/*border: 1px solid blue;*/
+	width: 100%;
+	display: flex;
+	position: relative;
+
+	overflow-x: auto;
+	scroll-behavior: smooth;
+}
+
+div.slides-container::-webkit-scrollbar{
+	display: none;
+}
+
+div.slides{
+	/*border: 1px dashed blue;*/
+	width: 100%;
+	display: flex;
+	
+	position: relative;
+}
+
+.animated-slides{
+	animation: 14s sld-animation infinite ease-in-out;
+	animation-delay: 0.2s;
+}
+
+@keyframes sld-animation {
+ 	0% {margin-left: 100%}
+  	4% {margin-left: 0px}
+  	31% {margin-left: 0px}
+  	35% {margin-left: -100%}
+  	64% {margin-left: -100%}
+  	68% {margin-left: -200%}
+  	96% {margin-left: -200%}
+  	100% {margin-left: -200%}
+}
+
+
+
+
+/* --------------- SAMPLE STYLES ---------------------- */
+
+div.samples{
+/*	border: 1px solid;*/
+	width: 180px;
+	margin: 15px auto;
+
+	position: relative;
+	background-color: #ffffff;
+	border-radius: 4px;
+
+	z-index: 0;
+}
+
+span.descount{
+	display: block;
+	width: fit-content;
+
+	box-sizing: content-box;
+	padding: 6px 8px;
+
+	color: #ffffff;
+	background-color:#0099cc;
+	
+	font-size: 13px;
+	font-family: "raleway-semibold";
+	text-align: center;
+	letter-spacing: 2px;
+
+	border-radius: 50px;
+
+	position: absolute;
+	left: -5px;
+	top: -5px;
+
+	z-index: 1;
+}
+
+div.samples .headers{
+	display: block;
+	width: inherit;
+	height: 120px;
+	position: relative;
+	overflow: hidden;
+
+	z-index: 0;
+}
+
+div.samples img{
+	display: block;
+	width: inherit;
+	height: inherit;
+	position: absolute;
+
+	object-fit: contain;
+	background-color: #fafafa;
+	border-radius: 4px;
+}
+
+div.samples h3{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 10px auto;
+
+	font-family: "raleway-medium";
+	font-size: 13px;
+	color: #4d4d4d;
+	line-height: 16px;
+
+	overflow: hidden;
+
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;	
+}
+
+div.samples div.price{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 5px auto;
+	
+	display: flex;
+	justify-content: space-around;
+
+	position: relative;
+}
+
+div.samples div.price span.offer{
+	display: block;
+	font-family: "raleway-semibold";
+	font-size: 20px;
+	color: #4d4d4d;
+}
+
+div.samples div.price span.retail{
+	display: block;
+	font-family: "raleway-medium";
+	font-size: 16px;
+	text-decoration: line-through;
+	color: #808080;
+}
+
+div.samples div.status-depart{
+/*	border: 1px solid;*/
+	width: 90%;
+	margin: 10px auto;
+
+	display: flex;
+	justify-content: space-around;
+
+	font-family: "raleway-medium";
+	font-size: 10px;
+	color: #4d4d4d;
+}
+
+div.samples div.status-depart a{
+	color: #0099ff;
+}
+
+
+/* --------------- SAMPLE ROW STYLES ---------------------- */
+
+div.samples-container{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin:20px auto;
+	padding: 20px 0;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	overflow: hidden;
+}
+
+div.samples-row{
+	/*border: 1px solid red;*/
+	width: 90%;
+	margin: 20px auto;
+	padding: 10px 0;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #dddddd;
+	z-index: 0;
+	position: relative;
+
+	/*transition: all 0.5s ease;*/
+}
+
+div.samples-row:last-child{
+	border-bottom-color: transparent;
+}
+
+div.samples-row .headers{
+	/*border: 1px solid;*/
+	width: 18%;
+	height: 140px;
+
+	position: relative;
+}
+
+div.samples-row .headers img{
+	display: block;
+
+	width: 100%;
+	height: 100%;
+	background-color: #fafafa;
+	border-radius: 2px;
+
+	object-fit: contain;
+}
+
+/*.sections*/
+div.samples-row .sections{
+	/*border: 1px solid;*/
+	width: 80%;
+	position: relative;
+}
+div.samples-row .sections h3{
+	/*border: 1px solid;*/
+	width: 98%;
+
+	font-family: "raleway-medium";
+	font-size: 16px;
+	color: #4d4d4d;
+	line-height: 18px;
+
+	word-wrap: break-word;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;	
+}
+
+/*price container*/
+div.price{
+	/*border: 1px solid;*/
+	width: 98%;
+	margin: 8px 0;
+
+	display: flex;
+	align-items: center;
+}
+div.price span{
+	font-family: "raleway-semibold";
+	color: #4d4d4d;
+	margin-right: 15px;
+}
+div.price span.offer{
+	font-size: 22px;
+}
+div.price span.retail{
+	font-size: 14px;
+	text-decoration: line-through;
+}
+
+
+/* --------------- BUTTONS SAMPLE ROW STYLES ---------------------- */
+
+div.button-actions{
+	/*border: 1px solid;*/
+	width: 98%;
+	display: flex;
+	align-items: center;
+}
+
+div.button-actions button{
+	width: fit-content;
+	display: flex;
+	margin-right: 20px;
+	padding: 4px 6px;
+
+	font-family: "raleway-medium";
+	font-size: 14px;
+	color: #4d4d4d;
+	border-radius: 2px;
+	border: 1px solid #dddddd;
+	background-color: #ffffff;
+}
+
+div.button-actions button:nth-child(1){
+	background-color: #0099cc;
+	border: 1px solid #0099cc;
+	color: #ffffff;
+}
+
+div.button-actions button:nth-child(3){
+	display: flex;
+}
+
+div.button-actions button:hover{
+	box-shadow: 1px 1px 1px #f2f2f2;
+}
+
+
+/* --------------- MODAL STYLES ---------------------- */
+
+div#modal{
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 2;
+	display: none;
+}
+
+div#modal div{
+	border: 1px solid transparent;
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 100px;
+	background-color: #ffffff;
+	transform: scale(0);
+
+	animation-name: alert-animation;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes alert-animation {
+	from{transform: scale(0);}
+	to{transform: scale(1);}
+}	
+
+div#modal div header{
+	/*border: 1px solid;*/
+	width: 100%;
+	margin-top: 20px;
+}
+
+div#modal div header span{
+	display: block;
+	text-align: center;
+	font-size: 7em;
+	color: #ff4d4d;
+}
+
+div#modal div section{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 40px;
+}
+
+div#modal div section h4{
+	text-align: center;
+	font-family: "raleway-medium";
+	font-size: 16px;
+	color: #4d4d4d;
+}
+
+div#modal div footer{
+	width: 100%;
+	display: flex;
+}
+
+div#modal div footer button{
+	width: 50%;
+	font-family: "raleway-medium";
+	font-size: 16px;
+	color: #4d4d4d;
+	padding: 8px 0;
+	background-color: #f2f2f2;
+	border: none;
+}
+
+div#modal div footer button:hover{
+	background-color: #dddddd;
+}
+
+
+
+/* --------------- SIDEBAR STYLES ---------------------- */
+
+aside.sidebar-container{
+	width: 20%;
+	margin: 20px auto;
+	overflow: hidden;
+	background-color: #ffffff;
+}
+
+aside.sidebar-container article{
+	border: 1px solid transparent;
+
+	width: 85%;
+	margin: 15px auto;
+	border-bottom: 1px solid #dddddd;
+}
+aside.sidebar-container article:last-child{
+	border-bottom-color: transparent; 
+}
+aside.sidebar-container article > h2,
+aside.sidebar-container article > h3{
+	font-family: "raleway-semibold";
+	font-size: 16px;
+	color: #4d4d4d;	
+
+	margin: 10px 0;
+}
+aside.sidebar-container article > h3{
+	text-align: center;
+}
+
+aside.sidebar-container table, td, th {  
+  text-align: left;
+}
+aside.sidebar-container table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+ 
+}
+aside.sidebar-container th, td {
+  padding: 8px 0;
+  color: #4d4d4d;
+  width: 50%;
+  font-size: 14px;
+}
+aside.sidebar-container table td:nth-child(1){
+	font-family: "raleway-medium";
+	padding-right: 40px;
+}
+aside.sidebar-container table td:nth-child(2){
+	font-family: "raleway-regular";
+}
+aside.sidebar-container .total{
+	border-top: 1px solid #dddddd;
+}
+
+aside.sidebar-container table input, 
+aside.sidebar-container table button{
+	display: inline-block;
+	width:100%;
+	font-family: "raleway-regular";
+	font-size: 14px;
+	border: 1px solid #dddddd;
+	padding: 4px 6px;
+	border-radius: 2px;
+
+	box-sizing: border-box;
+}
+
+aside.sidebar-container table button{
+	width: 70%;
+	background-color: #fafafa;
+}
+
+aside.sidebar-container .advice{
+	font-family: "raleway-medium";
+	font-size: 12px;
+	text-align: justify;
+	line-height: 18px;
+
+	color: #4d4d4d;
+
+	margin: 10px 0;
+}
+
+aside.sidebar-container .advice a{
+	color: #0099ff;
+}
+
+.total td:last-child{
+	font-size: 18px;
+}
+
+
+
+/* --------------- LOGIN, SIGN-UP, SIGN-UP-EMAIL-CODE STYLES ---------------------- */
+
+.logo{
+	/*border: 1px solid #dddddd;*/
+	width: 25%;
+	margin: 20px auto;
+	margin-top: 40px;
+}
+.logo a{
+	display: block;
+	text-align: center;	
+
+	font-family: "candal-regular";
+	font-size: 40px;
+	color: #0099cc;
+}
+
+div.alert{
+	border: 1px solid #ff6666;
+
+	width: 25%;
+	margin: 10px auto;
+	display: block; /*block or none*/
+	background-color: #ffffff;
+	border-radius: 2px;
+}
+
+div.alert span{
+	display: block;
+	width: 100%;
+	margin:10px 0;
+	font-size: 40px;
+	text-align: center;
+	color: #ff6666;
+}
+
+div.alert p{
+	width: 90%;
+	margin: 10px auto;
+
+	text-align: justify;
+	font-family: "raleway-medium";
+	font-size: 14px;
+	color: #ff6666;
+	line-height: 20px;
+}
+
+form.login-form{
+	/*border: 1px solid #dddddd;*/
+	width: 50%;
+	margin: 40px auto;
+}
+
+form.login-form h2{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 20px auto;
+	font-family: "raleway-semibold";
+	font-size: 22px;
+	color: #4d4d4d;
+	text-align: center;
+}
+
+div.create-account{
+	width: 40%;
+	margin: 30px auto;
+
+	font-family: "raleway-medium";
+	font-size: 16px;
+	color: #4d4d4d;
+	text-align: center;
+}
+div.create-account a{
+	color: #0099ff;
+}

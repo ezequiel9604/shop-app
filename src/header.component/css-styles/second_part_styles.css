@@ -1,108 +1,43 @@
 
-div.ctn-l{
-	border: 1px dashed transparent;
-	width: 98%;
-	margin: 5px auto;
-	box-sizing: border-box;
-	z-index: 0;
-}
 
-/*PROMO BANNER CONTAINER*/
-div.promo-banner{
-	/*border: 1px solid red;*/
-	width: 100%;
-
-	background-color: #dddddd;
-	box-sizing: border-box;
-	overflow: hidden;
-}
-
-div.promo-banner-content{
-	width: 98%;
-	margin: 5px auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-div.promo-banner-content div{
-	/*border: 1px solid;*/
-	box-sizing: border-box;
-	width: 90%;
-
-	display: flex;
-	align-items: center;
-}
-
-div.promo-banner-content div span{
-	display: inline-block;
-	font-size: 30px;
-	padding: 0;
-	margin: 2px;
-	color: #4d4d4d;
-}
-
-div.promo-banner-content div p{
-	display: inline-block;
-	font-size: 16px;
-	font-family: "raleway-medium", sans-serif;
-	line-height: 20px;
-	padding: 0;
-	margin-left: 10px;
-	color: #4d4d4d;
-}
-
-div.promo-banner-content button{
-	box-sizing: border-box;
-	width: fit-content;
-	display: flex;
-	padding: 0;
-	margin: 2px;
-
-	border: 0;
-	background-color: transparent;
-	outline: none;
-}
-
-div.promo-banner-content button span{
-	display: inline-block;
-	font-size: 25px;
-	padding: 0;
-	margin: 0;
-}
-
-/*HEADER CONTAINER*/
-header.top-main-header{
+header#top-main-header{
 	/*border: 1px solid red;*/
 	border-top: 1px solid #dddddd;
 	border-bottom: 1px solid #dddddd;
 	width: 100%;
-	margin-bottom: 20px;	
+	box-sizing: border-box;
+	margin-bottom: 20px;
+
 	position: sticky;
 	position: -webkit-sticky; /* Safari */
+	position: -moz-sticky; /* mozilla */
+	position: -ms-sticky; /* Safari */
 	top: 0;
-	box-sizing: border-box;
-	z-index: 0;
 
+	z-index: 0;
 	background-color: #ffffff;
 }
 
 /*second part*/
 div.second-part{
 	border-bottom: 1px solid #dddddd;
-	width: 100%;
+	width: 98%;
+	margin: 5px auto;
 	box-sizing: border-box;
 
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
+	align-items: center;
 }
 
 div.second-part div{
 	/*border: 1px solid red;*/
 	width: fit-content;
-	display: flex;
 	box-sizing: border-box;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 div.second-part div > p{
@@ -117,7 +52,7 @@ div.second-part div > p{
 /*
 	NOTE: INSIDE OF A BUTTON CANNOT BE ANOTHER BUTTON
 */
-div.second-part div > button{
+div.second-part div button{
 	box-sizing: border-box;
 	width: fit-content;
 	display: flex;
@@ -137,21 +72,19 @@ div.second-part div > button{
 	border-radius: 2px;
 }
 
-div.second-part div > button:hover{
-	box-shadow: 0px 1px 1px #dddddd;
+div.second-part div button:hover{
+	box-shadow: 1px 1px 1px #f2f2f2;
 }
 
-div.second-part div > button > a{
-	display: block;
+div.second-part div button > a{
 	text-decoration: none;
 	color: #4d4d4d;
 }
 
-div.second-part div > button > img{
+div.second-part div button > img{
 	/*border: 1px solid;*/
-	display: block;
-	width: 22px;
-	height: 22px;
+	width: 25px;
+	height: 25px;
 
 	margin: 0 4px;
 
@@ -163,7 +96,7 @@ div.second-part div > button > img{
 	NOTE: INSIDE OF A BUTTON CANNOT BE MORE THAN ONE SPAN TAG
 	SPAN TAGS ARE ONLY FOR ICONS.
 */
-div.second-part div > button > span{
+div.second-part div button > span{
 	/*border: 1px solid;*/
 	display: block;
 	width: 22px;
@@ -177,7 +110,7 @@ div.second-part div > button > span{
 	border-radius: 50%;
 }
 
-div.second-part div > button > p{
+div.second-part div button > p{
 	/*border: 1px solid;*/
 	display: block;
 	margin: 0 4px;
@@ -191,16 +124,16 @@ ul.option-account-list{
 	width: 150px;
 
 	position: absolute;
-	top: 32px;
+	top: 100%;
 	right: -1px;
 
 	background-color: #ffffff;
 	border-radius: 2px 0 2px 2px;
 
-	z-index: 1;
+	z-index: 99;
 }
 
-ul.option-account-list a.links{
+ul.option-account-list .header-links{
 	border-top: 1px solid #dddddd;
 	display: block;
 	width: 100%;
@@ -217,12 +150,13 @@ ul.option-account-list a.links{
 	outline: none;
 }
 
-ul.option-account-list a.links:hover{
+ul.option-account-list .header-links:hover{
 	background-color: #fafafa;
 	box-shadow: 0px 1px 2px #dddddd;
+	font-family: "raleway-semibold", sans-serif;	
 }
 
-ul.option-account-list a.btn-sign-in{
+ul.option-account-list .header-principal-links{
 	display: block;
 	width: 80%;
 	margin: 8px auto;
@@ -239,24 +173,14 @@ ul.option-account-list a.btn-sign-in{
 	border-radius: 2px;
 }
 
-ul.option-account-list a.btn-sign-in:hover{
+ul.option-account-list .header-principal-links:hover{
 	background-color: #0099cc;
 	border-color: #0099cc;
 	color: #ffffff;
+	font-family: "raleway-semibold", sans-serif;	
 }
 
-button#btn-header-signin:hover ul.option-account-list{
+button#btn-header-login:hover ul.option-account-list{
 	display: block;
 }
-
-/*.brigde{
-	display: none;
-	width: 88px;
-	height: 5px;
-	background-color: #ffffff;
-
-	position: absolute;
-	top: -3px;
-	right: 0;
-}*/
 

@@ -1,0 +1,58 @@
+
+
+div.promo-banner{
+	/*border: 1px solid red;*/
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px 20px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	background-color: #dddddd;
+	overflow: hidden;
+}
+
+div.promo-banner div{
+	/*border: 1px solid;*/
+	box-sizing: border-box;
+	width: 90%;
+
+	display: flex;
+	align-items: center;
+}
+
+div.promo-banner div span{
+	font-size: 30px;
+	padding: 0;
+	margin: 4px;
+	color: #4d4d4d;
+}
+
+div.promo-banner div p{
+	font-size: 16px;
+	font-family: "raleway-medium", sans-serif;
+	line-height: 20px;
+	padding: 0;
+	margin-left: 10px;
+	color: #4d4d4d;
+}
+
+div.promo-banner button{
+	box-sizing: border-box;
+	width: fit-content;
+	display: flex;
+	padding: 0;
+	margin: 2px;
+
+	border:0;
+	background-color: transparent;
+	outline: none;
+}
+
+div.promo-banner button span{
+	font-size: 25px;
+	padding: 0;
+	margin: 0;
+}
