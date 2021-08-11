@@ -13,8 +13,8 @@ header#top-main-header{
 	position: -moz-sticky; /* mozilla */
 	position: -ms-sticky; /* Safari */
 	top: 0;
-
-	z-index: 0;
+	z-index: 89;
+	
 	background-color: #ffffff;
 }
 

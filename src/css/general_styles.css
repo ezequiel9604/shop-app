@@ -1,25 +1,15 @@
 
 /* --------------- MAIN CONTAINERS STYLES ---------------------- */
 
-div.ctn-l{
-	border: 1px dashed red;
+main{
+	/* border: 1px dashed red; */
 	width: 100%;
-	margin: 5px auto;
 	box-sizing: border-box;
 	
 	position: relative;
-
 	z-index: 0;
+	
 	background-color: #f2f2f2;
-}
-
-main{
-	/*border: 1px solid;*/
-	width: 90%; 
-	margin: 20px auto;
-	background-color: #ffffff;
-	overflow: hidden;
-	z-index: 0;
 }
 
 /* --------------- TITLE STYLES ---------------------- */
@@ -94,24 +84,28 @@ div.slides{
 	position: relative;
 }
 
+
 .animated-slides{
-	animation: 14s sld-animation infinite ease-in-out;
+	animation: 36s sld-animation infinite ease-in-out;
 	animation-delay: 0.2s;
 }
 
 @keyframes sld-animation {
- 	0% {margin-left: 100%}
-  	4% {margin-left: 0px}
-  	31% {margin-left: 0px}
-  	35% {margin-left: -100%}
-  	64% {margin-left: -100%}
-  	68% {margin-left: -200%}
-  	96% {margin-left: -200%}
-  	100% {margin-left: -200%}
+ 	0% {margin-left: 0%}
+ 	8% {margin-left: 0%}
+  16% {margin-left: -100%}
+  24% {margin-left: -100%}
+  32% {margin-left: -200%}
+  40% {margin-left: -200%}
+  48% {margin-left: -300%}
+  56% {margin-left: -300%}
+  64% {margin-left: -400%}
+  72% {margin-left: -400%}
+  80% {margin-left: -500%}
+  88% {margin-left: -500%}
+  96% {margin-left: 0%}
+  100% {margin-left: 0%}
 }
-
-
-
 
 /* --------------- SAMPLE STYLES ---------------------- */
 

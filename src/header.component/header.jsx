@@ -28,30 +28,28 @@ class Header extends Component {
                 favoriteArticles: ['Mercedes', 'Mclaren', 'Ferrari']
             },*/
             departments : [
-                'Ford', 'Toyota', 'Honda', 'Mercedes', 'Tesla', 
-                'Nissan', 'Mclaren', 'BMW', 'Alfa Romero', 'Abarth',
-                'Aston martin', 'Audi', 'Bentley', 'Chevrolet', 'Citroen',
-                'Ferrari', 'Fiat', 'Hyundai', 'Jaguar', ],
+                'Ropa para mujer', 'Ropa para hombre', 'electrodomesticos',
+                'telefonos y comunicaciones', 'electronica', 'video juegos', 'automotriz', 
+                'carteras y relojes', 'calzados'
+            ],
                       
             suggestions: []
         }
     }
 
-    isUserLogin = () => {
+    isUserLogin = () =>{
         const { user } = this.state;
 
         if(user === null){
             return (
                 <React.Fragment>
-                    <img src={womanAvatar} />
-                    <p>Entrar</p>
+                    <img src={womanAvatar} alt='' /> <p>Entrar</p>
                 </React.Fragment>
             )
         }
         return (
             <React.Fragment>
-                <img src={user.image} />
-                <p>{user.firstName}</p>
+                <img src={user.image} alt='' /> <p>{user.firstName}</p>
             </React.Fragment>
         )
     }
@@ -63,7 +61,7 @@ class Header extends Component {
 
         for(let d of departments){
             let element = d.toLowerCase();
-            if(element.search(keyWord) !== -1 && keyWord !== ''){
+            if(element.indexOf(keyWord) !== -1 && keyWord !== ''){
                 sugs.push(d);
             }
         }
@@ -71,7 +69,7 @@ class Header extends Component {
         this.setState({ suggestions : sugs});
     }
 
-    isSuggestionsEmpty = () =>{
+    isSuggestionsEmpty = () => {
         if(this.state.suggestions.length === 0){
             return {display: 'none'};
         }
