@@ -5,6 +5,8 @@ import '../css/general_styles.css';
 
 import './css-styles/styles.css';
 
+import Samples from '../samples.component/samples';
+
 import smartTvImage from '../images/smart-tv.png';
 import tabletImage from '../images/tablet.png';
 import toolboxImage from '../images/toolbox.png';
@@ -76,37 +78,21 @@ class OfferView extends Component {
                 
                     <div className="slides-container slides-container-offer-viewed">
 
-                    {
-                        this.state.departments.map((val, ind, arr) => {
+                    {this.state.departments.map((val, ind, arr) => {
 
-                            if(ind === 0){
-                                return (
-                                    <div className="slides slides-offer-viewed animated-slides" key={ind}>		
-                                        <div className="slide-information">
-                                            <h2>{val.title}</h2>
-                                            <a href={'/'+val.name}>ver más <span className="material-icons-sharp">east</span></a>
-                                        </div>
-                                        <div className="slide-bkg-image">
-                                            <img src={val.image} alt='' />
-                                        </div>
-                                    </div>
-                                );
-                            }
-
-                            return (
-                                <div className="slides slides-offer-viewed " key={ind}>		
-                                    <div className="slide-information">
-                                        <h2>{val.title}</h2>
-                                        <a href={'/'+val.name}>ver más <span className="material-icons-sharp">east</span></a>
-                                    </div>
-                                    <div className="slide-bkg-image">
-                                        <img src={val.image} alt='' />
-                                    </div>
+                        return (
+                            <div key={ind} className={(ind===0)?'slides slides-offer-viewed animated-slides':'slides slides-offer-viewed'} >		
+                                <div className="slide-information">
+                                    <h2>{val.title}</h2>
+                                    <a href={'/'+val.name}>ver más <span className="material-icons-sharp">east</span></a>
                                 </div>
-                            );
-                            
-                        })
-                    }
+                                <div className="slide-bkg-image">
+                                    <img src={val.image} alt='' />
+                                </div>
+                            </div>
+                        );
+                        
+                    })}
 
                     </div>	
 
@@ -116,37 +102,13 @@ class OfferView extends Component {
                         
                         <div className="most-viewed-samples-container">
 
-                            {
-                                this.getMostViewedArticles().map((val, ind, arr) => {
+                            {this.getMostViewedArticles().map((val, ind, arr) => {
                                     if(val.OfferPrice === 0){
-                                        return (
-                                            <div className="samples" key={ind}>
-                                                <a href="/" className="headers">
-                                                    <img src={val.image} alt='' />
-                                                </a>	
-                                                <div className="price">
-                                                    <span className="offer">${val.retailPrice}</span>
-                                                </div>
-                                            </div> 
-                                        );
+                                        return ( <Samples article={val} isOffered={false} /> );
                                     }
 
-                                    return (
-                                        <div className="samples" key={ind}>
-                                            <span className="descount">
-                                            {parseInt(((val.retailPrice-val.OfferPrice)/val.retailPrice)*100)}%
-                                            </span>
-                                            <a href="/" className="headers">
-                                                <img src={val.image} alt='' />
-                                            </a>
-                                            <div className="price">
-                                                <span className="offer">${val.OfferPrice}</span>
-                                                <span className="retail">${val.retailPrice}</span>
-                                            </div>
-                                        </div> 
-                                    );
-                                })
-                            }
+                                    return ( <Samples article={val} isOffered={true} /> );
+                            })}
                             
                         </div>
 
@@ -162,20 +124,7 @@ class OfferView extends Component {
 
                         {this.getArticlesInOffer().map((val, ind, arr) => {
 
-                            return (
-                                <div className="samples" key={ind}>
-                                    <span className="descount">
-                                    {parseInt(((val.retailPrice-val.OfferPrice)/val.retailPrice)*100)}%
-                                    </span>
-                                        <a href="/" className="headers">
-                                            <img src={val.image} alt='' />
-                                        </a>
-                                    <div className="price">
-                                        <span className="offer">${val.OfferPrice}</span>
-                                        <span className="retail">${val.retailPrice}</span>
-                                    </div>
-                                </div> 
-                            );
+                            return ( <Samples article={val} isOffered={true} /> );
 
                         })}
                         

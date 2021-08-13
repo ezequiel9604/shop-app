@@ -28,9 +28,9 @@ class Header extends Component {
                 favoriteArticles: ['Mercedes', 'Mclaren', 'Ferrari']
             },*/
             departments : [
-                'Ropa para mujer', 'Ropa para hombre', 'electrodomesticos',
-                'telefonos y comunicaciones', 'electronica', 'video juegos', 'automotriz', 
-                'carteras y relojes', 'calzados'
+                'Ropa para mujer', 'Ropa para hombre', 'Carteras y Relojes', 'Calzados',
+                'Electrodomesticos','Telefonos y Comunicaciones', 'Informática y Oficina', 
+                'Componentes Electrónicos', 'Entretenimiento y Video juegos', 'Automotriz', 
             ],
                       
             suggestions: []
