@@ -354,7 +354,8 @@ div.button-actions button:nth-child(3){
 	display: flex;
 }
 
-div.button-actions button:hover{
+div.button-actions button:hover,
+div.button-actions button:focus{
 	box-shadow: 1px 1px 1px #f2f2f2;
 }
 

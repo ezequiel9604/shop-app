@@ -72,7 +72,8 @@ div.second-part div button{
 	border-radius: 2px;
 }
 
-div.second-part div button:hover{
+div.second-part div button:hover,
+div.second-part div button:focus{
 	box-shadow: 1px 1px 1px #f2f2f2;
 }
 
@@ -150,7 +151,8 @@ ul.option-account-list .header-links{
 	outline: none;
 }
 
-ul.option-account-list .header-links:hover{
+ul.option-account-list .header-links:hover,
+ul.option-account-list .header-links:focus{
 	background-color: #fafafa;
 	box-shadow: 0px 1px 2px #dddddd;
 	font-family: "raleway-semibold", sans-serif;	
@@ -173,7 +175,8 @@ ul.option-account-list .header-principal-links{
 	border-radius: 2px;
 }
 
-ul.option-account-list .header-principal-links:hover{
+ul.option-account-list .header-principal-links:hover,
+ul.option-account-list .header-principal-links:focus{
 	background-color: #0099cc;
 	border-color: #0099cc;
 	color: #ffffff;

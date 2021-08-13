@@ -30,7 +30,8 @@ class Header extends Component {
             departments : [
                 'Ropa para mujer', 'Ropa para hombre', 'Carteras y Relojes', 'Calzados',
                 'Electrodomesticos','Telefonos y Comunicaciones', 'Informática y Oficina', 
-                'Componentes Electrónicos', 'Entretenimiento y Video juegos', 'Automotriz', 
+                'Componentes Electrónicos', 'Entretenimiento y Video juegos', 'Herramientas del Hogar',
+                'Automotriz', 
             ],
                       
             suggestions: []
