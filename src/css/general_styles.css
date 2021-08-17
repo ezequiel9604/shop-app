@@ -10,6 +10,7 @@ main{
 	z-index: 0;
 	
 	background-color: #f2f2f2;
+	overflow: hidden;
 }
 
 /* --------------- TITLE STYLES ---------------------- */
@@ -48,7 +49,7 @@ button.button-move-slide{
 	cursor: pointer;
 }
 button.button-move-slide:first-child{
-	top: 140px;
+	top: 120px;
 	left: 0px;
 }
 

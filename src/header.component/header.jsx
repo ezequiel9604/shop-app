@@ -129,7 +129,7 @@ class Header extends Component {
                                 <div></div>
                             </button> 
 
-                            <a href="/">Zigzol</a>
+                            <a href="/">Zenuben</a>
                         </div>
 
                         <form action='/search' method='get' className="header-search">

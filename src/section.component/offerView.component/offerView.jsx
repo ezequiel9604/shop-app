@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import './css-styles/styles.css';
 
-import Samples from '../samples.component/samples';
+import Samples from '../../samples.component/samples';
 
-import smartTvImage from '../images/smart-tv.png';
-import tabletImage from '../images/tablet.png';
-import toolboxImage from '../images/toolbox.png';
+import smartTvImage from '../../images/smart-tv.png';
+import tabletImage from '../../images/tablet.png';
+import toolboxImage from '../../images/toolbox.png';
 
 class OfferView extends Component {
 

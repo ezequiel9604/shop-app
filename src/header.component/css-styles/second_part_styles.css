@@ -6,7 +6,6 @@ header#top-main-header{
 	border-bottom: 1px solid #dddddd;
 	width: 100%;
 	box-sizing: border-box;
-	margin-bottom: 20px;
 
 	position: sticky;
 	position: -webkit-sticky; /* Safari */

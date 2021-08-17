@@ -26,6 +26,8 @@ div.slides-departments{
 	flex-shrink: 0;
 	
 	background-color: #00ace6;
+	border-radius: 2px;
+	
 	overflow: hidden;
 }
 
@@ -112,6 +114,8 @@ div.most-viewed-container{
 	animation-duration: 1s;
 	animation-fill-mode: forwards;
 
+	border-radius: 2px;
+
 	/* opacity: 0;
 	right: -300px; */
 }
@@ -144,6 +148,8 @@ div.offer-container{
 	background-color: #ffffff;
 	position: relative;
 	overflow: hidden;
+
+	border-radius: 2px;
 }
 
 div.offer-samples-container{
@@ -157,12 +163,13 @@ div.offer-samples-container{
 div.advertisement-container{
 	border: 1px solid transparent;
 	width: 100%;
-	margin: 10px 0;
+	margin-top: 20px;
 
 	display: flex;
 	justify-content: space-around;
 
 	background-color: #ffffff;
+	border-radius: 2px;
 }
 
 div.advertisement-container div{

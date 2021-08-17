@@ -4,19 +4,18 @@ import './css/css_reset.css';
 import './css/general_styles.css';
 
 import Header from './header.component/header';
-import OfferView from './offerView.component/offerView';
-import LastView from './lastView.component/lastView';
+import Section from './section.component/section';
+import Footer from './footer.component/footer';
 
 class App extends Component {
     
     render() { 
         return ( 
-            <main>
+            <React.Fragment>
                 <Header />
-			    <OfferView />
-                <LastView />
-                
-            </main>
+                <Section />
+                <Footer />
+            </React.Fragment>
         );
     }
 }

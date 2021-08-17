@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './css-styles/styles.css';
 
-import smartTvImage from '../images/smart-tv.png';
+import smartTvImage from '../../images/smart-tv.png';
 
 class LastView extends Component {
 
