@@ -1,13 +1,9 @@
 
 import React, { Component } from 'react';
 
-import '../css/css_reset.css';
-import '../css/general_styles.css';
-
 import './css-styles/first_part_styles.css';
 import './css-styles/second_part_styles.css';
 
-import manAvatar from '../images/placeholder-man.png';
 import womanAvatar from '../images/placeholder-woman.png';
 import userImage from '../images/user-image.jpg';
 
@@ -25,7 +21,10 @@ class Header extends Component {
                 image: userImage,
                 firstName: 'Natalie', lastName: 'Portman', 
                 cartArticles: ['Audi', 'Hyundai', 'Toyota', 'Nissan'],
-                favoriteArticles: ['Mercedes', 'Mclaren', 'Ferrari']
+                favoriteArticles: [
+                    'Mercedes', 'Mclaren', 'Ferrari', 'Ford', 'Bugatti', 'Toyota', 'Dogde',
+                    'Mercedes', 'Mclaren', 'Ferrari', 'Ford'
+                ]
             },*/
             departments : [
                 'Ropa para mujer', 'Ropa para hombre', 'Carteras y Relojes', 'Calzados',

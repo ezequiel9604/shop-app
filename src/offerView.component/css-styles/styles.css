@@ -17,19 +17,19 @@ div.slides-mostviewed-container{
 	overflow: hidden; 
 }
 
-div.slides-container-offer-viewed{
+div.slides-container-departments{
 	width: 77%;
 	height: 350px;
 }
 
-div.slides-offer-viewed{
+div.slides-departments{
 	flex-shrink: 0;
 	
 	background-color: #00ace6;
 	overflow: hidden;
 }
 
-div.slides div{
+div.slides-departments div{
 	position: absolute;
 }
 

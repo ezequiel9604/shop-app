@@ -1,0 +1,37 @@
+div#last-view{
+	/* border: 1px solid; */
+	width: 95%; 
+	margin: 0px auto;
+    padding: 20px 0;
+	background-color: transparent;
+	overflow: hidden;
+
+    position: relative;
+	z-index: 0;
+}
+
+div.slide-container-last-viewed{
+	/* border: 1px dashed; */
+	width: 100%;
+}
+
+div.slides-last-viewed{
+	/* border: 1px solid blue; */
+    width: 99%;
+    display: flex;
+	justify-content: space-between;
+	flex-shrink: 0;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+div.slides-last-viewed div.samples{
+	width: 190px;
+}
+div.slides-last-viewed div.samples .headers{
+	height: 130px;
+}
+
+div.slides-last-viewed div.samples img{
+	background-color: #ffffff;
+}

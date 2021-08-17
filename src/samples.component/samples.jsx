@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import '../css/css_reset.css';
-import '../css/general_styles.css';
 
 class Samples extends Component {
 
@@ -32,6 +30,7 @@ class Samples extends Component {
                         <span className="retail">${article.retailPrice}</span>
                     </div>
                 </div> 
+                
             );
         }
 
@@ -45,7 +44,6 @@ class Samples extends Component {
                 </div>
             </div> 
         );
-
         
     }
 }

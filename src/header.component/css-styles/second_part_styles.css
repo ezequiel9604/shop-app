@@ -183,7 +183,8 @@ ul.option-account-list .header-principal-links:focus{
 	font-family: "raleway-semibold", sans-serif;	
 }
 
-button#btn-header-login:hover ul.option-account-list{
+button#btn-header-login:hover ul.option-account-list,
+button#btn-header-login:focus ul.option-account-list{
 	display: block;
 }
 

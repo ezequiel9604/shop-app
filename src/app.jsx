@@ -5,6 +5,7 @@ import './css/general_styles.css';
 
 import Header from './header.component/header';
 import OfferView from './offerView.component/offerView';
+import LastView from './lastView.component/lastView';
 
 class App extends Component {
     
@@ -13,6 +14,8 @@ class App extends Component {
             <main>
                 <Header />
 			    <OfferView />
+                <LastView />
+                
             </main>
         );
     }
