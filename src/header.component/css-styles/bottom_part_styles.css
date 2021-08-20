@@ -1,27 +1,24 @@
 
 
-div.first-part{
-	/*border: 1px dashed;*/
-	width: 95%;
-	box-sizing: border-box;
-	margin: 20px auto;
-
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-div.logo-content{
+div.bottom-part, 
+div.logo-content, 
+div.header-cart-favorite{
 	/*border: 1px solid blue;*/
 	width: fit-content;
 	box-sizing: border-box;
 
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+}
+
+div.bottom-part{
+	width: 95%;
+	margin: 20px auto;
 }
 
 /*side bar button*/
-button#btn-open-sidebar{
+#btn-open-sidebar{
 	border: 1px solid #0099cc;
 	width: 60px;
 	height: 40px;
@@ -31,7 +28,7 @@ button#btn-open-sidebar{
 	cursor: pointer;
 	display: none; /*this will change to (block or none)*/
 }
-button#btn-open-sidebar > div{
+#btn-open-sidebar div{
 	display: block;
 	background-color: #ffffff;
 	width:45px;
@@ -40,34 +37,28 @@ button#btn-open-sidebar > div{
 	border-radius: 2px;
 	transition: all 0.4s ease;
 }
-button#btn-hide-sidebar > div:nth-child(1){
+#btn-hide-sidebar div:nth-child(1){
 	transform: rotate(-30deg) translateX(-3px) translateY(5px);
 }
-button#btn-hide-sidebar > div:nth-child(2){
+#btn-hide-sidebar div:nth-child(2){
 	display: none;
 }
-button#btn-hide-sidebar >  div:nth-child(3){
+#btn-hide-sidebar div:nth-child(3){
 	transform: rotate(30deg) translateX(0px) translateY(-5px);
 }
 
-div.header-logo a{
+.logo-title{
 	/*border: 1px solid;*/
 	display: block;
 
 	font-family: 'Righteous', sans-serif;
 	font-size: 40px;
 	color: #0099cc;
+	outline: none;
 }
 
-/*div.header-logo img{
-	width: 152px;
-	height: 35px;
-
-	object-fit: contain;
-}*/
-
 /*searcher container*/
-form.header-search{
+.header-form-search{
 	/*border: 1px solid blue;*/
 	width: 65%;
 	box-sizing: border-box;
@@ -91,14 +82,14 @@ div.dropdown-department{
 
 	cursor: pointer;
 	position: relative;
-	border-radius: 2px 0 0 2px;
+	border-radius: 25px 0 0 25px;
 
 	z-index: 0;
 }
 
 div.dropdown-department p{
 	/*border: 1px solid;*/
-	padding-left: 6px;
+	padding-left: 10px;
 	font-family: "raleway-medium", sans-serif;	
 	font-size: 14px;
 	color: #4d4d4d;
@@ -113,11 +104,11 @@ div.dropdown-department span{
 
 /* --------------------------- DROPDOWN DEPART LIST -------------------- */
 
-div.dropdown-department:hover 
-ul.dropdown-department-list{
+.dropdown-department:hover 
+.dropdown-department-list{
 	display: block;
 }
-ul.dropdown-department-list{
+.dropdown-department-list{
 	/*border: 1px solid #0099cc;*/
 	border: 1px solid #dddddd;
 	display: none; /*this will change*/
@@ -133,7 +124,7 @@ ul.dropdown-department-list{
 	left: -2px;
 	z-index: 99;
 }
-ul.dropdown-department-list a{
+.dropdown-department-list a{
 	display: block;
 	text-align: left;
 
@@ -149,15 +140,15 @@ ul.dropdown-department-list a{
 
 	border-bottom: 1px solid #dddddd;
 }
-ul.dropdown-department-list a:last-child{border-bottom-color: transparent;}
+.dropdown-department-list a:last-child{border-bottom-color: transparent;}
 
-ul.dropdown-department-list a:hover{
+.dropdown-department-list a:hover{
 	background-color: #fafafa;
 	box-shadow: 0px 1px 2px #dddddd;
 	font-family: "raleway-semibold", sans-serif;
 }
 
-ul.subdropdown-department-list{
+.subdropdown-department-list{
 	width: 150px;
 	display: none;
 	position: absolute;
@@ -167,7 +158,7 @@ ul.subdropdown-department-list{
 	top: 0;
 	left:0px;
 }
-ul.subdropdown-department-list a{
+.subdropdown-department-list a{
 /*	border: 1px solid purple;*/
 	padding: 10px 0;
 	padding-left: 20px;
@@ -176,7 +167,7 @@ ul.subdropdown-department-list a{
 }
 
 /*searcher input*/
-form.header-search input{
+.header-form-search input{
 	width: 73%;
 
 	padding: 10px 10px;
@@ -190,7 +181,7 @@ form.header-search input{
 }
 
 /*searcher button*/
-form.header-search button{
+.header-form-search button{
 	width: 10%;
 	box-sizing: border-box;
 
@@ -199,22 +190,22 @@ form.header-search button{
 	justify-content: center;
 
 	padding: 0;
-	border-radius: 0px 2px 2px 0;
+	border-radius: 0px 25px 25px 0;
 	border: 1px solid #0099cc;
 	background-color: #0099cc;
 }
 
-form.header-search button span{
+.header-form-search button span{
 	font-size: 25px;
 	color: #ffffff;
 }
 
-form.header-search button:hover{
+.header-form-search button:hover{
 	background-color: #0086b3;
 }
 
 /*searcher suggestions*/
-div.header-search-suggestions{
+div.search-suggestions{
 	border: 1px solid #dddddd;
 	width: 74%;
 
@@ -226,11 +217,10 @@ div.header-search-suggestions{
 	background-color: #ffffff;
 	border-radius: 2px;
 	
-
 	display: block; /* this will change (block or none) */
 }
 
-div.header-search-suggestions a{
+div.search-suggestions a{
 	/*border: 1px solid;*/
 	width: 100%;
 	box-sizing: border-box;
@@ -255,58 +245,10 @@ div.header-search-suggestions a{
 	border-bottom: 1px solid #dddddd;
 }
 
-div.header-search-suggestions a:hover, div.header-search-suggestions a:focus{
+div.search-suggestions a:hover, 
+div.search-suggestions a:focus{
 	background-color: #fafafa;
 	box-shadow: 0px 1px 2px #dddddd;
 	font-family: "raleway-semibold", sans-serif;
 }
 
-
-/*cart and favorite container*/
-div.header-cart-favorite{
-	/*border: 1px solid blue;*/
-	width: fit-content;
-	display: flex;
-}
-
-div.header-cart-favorite a{
-	box-sizing: border-box;
-	width: fit-content;
-
-	display: flex;
-	align-items: center;
-	position: relative;
-
-	padding: 5px 5px;
-	margin: 0px 5px;
-
-	border: 1px solid #dddddd;
-	background-color: #ffffff;
-	outline: none;
-
-	color: #4d4d4d;
-	border-radius: 2px;
-}
-
-div.header-cart-favorite a:hover{
-	box-shadow: 1px 1px 1px #f2f2f2;
-}
-
-div.header-cart-favorite a span{
-	/*border: 1px solid;*/
-	margin-left: 8px;
-	font-size: 25px;
-}
-div.header-cart-favorite a i{
-	/*border: 1px solid;*/
-	margin: 0 5px;
-	padding: 0 5px;
-	padding-bottom: 2px;
-
-	font-family: "raleway-regular", sans-serif;	
-	font-size: 16px;
-	color: #ffffff;
-
-	border-radius: 50%;
-	background-color: #0099cc;
-}

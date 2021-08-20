@@ -1,6 +1,6 @@
 
 
-header#top-main-header{
+header#main-header{
 	/*border: 1px solid red;*/
 	border-top: 1px solid #dddddd;
 	border-bottom: 1px solid #dddddd;
@@ -17,8 +17,8 @@ header#top-main-header{
 	background-color: #ffffff;
 }
 
-/*second part*/
-div.second-part{
+/*top part*/
+div.top-part{
 	border-bottom: 1px solid #dddddd;
 	width: 98%;
 	margin: 5px auto;
@@ -29,7 +29,7 @@ div.second-part{
 	align-items: center;
 }
 
-div.second-part div{
+div.top-part div{
 	/*border: 1px solid red;*/
 	width: fit-content;
 	box-sizing: border-box;
@@ -39,7 +39,7 @@ div.second-part div{
 	align-items: center;
 }
 
-div.second-part div > p{
+div.top-part div > p{
 	/*border: 1px solid;*/
 	display: flex;
 	align-items: center;	
@@ -48,77 +48,10 @@ div.second-part div > p{
 	font-family: "raleway-regular", sans-serif;
 	font-size: 14px;
 }
-/*
-	NOTE: INSIDE OF A BUTTON CANNOT BE ANOTHER BUTTON
-*/
-div.second-part div button{
-	box-sizing: border-box;
-	width: fit-content;
-	display: flex;
-	align-items: center;
-	position: relative;
-
-	padding: 5px;
-	margin: 3px 5px;
-
-	border: 1px solid #dddddd;
-	background-color: transparent;
-	outline: none;
-
-	font-family: "raleway-medium", sans-serif;	
-	font-size: 14px;
-	color: #4d4d4d;
-	border-radius: 2px;
-}
-
-div.second-part div button:hover,
-div.second-part div button:focus{
-	box-shadow: 1px 1px 1px #f2f2f2;
-}
-
-div.second-part div button > a{
-	text-decoration: none;
-	color: #4d4d4d;
-}
-
-div.second-part div button > img{
-	/*border: 1px solid;*/
-	width: 25px;
-	height: 25px;
-
-	margin: 0 4px;
-
-	border-radius: 50%;
-	object-fit: cover;
-}
-
-/*
-	NOTE: INSIDE OF A BUTTON CANNOT BE MORE THAN ONE SPAN TAG
-	SPAN TAGS ARE ONLY FOR ICONS.
-*/
-div.second-part div button > span{
-	/*border: 1px solid;*/
-	display: block;
-	width: 22px;
-	height: 22px;
-	margin: 0 4px;
-
-	background-color: #dddddd;
-	font-size: 20px;
-	color: #4d4d4d;
-
-	border-radius: 50%;
-}
-
-div.second-part div button > p{
-	/*border: 1px solid;*/
-	display: block;
-	margin: 0 4px;
-}
 
 
 /*option account list*/
-ul.option-account-list{
+.option-account-list{
 	display: none; /*this will change*/
 	border: 1px solid #dddddd;
 	width: 150px;
@@ -133,7 +66,7 @@ ul.option-account-list{
 	z-index: 99;
 }
 
-ul.option-account-list .header-links{
+.option-account-list .header-links{
 	border-top: 1px solid #dddddd;
 	display: block;
 	width: 100%;
@@ -150,14 +83,14 @@ ul.option-account-list .header-links{
 	outline: none;
 }
 
-ul.option-account-list .header-links:hover,
-ul.option-account-list .header-links:focus{
+.option-account-list .header-links:hover,
+.option-account-list .header-links:focus{
 	background-color: #fafafa;
 	box-shadow: 0px 1px 2px #dddddd;
 	font-family: "raleway-semibold", sans-serif;	
 }
 
-ul.option-account-list .header-principal-links{
+.option-account-list .header-principal-links{
 	display: block;
 	width: 80%;
 	margin: 8px auto;
@@ -174,16 +107,19 @@ ul.option-account-list .header-principal-links{
 	border-radius: 2px;
 }
 
-ul.option-account-list .header-principal-links:hover,
-ul.option-account-list .header-principal-links:focus{
+.option-account-list .header-principal-links:hover,
+.option-account-list .header-principal-links:focus{
 	background-color: #0099cc;
 	border-color: #0099cc;
 	color: #ffffff;
 	font-family: "raleway-semibold", sans-serif;	
 }
 
-button#btn-header-login:hover ul.option-account-list,
-button#btn-header-login:focus ul.option-account-list{
+#btn-header-login:hover ul.option-account-list,
+#btn-header-login:focus ul.option-account-list{
 	display: block;
 }
 
+#btn-header-signup{
+	padding: 8px 6px;
+}

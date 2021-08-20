@@ -1,67 +1,38 @@
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import './css-styles/first_part_styles.css';
-import './css-styles/second_part_styles.css';
-
-import womanAvatar from '../images/placeholder-woman.png';
-import userImage from '../images/user-image.jpg';
+import './css-styles/top_part_styles.css';
+import './css-styles/bottom_part_styles.css';
 
 import PromoBanner from './promoBanner';
+import HeaderTop from './headerTop';
+import Suggestion from './suggestion';
+
 
 class Header extends Component {
 
     constructor(props){
         super(props);
 
-        this.state = {
-            user: null,
-            /*user: {
-                code: 'USR-025489', 
-                image: userImage,
-                firstName: 'Natalie', lastName: 'Portman', 
-                cartArticles: ['Audi', 'Hyundai', 'Toyota', 'Nissan'],
-                favoriteArticles: [
-                    'Mercedes', 'Mclaren', 'Ferrari', 'Ford', 'Bugatti', 'Toyota', 'Dogde',
-                    'Mercedes', 'Mclaren', 'Ferrari', 'Ford'
-                ]
-            },*/
-            departments : [
-                'Ropa para mujer', 'Ropa para hombre', 'Carteras y Relojes', 'Calzados',
-                'Electrodomesticos','Telefonos y Comunicaciones', 'Informática y Oficina', 
-                'Componentes Electrónicos', 'Entretenimiento y Video juegos', 'Herramientas del Hogar',
-                'Automotriz', 
-            ],
-                      
+        this.state = {     
             suggestions: []
         }
+
+        this.findSuggestions = this.findSuggestions.bind(this);
+        this.onSuggestionsEmpty = this.onSuggestionsEmpty.bind(this);
     }
 
-    isUserLogin = () =>{
-        const { user } = this.state;
-
-        if(user === null){
-            return (
-                <React.Fragment>
-                    <img src={womanAvatar} alt='' /> <p>Entrar</p>
-                </React.Fragment>
-            )
-        }
-        return (
-            <React.Fragment>
-                <img src={user.image} alt='' /> <p>{user.firstName}</p>
-            </React.Fragment>
-        )
-    }
-
-    findSuggestions = (event) => {
-        let {departments } = this.state;
+    // when user types in search input, it will find the coincidences
+    // and then returns them as an array.
+    findSuggestions(event){
+        let { Departments } = this.props.dummy_data;
         let sugs = [];
-        let keyWord = event.target.value.toLowerCase();
+        let keyword = event.target.value.toLowerCase();
 
-        for(let d of departments){
+        for(let d of Departments){
             let element = d.toLowerCase();
-            if(element.indexOf(keyWord) !== -1 && keyWord !== ''){
+            if(element.indexOf(keyword) !== -1 && keyword !== ' ' && keyword !== ''){
                 sugs.push(d);
             }
         }
@@ -69,7 +40,10 @@ class Header extends Component {
         this.setState({ suggestions : sugs});
     }
 
-    isSuggestionsEmpty = () => {
+    // it verifies if the user is typing in the search input
+    // if the answer is yes, it will show a dropdown container with the coincidences
+    // otherwise hide the dropdown container
+    onSuggestionsEmpty(){
         if(this.state.suggestions.length === 0){
             return {display: 'none'};
         }
@@ -77,112 +51,73 @@ class Header extends Component {
     }
     
     render(){
+
+        const { User } = this.props.dummy_data;
+
         return (
-            <React.Fragment>
+        <React.Fragment>
 
-                <PromoBanner />
+            <PromoBanner />
 
-                <header id="top-main-header">
-	
-                    <div className="second-part">
-                            
-                        <div>
-                            <p>Ayuda, Llama al Tel.: 809-111-2000</p>
-                            <button type="button">Chat online</button>
-                        </div>
+            <header id="main-header">
 
-                        <div>
-                            <button type="button" id="btn-header-login">
+                <HeaderTop user={User} />
 
-                                {this.isUserLogin()}
-
-                                <ul className="option-account-list">
-                                    
-                                    {this.state.user === null? 
-                                    <a href="/login" className="header-principal-links">Identifícate</a> : null}
-
-                                    <a href="/profile" className="header-links">Mi perfil</a>
-                                    <a href="orders" className="header-links">Mis pedidos</a>
-                                    <a href="favorites" className="header-links">Mi lista favoritos</a>
-                                    <a href="trackOrder" className="header-links">Rastrear pedido</a>
-                                </ul>
-
-                            </button>
-                            <button type="button">
-                            {
-                                this.state.user === null? 
-                                <a href="/signup" id="btn-header-signup">Registrarse!</a> : 
-                                <a href="/logout" id="btn-header-signup">Cerrar Sessión</a> }
-                               
-                            </button>
-                        </div>
-
+                <div className="bottom-part">
+                        
+                    <div className="header-logo">
+                        <button type="button" id="btn-open-sidebar">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </button> 
+                        <Link to="/" className='logo-title'>Zenuben</Link>
                     </div>
 
-                    <div className="first-part">
-                            
-                        <div className="header-logo">
+                    <form action='/search' method='get' className="header-form-search">
+                        
+                        <div className="dropdown-department">
+                                
+                            <p>Departamentos</p>
+                            <span className="material-icons-sharp">arrow_drop_down</span>
 
-                            <button type="button" id="btn-open-sidebar">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </button> 
+                            <ul className="dropdown-department-list">
+                            {
+                                this.props.dummy_data.Departments.map((val, ind, arr) => {
+                                    return  <a href={'/search?keyword='+val} key={ind}>{val}</a>;
+                                })
+                            }
+                            </ul>
+                        </div>	
 
-                            <a href="/">Zenuben</a>
-                        </div>
+                        <input type="search" name='keyword' onChange={this.findSuggestions} 
+                            autoComplete='off' placeholder="Que buscas?" />
 
-                        <form action='/search' method='get' className="header-search">
-                            
-                            <div className="dropdown-department">
-                                    
-                                <p>Departamentos</p>
-                                <span className="material-icons-sharp">arrow_drop_down</span>
+                        <Suggestion suggs={this.state.suggestions} visibility={this.onSuggestionsEmpty} />
 
-                                <ul className="dropdown-department-list">
-                                {
-                                    this.state.departments.map((val, ind, arr) => {
-                                        return  <a href={'/search?keyword='+val} key={ind}>{val}</a>;
-                                    })
-                                }
-                                </ul>
-                            </div>	
+                        <button type="submit">
+                            <span className="material-icons-sharp">search</span>
+                        </button>
+                    </form>
 
-                            <input type="search" name='keyword' onChange={this.findSuggestions} autoComplete='off' placeholder="Que buscas?" />
+                    <div className="header-cart-favorite">
+                        <Link to="/cart" className="btn">
+                            <span className="material-icons-outlined icon-font">shopping_cart</span>	
+                            <i>{User === null? 0 : User.cartArticles.length}</i>
+                        </Link>
+                        <Link to="/favorites" className="btn">
+                            <span className="material-icons-outlined icon-font">favorite_border</span>	
+                            <i>{User === null? 0 : User.favoriteArticles.length}</i>
+                        </Link>
+                    </div>
 
-                            <div className="header-search-suggestions" style={this.isSuggestionsEmpty()}>
-                                {
-                                    this.state.suggestions.map((val, ind, arr) =>  {
-                                       return <a href={'/search?keyword='+val} key={ind}>{val}</a>;
-                                    })
-                                }
-                            </div>
+                </div> 
 
-                            <button type="submit">
-                                <span className="material-icons-sharp">search</span>
-                            </button>
+            </header>	
 
-                        </form>
-
-                        <div className="header-cart-favorite">
-                            <a href="/cart">
-                                <span className="material-icons-outlined">shopping_cart</span>	
-                                <i>{this.state.user === null? 0 : this.state.user.cartArticles.length}</i>
-                            </a>
-                            <a href="/favorites">
-                                <span className="material-icons-outlined">favorite_border</span>	
-                                <i>{this.state.user === null? 0 : this.state.user.favoriteArticles.length}</i>
-                            </a>
-                        </div>
-
-                    </div> 
-
-                </header>	
-
-            </React.Fragment>
-        )
+        </React.Fragment>
+        );
     }
-
 
 }
  

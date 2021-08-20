@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './css-styles/styles.css';
 
-import logo from '../images/logo.png';
 
 class Footer extends Component {
     render() { 
@@ -20,32 +19,32 @@ class Footer extends Component {
                     </ul>	
                     <ul>
                         <h5>Guía Para</h5>
-                        <li><a href="#">Crear cuenta</a></li>
-                        <li><a href="#">Hacer una compra</a></li>
-                        <li><a href="#">Usar codigo promoción</a></li>
-                        <li><a href="#">Devolución de articulo</a></li>
-                        <li><a href="#">Cancelar pedido</a></li>
+                        <li><a href="/">Crear cuenta</a></li>
+                        <li><a href="/">Hacer una compra</a></li>
+                        <li><a href="/">Usar codigo promoción</a></li>
+                        <li><a href="/">Devolución de articulo</a></li>
+                        <li><a href="/">Cancelar pedido</a></li>
                     </ul>
                     <ul>
                         <h5>Términos y Política</h5>
-                        <li><a href="#">Términos de Uso</a></li>
-                        <li><a href="#">Políticas de Envios</a></li>
-                        <li><a href="#">Políticas de Garantia</a></li>
-                        <li><a href="#">Políticas de Privacidad</a></li>
+                        <li><a href="/">Términos de Uso</a></li>
+                        <li><a href="/">Políticas de Envios</a></li>
+                        <li><a href="/">Políticas de Garantia</a></li>
+                        <li><a href="/">Políticas de Privacidad</a></li>
                     </ul>
                     <ul>
                         <h5>Redes Sociales</h5>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Whatsapp</a></li>
-                        <li><a href="#">Instagram</a></li>
+                        <li><a href="/">Twitter</a></li>
+                        <li><a href="/">Facebook</a></li>
+                        <li><a href="/">Whatsapp</a></li>
+                        <li><a href="/">Instagram</a></li>
                     </ul>	
 
                 </div>	
 
                 <div className="footer-bottom">
                     <div>
-                        <img src={logo} alt='' />
+                        <h6>Zenuben</h6>
                     </div>
                     <address>Calle 8, Francisco Henriquez y Carvajal, Brisas del Este, Santo Domingo Este.</address>
                     <address>© 2021 zilzol - Todos los derechos reservados.</address>

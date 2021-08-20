@@ -102,16 +102,13 @@ div.footer-bottom{
 	overflow: hidden;
 }
 
-div.footer-bottom img {
-	/*border: 1px solid;*/
-	display: block;
-	width: 76px;
-	height: 17px;
-	margin: 0 auto;
-
-	object-fit: cover;
-
-	filter: grayscale(100%);
+div.footer-bottom h6 {
+	/* border: 1px solid; */
+	
+	text-align: center;
+	font-family: 'Righteous', sans-serif;
+	font-size: 25px;
+	color: #4d4d4d;
 }
 
 div.footer-bottom address{

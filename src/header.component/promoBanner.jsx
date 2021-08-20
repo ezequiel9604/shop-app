@@ -13,7 +13,7 @@ class PromoBanner extends Component {
     }
 
     hidePromoBanner = () =>{
-        this.setState({bannerStatus: {display: 'none'}});
+        this.setState({ bannerStatus: {display: 'none'}});
     }
 
     render() { 
