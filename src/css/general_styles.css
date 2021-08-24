@@ -2,7 +2,7 @@
 /* --------------- MAIN CONTAINERS STYLES ---------------------- */
 
 main{
-	/* border: 1px dashed red; */
+	/* border: 1px dashed red;  */
 	width: 100%;
 	box-sizing: border-box;
 	
@@ -48,7 +48,7 @@ div.title-container h2{
 	border: 1px solid #dddddd;
 	background-color: #ffffff;
 	color: #4d4d4d;
-	border-radius: 25px;
+	border-radius: 10px;
 	outline: none;
 
 	font-family: 'raleway-medium', sans-serif;
@@ -194,7 +194,7 @@ div.samples img{
 	object-fit: contain;
 }
 
-.descount{
+ .descount{
 	display: block;
 	width: fit-content;
 
@@ -212,10 +212,13 @@ div.samples img{
 	border-radius: 50px;
 
 	position: absolute;
-	left: -5px;
-	top: -5px;
 
 	z-index: 5;
+}
+
+div.samples .descount{
+	left: -5px;
+	top: -5px;
 }
 
 div.samples .samples-title{
@@ -281,9 +284,9 @@ div.samples .samples-status a{
 /* --------------- SAMPLE COLUMN STYLES ---------------------- */
 
 div.samples-column-container{
-	/*border: 1px solid;*/
-	width: 90%;
-	margin:20px auto;
+	/* border: 1px solid; */
+	width: 95%;
+	margin:0px auto;
 	padding: 20px 0;
 	box-sizing: border-box;
 	background-color: #ffffff;
@@ -293,8 +296,8 @@ div.samples-column-container{
 div.samples-column{
 	/*border: 1px solid red;*/
 	width: 90%;
-	margin: 20px auto;
-	padding: 10px 0;
+	margin: 10px auto;
+	padding: 20px 0;
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid #dddddd;
@@ -304,11 +307,17 @@ div.samples-column{
 	/*transition: all 0.5s ease;*/
 }
 
+
+div.samples-column .descount{
+	left: -5px;
+	top: 5px;
+}
+
 div.samples-column:last-child{
 	border-bottom-color: transparent;
 }
 
-div.samples-column .headers{
+div.samples-column .samples-column-headers{
 	/*border: 1px solid;*/
 	width: 18%;
 	height: 140px;
@@ -316,7 +325,7 @@ div.samples-column .headers{
 	position: relative;
 }
 
-div.samples-column .headers img{
+div.samples-column .samples-column-headers img{
 	display: block;
 
 	width: 100%;
@@ -328,12 +337,12 @@ div.samples-column .headers img{
 }
 
 /*.sections*/
-div.samples-column .sections{
+div.samples-column .samples-column-sections{
 	/*border: 1px solid;*/
 	width: 80%;
 	position: relative;
 }
-div.samples-column .sections h3{
+div.samples-column .samples-column-sections h3{
 	/*border: 1px solid;*/
 	width: 98%;
 
@@ -350,7 +359,7 @@ div.samples-column .sections h3{
 }
 
 /*price container*/
-div.samples-column .sections .price{
+div.samples-column .samples-column-price{
 	/*border: 1px solid;*/
 	width: 98%;
 	margin: 8px 0;
@@ -359,16 +368,17 @@ div.samples-column .sections .price{
 	align-items: center;
 }
 
-div.samples-column .price span:nth-child(1){
+div.samples-column .samples-column-price span:nth-child(1){
 	display: block;
-	font-family: "raleway-semibold";
-	font-size: 20px;
+	margin-right: 30px;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 22px;
 	color: #4d4d4d;
 }
 
-div.samples-column .price span:nth-child(2){
+div.samples-column .samples-column-price span:nth-child(2){
 	display: block;
-	font-family: "raleway-medium";
+	font-family: "raleway-medium",sans-serif;
 	font-size: 16px;
 	text-decoration: line-through;
 	color: #808080;
@@ -615,31 +625,29 @@ div.alert p{
 	line-height: 20px;
 }
 
-form.login-form{
-	/*border: 1px solid #dddddd;*/
-	width: 50%;
-	margin: 40px auto;
-}
-
-form.login-form h2{
+form.form-login h3{
 	/*border: 1px solid;*/
 	width: 90%;
 	margin: 20px auto;
-	font-family: "raleway-semibold";
+	font-family: "raleway-semibold",sans-serif;
 	font-size: 22px;
 	color: #4d4d4d;
 	text-align: center;
 }
 
-div.create-account{
-	width: 40%;
-	margin: 30px auto;
-
-	font-family: "raleway-medium";
-	font-size: 16px;
-	color: #4d4d4d;
-	text-align: center;
+.create-account{
+	/*border: 1px solid;*/
+	width: 30%;
+	margin: 0px auto;
+	box-sizing: border-box;
 }
-div.create-account a{
-	color: #0099ff;
+
+.create-account span{
+	width: 100%;
+	display: block;
+	text-align: center;
+
+	margin-bottom: 10px;
+	font-family: 'raleway-regular', sans-serif;
+	font-size: 14px;
 }

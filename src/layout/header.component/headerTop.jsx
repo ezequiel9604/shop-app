@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 
-import womanAvatar from '../images/placeholder-woman.png';
+import womanAvatar from '../../images/placeholder-woman.png';
 
 function HeaderTop(props){
 

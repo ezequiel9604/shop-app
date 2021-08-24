@@ -7,7 +7,6 @@ class Footer extends Component {
     render() { 
         return (  
             <footer>
-                
                 <div className="footer-top">
                     <ul>
                         <h5>Acerca de Nosotros</h5>
@@ -39,7 +38,6 @@ class Footer extends Component {
                         <li><a href="/">Whatsapp</a></li>
                         <li><a href="/">Instagram</a></li>
                     </ul>	
-
                 </div>	
 
                 <div className="footer-bottom">
@@ -47,7 +45,7 @@ class Footer extends Component {
                         <h6>Zenuben</h6>
                     </div>
                     <address>Calle 8, Francisco Henriquez y Carvajal, Brisas del Este, Santo Domingo Este.</address>
-                    <address>© 2021 zilzol - Todos los derechos reservados.</address>
+                    <address>© 2021 zenuben - Todos los derechos reservados.</address>
                 </div>
 
 

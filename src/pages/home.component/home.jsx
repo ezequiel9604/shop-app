@@ -4,9 +4,9 @@ import OfferView from './offerView.component/offerView';
 import LastView from './lastView.component/lastView';
 import OrderOfflineBanner from './orderOfflineBanner.component/orderOfflineBanner';
 
-import smartTvImage from '../images/smart-tv.png';
+import smartTvImage from '../../images/smart-tv.png';
 
-class Section extends Component {
+class Home extends Component {
     
     constructor(props){
         super(props);
@@ -31,14 +31,14 @@ class Section extends Component {
 
     render() { 
         return (  
-            <main>
+            <div>
                 <OfferView articles={this.state.articles} />
                 <LastView articles={this.state.articles} />
                 <OrderOfflineBanner />
-            </main>
+            </div>
         );
     }
     
 }
  
-export default Section;
+export default Home;

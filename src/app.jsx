@@ -4,10 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import './css/css_reset.css';
 import './css/general_styles.css';
 
-import Header from './header.component/header';
-import Section from './section.component/section';
-import Footer from './footer.component/footer';
+import Header from './layout/header.component/header';
+import Footer from './layout/footer.component/footer';
 
+import Home from './pages/home.component/home';
+import SearchResults from './pages/searchResults.component/searchResults';
 
 const DUMMY_DATA = {
     User: null,
@@ -36,11 +37,17 @@ function App(){
         <div>
             <Header dummy_data={DUMMY_DATA} />
 
-            <Switch>
-                <Route path='/' exact={true}>
-                    <Section />
-                </Route>
-            </Switch>
+            <main>
+                <Switch>
+                    <Route path='/' exact={true}>
+                        <Home />
+                    </Route>
+
+                    <Route path='/searchResults'>
+                        <SearchResults />
+                    </Route>
+                </Switch>
+            </main>
 
             <Footer />
         </div>

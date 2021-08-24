@@ -1,10 +1,10 @@
 
 import './css-styles/styles.css';
 
-import smartTvImage from '../../images/smart-tv.png';
-import tabletImage from '../../images/tablet.png';
-import toolboxImage from '../../images/toolbox.png';
-import clothesImage from '../../images/clothes.png';
+import smartTvImage from '../../../images/smart-tv.png';
+import tabletImage from '../../../images/tablet.png';
+import toolboxImage from '../../../images/toolbox.png';
+import clothesImage from '../../../images/clothes.png';
 
 function OrderOfflineBanner() {
 

@@ -11,7 +11,7 @@ function SampleDouble(props) {
                     {parseInt(((props.article.retailPrice-props.article.OfferPrice)/props.article.retailPrice)*100)}%
                 </span>
                 <Link to="/article" className="samples-header">
-                    <img src={props.article.image} />
+                    <img src={props.article.image} alt='' />
                 </Link>	
                 <h3 className='samples-title' title={props.article.title}>{props.article.title}</h3>
                 <div className="samples-price">
@@ -28,7 +28,7 @@ function SampleDouble(props) {
     return (
         <div className="samples" >
             <Link to="/article" className="samples-header">
-                <img src={props.article.image} />
+                <img src={props.article.image} alt='' />
             </Link>		
             <h3 className='samples-title' title={props.article.title}>{props.article.title}</h3>
             <div className="samples-price">

@@ -11,7 +11,7 @@ function SampleSingle(props) {
                 <span className="descount">
         {parseInt(((props.article.retailPrice-props.article.OfferPrice)/props.article.retailPrice)*100)}%
                 </span>
-                <Link to="/article" className="samples-header">
+                <Link to="/searchResults?articles" className="samples-header">
                     <img src={props.article.image} alt='' />
                 </Link>
                 <div className="samples-price">
@@ -24,7 +24,7 @@ function SampleSingle(props) {
 
     return (
         <div className="samples">
-            <Link to="/article" className="samples-header">
+            <Link to="/searchResults?articles" className="samples-header">
                 <img src={props.article.image} alt='' />
             </Link>
             <div className="samples-price">

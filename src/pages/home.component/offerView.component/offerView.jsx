@@ -5,9 +5,9 @@ import './css-styles/styles.css';
 
 import SampleSingle from '../../samples.component/sampleSingle';
 
-import smartTvImage from '../../images/smart-tv.png';
-import tabletImage from '../../images/tablet.png';
-import toolboxImage from '../../images/toolbox.png';
+import smartTvImage from '../../../images/smart-tv.png';
+import tabletImage from '../../../images/tablet.png';
+import toolboxImage from '../../../images/toolbox.png';
 
 class OfferView extends Component {
 
