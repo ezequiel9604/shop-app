@@ -1,4 +1,3 @@
-import { findAllByDisplayValue } from '@testing-library/react';
 import React, { Component } from 'react';
 
 import './css-styles/styles.css';
@@ -7,8 +6,6 @@ class SideBarFilter extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
-        }
 
         this.offerHandler = this.offerHandler.bind(this);
         this.priceHandler = this.priceHandler.bind(this);
@@ -28,7 +25,6 @@ class SideBarFilter extends Component {
     }
 
     statusHandler(){
-        
         let status = 0;
 
         if(this.inpNewStatus.checked){

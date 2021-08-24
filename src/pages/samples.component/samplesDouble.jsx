@@ -19,7 +19,7 @@ function SampleDouble(props) {
                     <span>${props.article.retailPrice}</span>
                 </div>
                 <div className="samples-status">
-                    <label>Estado: <a href="#">{props.article.status}</a></label>
+                    <label>Estado: <Link to='/'>{props.article.status}</Link></label>
                 </div>
             </div>  
         );
@@ -35,7 +35,7 @@ function SampleDouble(props) {
                 <span>${props.article.retailPrice}</span>
             </div>
             <div className="samples-status">
-                <label>Estado: <a href="#">{props.article.status}</a></label>
+                <label>Estado: <Link to='/'>{props.article.status}</Link></label>
             </div>
         </div> 
     );
