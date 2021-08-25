@@ -1,5 +1,6 @@
 
 import { Route, Switch } from 'react-router-dom';
+import React from 'react';
 
 import './css/css_reset.css';
 import './css/general_styles.css';
@@ -10,6 +11,9 @@ import Footer from './layout/footer.component/footer';
 import Home from './pages/home.component/home';
 import SearchResults from './pages/searchResults.component/searchResults';
 import ItemDetails from './pages/itemDetails.component/itemDetails';
+
+import Login from './layout/login.component/login';
+import Signup from './layout/signup.component/signup';
 
 const DUMMY_DATA = {
     User: null,
@@ -35,28 +39,43 @@ const DUMMY_DATA = {
 function App(){
 
     return (
-        <div>
-            <Header dummy_data={DUMMY_DATA} />
+        <main>
 
-            <main>
-                <Switch>
-                    <Route path='/' exact={true}>
+            <Switch>
+
+                <Route path='/login'>
+                    <Login />
+                </Route>
+
+                <Route path='/signup'>
+                    <Signup />
+                </Route>
+
+                <Route path='/' exact={true} >
+                    <Header dummy_data={DUMMY_DATA} />
                         <Home />
-                    </Route>
+                    <Footer />
+                </Route>
 
-                    <Route path='/searchResults'>
-                        <SearchResults />
-                    </Route>
+                <Route path='/searchResults' render={(match)=>{
+                    return (
+                        <React.Fragment>
+                            <Header dummy_data={DUMMY_DATA} />
+                                <SearchResults />
+                            <Footer />
+                        </React.Fragment>
+                    )
+                }} />
 
-                    <Route path='/itemDetails'>
+                <Route path='/itemDetails'>
+                    <Header dummy_data={DUMMY_DATA} />
                         <ItemDetails />
-                    </Route>
+                    <Footer />
+                </Route>
 
-                </Switch>
-            </main>
-
-            <Footer />
-        </div>
+            </Switch>
+   
+        </main>
     );
 }
 

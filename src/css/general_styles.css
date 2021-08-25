@@ -580,32 +580,42 @@ aside.sidebar-container .advice a{
 
 /* --------------- LOGIN, SIGN-UP, SIGN-UP-EMAIL-CODE STYLES ---------------------- */
 
-.logo{
-	/*border: 1px solid #dddddd;*/
+.login-logo{
+	display: block;
 	width: 25%;
 	margin: 20px auto;
 	margin-top: 40px;
-}
-.logo a{
-	display: block;
-	text-align: center;	
 
-	font-family: "candal-regular";
+	text-align: center;
+	font-family: 'Righteous', sans-serif;
 	font-size: 40px;
 	color: #0099cc;
 }
 
-div.alert{
+.alert{
 	border: 1px solid #ff6666;
-
 	width: 25%;
 	margin: 10px auto;
 	display: block; /*block or none*/
+	opacity: 1;
 	background-color: #ffffff;
-	border-radius: 2px;
+	border-radius: 5px;
+	animation-name: alert-animation;
+	animation-duration: 1s;
 }
 
-div.alert span{
+@keyframes alert-animation {
+	from {
+		display: none;
+		opacity: 0;
+	}
+	to {
+		display: block;
+		opacity: 1;
+	}
+}
+
+.alert span{
 	display: block;
 	width: 100%;
 	margin:10px 0;
@@ -614,7 +624,7 @@ div.alert span{
 	color: #ff6666;
 }
 
-div.alert p{
+.alert p{
 	width: 90%;
 	margin: 10px auto;
 
@@ -623,6 +633,12 @@ div.alert p{
 	font-size: 14px;
 	color: #ff6666;
 	line-height: 20px;
+}
+
+form.form-login{
+	width: 50%;
+	margin: 40px auto;
+	box-sizing: border-box;
 }
 
 form.form-login h3{
@@ -635,9 +651,82 @@ form.form-login h3{
 	text-align: center;
 }
 
+div.input-box > label,
+div.block-box label,
+div.inline-box > label,
+div.radio-box h5{
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;
+}
+
+div.input-box input[type='text'],
+div.input-box input[type='email'],
+div.input-box input[type='password'],
+div.inline-box input,
+div.block-box input,
+div.block-box select{
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #dddddd;
+	
+	font-family: "raleway-medium", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;
+	padding: 10px 15px;
+	border-radius: 5px;
+
+	transition: box-shadow 0.2s ease-in-out;
+}
+
+div.input-box input[type='text']:focus,
+div.input-box input[type='email']:focus,
+div.input-box input[type='password']:focus,
+div.inline-box input:focus,
+div.block-box input:focus,
+div.block-box select:focus{
+	box-shadow: 0px 0px 10px #dddddd;
+	border-color: #cccccc;
+}
+
+.btn-form{
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	position: relative;
+
+	padding: 4px 8px;
+
+	border-radius: 5px;
+	outline: none;
+
+	text-align: center;
+	font-family: 'raleway-medium', sans-serif;
+	font-size: 14px;
+}
+
+.btn-form-login{
+	font-size: 16px;
+	padding: 5px 0;
+	background-color: #0099cc;
+	border: 1px solid #0099cc;
+	color: #ffffff;
+}
+
+.btn-form-create{
+	padding: 5px 0;
+	background-color: #f2f2f2;
+	border: 1px solid #dddddd;
+	color: #4d4d4d;
+}
+
 .create-account{
-	/*border: 1px solid;*/
-	width: 30%;
+	width: 25%;
 	margin: 0px auto;
 	box-sizing: border-box;
 }
