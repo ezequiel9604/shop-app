@@ -9,6 +9,7 @@ import Footer from './layout/footer.component/footer';
 
 import Home from './pages/home.component/home';
 import SearchResults from './pages/searchResults.component/searchResults';
+import ItemDetails from './pages/itemDetails.component/itemDetails';
 
 const DUMMY_DATA = {
     User: null,
@@ -46,6 +47,11 @@ function App(){
                     <Route path='/searchResults'>
                         <SearchResults />
                     </Route>
+
+                    <Route path='/itemDetails'>
+                        <ItemDetails />
+                    </Route>
+
                 </Switch>
             </main>
 
