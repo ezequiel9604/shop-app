@@ -1,11 +1,13 @@
 
+import { Link } from "react-router-dom";
+
 function Suggestion(props){
 
     return (
         <div className="search-suggestions" style={props.visibility()}>
             {
                 props.suggs.map((val, ind, arr) =>  {
-                    return <a href={'/search?keyword='+val} key={ind}>{val}</a>;
+                    return <Link to={'/search?keyword='+val} key={ind}>{val}</Link>;
                 })
             }
         </div>

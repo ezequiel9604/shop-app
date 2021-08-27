@@ -37,7 +37,7 @@ function HeaderTop(props){
                     </ul>
                 </button>
                 {props.user === null? 
-                    <Link to="/searchResults" className="btn" id="btn-header-signup">Registrarse!</Link> : 
+                    <Link to="/signup" className="btn" id="btn-header-signup">Registrarse!</Link> : 
                     <Link to="/logout" className="btn" id="btn-header-signup">Cerrar Sessión!</Link> 
                 }
                     

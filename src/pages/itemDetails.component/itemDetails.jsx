@@ -32,27 +32,32 @@ class ItemDetails extends Component {
                 subItem: [
                     {
                         retailPrice: 1850, offerPrice: 1700,
-                        color: ['black', 'blue'], capacity: '2GB', 
+                        color: 'black', capacity: '2GB', 
                         size: '17"', stock: 5
-                    },  
+                    },
+                    {
+                        retailPrice: 1850, offerPrice: 1700,
+                        color: 'gray',  capacity: '2GB', 
+                        size: '17"', stock: 10
+                    },
                     {
                         retailPrice: 2000, offerPrice: 1910,
-                        color: ['red', 'black'], capacity: '2GB', 
-                        size: '22"', stock: 7
+                        color: 'red',  capacity: '2GB', 
+                        size: '22"', stock: 12
                     },
                     {
                         retailPrice: 2350, offerPrice: 2140,
-                        color: ['white', 'gray'], capacity: '4GB',
+                        color: 'gray', capacity: '4GB',
                         size: '32"', stock: 3
                     },
                     {
                         retailPrice: 1980, offerPrice: 1910,
-                        color: ['orange', 'purple'], capacity: '4GB',
+                        color: 'purple', capacity: '4GB',
                         size: '17"', stock: 4
                     },
                     {
                         retailPrice: 2320, offerPrice: 2290,
-                        color: ['green', 'pink'], capacity: '6GB',
+                        color: 'green', capacity: '6GB',
                         size: '22"', stock: 4
                     }
                 ],
@@ -76,7 +81,7 @@ class ItemDetails extends Component {
                 },
             ],
 
-            BigImageCounter: 0
+            BigImgCounter: 0
 
         };
 
@@ -85,7 +90,7 @@ class ItemDetails extends Component {
     }
 
     changeBigImageHandler(id){
-        this.setState({ BigImageCounter: id });
+        this.setState({ BigImgCounter: id });
     }
 
     onAddComment(comm){
@@ -98,7 +103,7 @@ class ItemDetails extends Component {
     render() { 
 
         const {Item} = this.state;
-        const { BigImageCounter } = this.state;
+        const { BigImgCounter } = this.state;
 
         return (  
             <div id='item-details'>
@@ -107,12 +112,12 @@ class ItemDetails extends Component {
 
                     <div className="slide-show">	
                         <div className="img-zoom">	
-                        <img id="big-img" src={Item.image[BigImageCounter]} alt='' />
+                        <img id="big-img" src={Item.image[BigImgCounter]} alt='' />
                             {/* <div id="img-rts" className="img-zoom-rts "></div> */}
                         </div>	
                         <div className="small-imgs" >		
                             {Item.image.map((val, ind) => {
-                                return (<img style={(BigImageCounter === ind)? {borderColor: '#0099cc'}:null} 
+                                return (<img style={(BigImgCounter === ind)? {borderColor: '#0099cc'}:null} 
                                 onClick={() => this.changeBigImageHandler(ind)} src={val} key={ind} alt='' />);
                             })}
                         </div>

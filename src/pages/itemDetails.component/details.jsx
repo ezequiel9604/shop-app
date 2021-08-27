@@ -12,14 +12,14 @@ class Details extends Component {
         this.state = {
             items: props.details,
 
-            itemColor: null,
+            itemStock: props.details.subItem[0].stock,
             itemCounter: 0,
-            itemStock: 0,
             itemSelected: 0
         };
 
         this.itemCapacity = props.details.subItem[0].capacity;
         this.itemSize = props.details.subItem[0].size;
+        this.itemColor = props.details.subItem[0].color;
 
         this.selectionRender = this.selectionRender.bind(this);
         this.changeSelectionHandler = this.changeSelectionHandler.bind(this);
@@ -42,24 +42,33 @@ class Details extends Component {
                 return arr.push(val.size);
             });
         }
+        else if(selection === 'Color'){
+            // creates a new array with a list of capacity values
+            details.subItem.map((val) => {
+                return arr.push(val.color);
+            });
+        }
 
         // remove dupliques and save it into uniques variable
         const uniques = [...new Set(arr)];
 
+
         if(uniques[0] !== null){
+
             return (
-                <div className="selection-capacity">
+                <div>
                     <strong>{selection}:</strong> 
 
                     {uniques.map((val, ind)=> {
 
                     return (
-                        <label htmlFor={selection+val} key={ind}>
+                        <label htmlFor={selection+val} title={val} key={ind} >
                             <input onClick={() => this.changeSelectionHandler(val, selection)} 
                                 type="radio" id={selection+val} name={selection} 
                                     defaultChecked={(ind === 0)? true:false} />
-                            <small>{val}</small>
-                            
+                            {(selection !== 'Color')? 
+                            <small>{val}</small>:
+                            <mark style={{backgroundColor: val}}></mark>}
                             <span className="material-icons-outlined">done</span>
                         </label>
                     )
@@ -74,8 +83,6 @@ class Details extends Component {
 
     changeItemCounterHandler(simbol){
 
-        const { items } = this.state;
-        const { itemSelected } = this.state;
 
         if(simbol === '-'){
             this.setState((state, props)=> ({    
@@ -84,7 +91,7 @@ class Details extends Component {
         }
         else if(simbol === '+'){
             this.setState((state, props)=> ({
-                itemCounter: (state.itemCounter < items.subItem[itemSelected].stock)?
+                itemCounter: (state.itemCounter < state.itemStock)?
                 state.itemCounter + 1 : state.itemCounter
             }));
         }
@@ -96,20 +103,32 @@ class Details extends Component {
             this.itemCapacity = value;
         }else if(selection === 'Size'){
             this.itemSize = value;
+        }else if(selection === 'Color'){
+            this.itemColor = value;
         }
 
         let cont = 0
-        console.log(this.itemCapacity, this.itemSize);
         for(let a of this.state.items.subItem){
             if(a.capacity === this.itemCapacity 
-                && a.size === this.itemSize){
+                && a.size === this.itemSize
+                && a.color === this.itemColor){
                 
-                this.setState({ itemSelected : cont });
-                this.setState({ itemCounter : 0 });
+                this.setState({ 
+                    itemSelected : cont, 
+                    itemCounter : 0,
+                    itemStock: a.stock 
+                });
+
+                return;
             }
 
             cont+= 1;
         }
+
+        this.setState({
+            itemCounter : 0,
+            itemStock: 0
+        });
 
     }
     
@@ -145,23 +164,7 @@ class Details extends Component {
     
                 <div className="item-details-selection">
                     
-                    <div className="selection-color">
-                        <strong>Color:</strong>
-
-                        {
-                            items.subItem[itemSelected].color.map((val, ind) => {
-                                return (
-                                    <label htmlFor={'cl'+val} key={ind}>
-                                        <input type="radio" id={'cl'+val} name="color" 
-                                            defaultChecked={(ind === 0)? true:false} />
-                                        <mark style={{backgroundColor: val}}></mark>
-                                        <span className="material-icons-outlined">done</span>
-                                    </label>
-                                )
-                            })
-                        }
-    
-                    </div>
+                    {this.selectionRender(items, 'Color')}
 
                     {this.selectionRender(items, 'Size')}
                     
@@ -171,9 +174,14 @@ class Details extends Component {
     
                 <div className="item-details-amount">
                     <div>
-                        <button onClick={()=> this.changeItemCounterHandler('-')} className='btn'>-</button>
+                        <button onClick={()=> this.changeItemCounterHandler('-')} 
+                            className='btn'>-</button>
                         <span>{this.state.itemCounter}</span>
-                        <button onClick={()=> this.changeItemCounterHandler('+')} className='btn'>+</button>
+                        <button onClick={()=> this.changeItemCounterHandler('+')} 
+                            className='btn'>+</button>
+                    </div>
+                    <div>
+                        {<strong>Quedan {this.state.itemStock} disponibles.</strong>}
                     </div>
                 </div>
     

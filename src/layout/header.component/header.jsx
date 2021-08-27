@@ -74,7 +74,7 @@ class Header extends Component {
                         <Link to="/" className='logo-title'>Zenuben</Link>
                     </div>
 
-                    <form action='/search' method='get' className="header-form-search">
+                    <form action='/' method='get' className="header-form-search">
                         
                         <div className="dropdown-department">
                                 
@@ -84,7 +84,7 @@ class Header extends Component {
                             <ul className="dropdown-department-list">
                             {
                                 this.props.dummy_data.Departments.map((val, ind, arr) => {
-                                    return  <a href={'/search?keyword='+val} key={ind}>{val}</a>;
+                                    return  <Link to={'/searchResults?keyword='+val} key={ind}>{val}</Link>;
                                 })
                             }
                             </ul>
