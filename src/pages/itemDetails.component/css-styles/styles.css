@@ -46,7 +46,7 @@ img#big-img{
 
 	object-fit: contain;
 
-	cursor: zoom-in;
+	/* cursor: zoom-in; */
 	transition: transform 0.5s;
 }
 div.small-imgs{
@@ -69,7 +69,6 @@ div.small-imgs img{
 	border-radius: 2px;
 	border: 3px solid #dddddd;
 }
-
 
 div.details{
 	/*border: 1px solid red;*/
@@ -160,8 +159,6 @@ div.details h3{
 	color: #0099ff;
 }
 
-
-
 /*amount container*/
 .item-details-amount{
 	display: flex;
@@ -188,7 +185,6 @@ div.details h3{
     background-color: #dddddd;
 	border: 1px solid #dddddd;
 }
-
 
 /*item-details-selection container */
 .item-details-selection{
@@ -254,7 +250,239 @@ div.details h3{
 }
 .item-details-selection div input:checked ~ span{ color: #0099cc; }
 
-
 .button-actions .btn{
+	font-size: 16px;
 	padding: 6px 8px;
 }
+
+
+/* ---------------- DESCRIPTION STYLES ------------------ */
+
+
+div.item-details-bottom{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 20px auto;
+	background-color: #ffffff;
+}
+
+/* Style the tab */
+div.tablinks-container {
+  	background-color: #f1f1f1;
+	border: 1px solid #cccccc;
+  	width: 100%;
+
+	overflow: hidden;
+}
+
+/* Style the buttons that are used to open the tab content */
+div.tablinks-container button {
+  	background-color: #f1f1f1;
+  	float: left;
+  	border: none;
+ 	outline: none;
+ 	cursor: pointer;
+ 	padding: 10px 16px;
+ 	border-right: 1px solid #dddddd;
+
+  	border-bottom: 2px solid transparent;
+
+  	font-family: "raleway-semibold", sans-serif;
+  	font-size: 14px;
+	color: #4d4d4d;
+  	transition: all 0.5s;
+
+}
+
+/* Change background color of buttons on hover */
+div.tablinks-container button:hover {
+  	background-color: #dddddd;
+  	border-bottom-color: #333333;
+}
+
+/* Create an active/current tablink class */
+div.tablinks-container button.active {
+  	background-color: #cccccc;
+  	border-bottom-color: #333333;
+}
+
+div#description, div#tech-details, div#comments{
+	/* border: 1px solid; */
+	width: 90%;
+	margin: 10px auto;
+	padding: 20px 0;
+	background-color: #fff;
+
+	display: block;
+}
+
+/* description container paragraphs*/
+div#description p{
+	width: 95%;
+	margin: 0 auto;
+	margin-bottom:20px; 
+
+	font-family: "raleway-regular", sans-serif;
+  	font-size: 14px;
+	color: #4d4d4d;
+ 
+  	line-height: 20px;
+  	text-align: justify;
+}
+
+/* tech details container */
+div#tech-details{
+	padding: 20px 0;
+}
+
+div#tech-details table {
+  	border-collapse: collapse;
+  	width: 95%;
+  	margin: 0 auto;
+}
+
+div#tech-details table, td {  
+  	/*border: 1px solid #ddd;*/
+  	text-align: left;
+}
+
+div#tech-details td {
+  	padding: 15px 0;
+  	font-family: "raleway-regular", sans-serif;
+  	font-size: 14px;
+	color: #4d4d4d;
+}
+
+div#tech-details td > label{
+	display: inline-block;
+	
+	margin-right: 10px;
+	font-family: "raleway-medium", sans-serif;
+  	font-size: 14px;
+	color: #4d4d4d;
+}
+
+div.add-comments{
+	/* border: 1px solid; */
+	width: 85%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+
+	display: flex;
+}
+
+div.add-comments div{
+	/*border: 1px solid;*/
+	margin: 0px 5px;
+	display: flex;
+	align-items: center;
+}
+
+div.add-comments div:nth-child(1){
+	width: 5%;
+}
+div.add-comments div:nth-child(2){
+	width: 80%
+}
+div.add-comments div:nth-child(3){
+	width: 10%;
+}
+
+div.add-comments div img{
+	width: 40px;
+	height: 40px;
+	margin: 5px 0;
+	object-fit: cover;
+
+	border-radius: 50%;
+}
+
+div.add-comments div span,
+div.results-comments div span{
+	/*border: 1px solid;*/
+	width: 40px;
+	height: 40px;
+	margin: 5px 0;
+	font-size: 1.8em;
+	text-align: center;
+	line-height: 40px;
+	background-color: #dddddd;
+	color: #4d4d4d;
+	border-radius: 50%;
+	cursor: default;
+}
+
+div.add-comments div button,
+div.add-comments div input{
+	margin: 5px 0;
+	
+	font-family: "raleway-medium", sans-serif;
+  	font-size: 14px;
+	padding: 4px 6px;
+	color: #4d4d4d;
+
+	border: 1px solid #dddddd;
+	border-radius: 2px;
+}
+
+div.add-comments div input{
+	width: 100%;
+}
+
+div.add-comments div button{
+	width: fit-content;
+	background-color: #f2f2f2;
+}
+
+/*results comments container */
+div.results-comments{
+	/* border: 1px solid; */
+	width: 80%;
+	margin: 10px auto;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+div.results-comments > div:nth-child(1){
+	width: 8%;
+	text-align: right;
+}
+div.results-comments > div:nth-child(2){
+	width: 90%;
+}
+div.results-comments div img{
+	width: 40px;
+	height: 40px;
+	margin: 5px 0;
+	object-fit: cover;
+
+	border-radius: 50px;
+}
+div.results-comments .headers, 
+div.results-comments .sections{
+	/*border: 1px solid;*/
+	width: 80%;
+	margin: 5px 0;
+	display: flex;
+
+	font-family: "raleway-regular", sans-serif;
+  	font-size: 14px;
+  	line-height: 20px;
+	padding: 4px 6px;
+	text-align: justify;
+}
+div.results-comments .headers a{
+	font-family: "raleway-semibold", sans-serif;
+	color: #4d4d4d;
+	margin-right: 10px;
+}
+div.results-comments .headers time{
+	font-family: "raleway-regular", sans-serif;
+	color: #4d4d4d;
+}
+
+
+
+
+

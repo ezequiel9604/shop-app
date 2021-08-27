@@ -39,43 +39,51 @@ const DUMMY_DATA = {
 function App(){
 
     return (
-        <main>
 
-            <Switch>
+        <Switch>
 
-                <Route path='/login'>
-                    <Login />
-                </Route>
+            <Route path='/login'>
+                <main>
+                <Login />
+                </main>
+            </Route>
 
-                <Route path='/signup'>
-                    <Signup />
-                </Route>
+            <Route path='/signup'>
+                <main>
+                <Signup />
+                </main>
+            </Route>
 
-                <Route path='/' exact={true} >
-                    <Header dummy_data={DUMMY_DATA} />
-                        <Home />
-                    <Footer />
-                </Route>
+            <Route path='/' exact={true} >
+                <Header dummy_data={DUMMY_DATA} />
+                    <main>
+                    <Home />
+                    </main>
+                <Footer />
+            </Route>
 
-                <Route path='/searchResults' render={(match)=>{
-                    return (
-                        <React.Fragment>
-                            <Header dummy_data={DUMMY_DATA} />
-                                <SearchResults />
-                            <Footer />
-                        </React.Fragment>
-                    )
-                }} />
+            <Route path='/searchResults' render={(match)=>{
+                return (
+                    <React.Fragment>
+                        <Header dummy_data={DUMMY_DATA} />
+                            <main>
+                            <SearchResults />
+                            </main>
+                        <Footer />
+                    </React.Fragment>
+                )
+            }} />
 
-                <Route path='/itemDetails'>
-                    <Header dummy_data={DUMMY_DATA} />
-                        <ItemDetails />
-                    <Footer />
-                </Route>
+            <Route path='/itemDetails'>
+                <Header dummy_data={DUMMY_DATA} />
+                    <main>
+                    <ItemDetails />
+                    </main>
+                <Footer />
+            </Route>
 
-            </Switch>
-   
-        </main>
+        </Switch>
+
     );
 }
 

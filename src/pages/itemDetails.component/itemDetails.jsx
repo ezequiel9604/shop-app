@@ -3,12 +3,16 @@ import React, { Component } from 'react';
 import './css-styles/styles.css';
 
 import Details from './details';
+import Description from './descriptions';
 
 import smartTvImage from '../../images/smart-tv.png';
 import smartTvImage2 from '../../images/smart-tv-2.png';
 import smartTvImage3 from '../../images/smart-tv-3.png';
 import smartTvImage4 from '../../images/smart-tv-4.png';
 import smartTvImage5 from '../../images/smart-tv-5.png';
+
+import womanAvatar from '../../images/placeholder-woman.png';
+import manAvatar from '../../images/placeholder-man.png';
 
 class ItemDetails extends Component {
 
@@ -20,7 +24,7 @@ class ItemDetails extends Component {
 
         this.state = {  
 
-            article: { 
+            Item: { 
                     id: 1, title: tlt,
                     status: 'Nuevo', department: 'Electrodomesticos', views: 10, quality: 4.8,
                     image: [smartTvImage, smartTvImage2, smartTvImage3, smartTvImage4, smartTvImage5],
@@ -55,39 +59,70 @@ class ItemDetails extends Component {
 
             },
 
-            bigImageCounter: 0
+            Comments: [
+                { 
+                    id: 'CMT-025489', 
+                    userName: 'John Doe',
+                    image: manAvatar, 
+                    date: new Date(2021, 6, 3),
+                    text: tlt+'. '+tlt
+                },
+                { 
+                    id: 'CMT-025964', 
+                    userName: 'Sarah Doe',
+                    image: womanAvatar, 
+                    date: new Date(2021, 6, 4),
+                    text: tlt+'. '+tlt
+                },
+            ],
+
+            BigImageCounter: 0
 
         };
+
+        this.changeBigImageHandler = this.changeBigImageHandler.bind(this);
+        this.onAddComment = this.onAddComment.bind(this);
     }
 
     changeBigImageHandler(id){
-        this.setState({ bigImageCounter: id });
+        this.setState({ BigImageCounter: id });
+    }
+
+    onAddComment(comm){
+
+        const newComment = this.state.Comments;
+        newComment.push(comm);
+        this.setState({ Comments: newComment });
     }
 
     render() { 
 
-        const {article} = this.state;
+        const {Item} = this.state;
+        const { BigImageCounter } = this.state;
 
         return (  
             <div id='item-details'>
 
                 <div className="item-details-top">		
 
-                <div className="slide-show">	
-                    <div className="img-zoom">	
-                        <img id="big-img" src={article.image[this.state.bigImageCounter]} alt='' />
-                        {/* <div id="img-rts" className="img-zoom-rts "></div> */}
-                    </div>	
-                    <div className="small-imgs">		
-                        {article.image.map((val, ind) => {
-                            return <img onClick={() => this.changeBigImageHandler(ind)} src={val} alt='' key={ind} />
-                        })}
+                    <div className="slide-show">	
+                        <div className="img-zoom">	
+                        <img id="big-img" src={Item.image[BigImageCounter]} alt='' />
+                            {/* <div id="img-rts" className="img-zoom-rts "></div> */}
+                        </div>	
+                        <div className="small-imgs" >		
+                            {Item.image.map((val, ind) => {
+                                return (<img style={(BigImageCounter === ind)? {borderColor: '#0099cc'}:null} 
+                                onClick={() => this.changeBigImageHandler(ind)} src={val} key={ind} alt='' />);
+                            })}
+                        </div>
                     </div>
+
+                    <Details details={Item} />
+
                 </div>
 
-                <Details details={article} />
-
-                </div>
+                <Description comments={this.state.Comments} onAddComment={this.onAddComment} />
 
             </div>
 

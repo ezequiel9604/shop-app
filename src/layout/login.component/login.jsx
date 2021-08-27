@@ -22,7 +22,7 @@ class Login extends Component {
         
         const email = this.inpEmail.value;
         const pass = this.inpPassword.value;
-        const remember = this.inpRemember.checked
+        //const remember = this.inpRemember.checked
 
         if(email !== 'john01@gmail.com' || pass !== 'john01'){
             this.setState({ showAlert: true });

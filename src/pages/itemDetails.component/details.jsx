@@ -10,10 +10,16 @@ class Details extends Component {
         super(props);
 
         this.state = {
-            itemCapacity: null,
-            itemSize: null,
-            itemCounter: 0
+            items: props.details,
+
+            itemColor: null,
+            itemCounter: 0,
+            itemStock: 0,
+            itemSelected: 0
         };
+
+        this.itemCapacity = props.details.subItem[0].capacity;
+        this.itemSize = props.details.subItem[0].size;
 
         this.selectionRender = this.selectionRender.bind(this);
         this.changeSelectionHandler = this.changeSelectionHandler.bind(this);
@@ -25,12 +31,12 @@ class Details extends Component {
 
         let arr = [];
 
-        if(selection === 'Capacidad'){
+        if(selection === 'Capacity'){
             // creates a new array with a list of capacity values
             details.subItem.map((val) => {
                 return arr.push(val.capacity);
             });
-        }else if(selection === 'Tamaño'){
+        }else if(selection === 'Size'){
             // creates a new array with a list of capacity values
             details.subItem.map((val) => {
                 return arr.push(val.size);
@@ -50,8 +56,10 @@ class Details extends Component {
                     return (
                         <label htmlFor={selection+val} key={ind}>
                             <input onClick={() => this.changeSelectionHandler(val, selection)} 
-                                type="radio" id={selection+val} name={selection} />
+                                type="radio" id={selection+val} name={selection} 
+                                    defaultChecked={(ind === 0)? true:false} />
                             <small>{val}</small>
+                            
                             <span className="material-icons-outlined">done</span>
                         </label>
                     )
@@ -64,18 +72,11 @@ class Details extends Component {
         return null;
     }
 
-
-    changeSelectionHandler(value, selection){
-        
-        if(selection === 'Capacidad'){
-            this.setState({ itemCapacity: value });
-        }else if(selection === 'Tamaño'){
-            this.setState({ itemSize: value });
-        }
-
-    }
-    
     changeItemCounterHandler(simbol){
+
+        const { items } = this.state;
+        const { itemSelected } = this.state;
+
         if(simbol === '-'){
             this.setState((state, props)=> ({    
                 itemCounter: (state.itemCounter > 0)? state.itemCounter - 1 : state.itemCounter
@@ -83,25 +84,49 @@ class Details extends Component {
         }
         else if(simbol === '+'){
             this.setState((state, props)=> ({
-                itemCounter: (state.itemCounter < 6)? state.itemCounter + 1 : state.itemCounter
+                itemCounter: (state.itemCounter < items.subItem[itemSelected].stock)?
+                state.itemCounter + 1 : state.itemCounter
             }));
         }
-
-        
     }
+
+    changeSelectionHandler(value, selection){
+        
+        if(selection === 'Capacity'){
+            this.itemCapacity = value;
+        }else if(selection === 'Size'){
+            this.itemSize = value;
+        }
+
+        let cont = 0
+        console.log(this.itemCapacity, this.itemSize);
+        for(let a of this.state.items.subItem){
+            if(a.capacity === this.itemCapacity 
+                && a.size === this.itemSize){
+                
+                this.setState({ itemSelected : cont });
+                this.setState({ itemCounter : 0 });
+            }
+
+            cont+= 1;
+        }
+
+    }
+    
 
     render(){
 
-        const { details } = this.props;
+        const { items } = this.state;
+        const { itemSelected } = this.state;
 
         return (
             <div className="details">
                         
-                <h3>{details.title}</h3>
+                <h3>{items.title}</h3>
     
                 <div className="item-details-price">
-                    <span>${details.subItem[0].offerPrice}</span> 
-                    <span>${details.subItem[0].retailPrice}</span>
+                    <span>${items.subItem[itemSelected].offerPrice}</span> 
+                    <span>${items.subItem[itemSelected].retailPrice}</span>
                 </div>
     
                 <div className="item-details-quality">
@@ -110,12 +135,12 @@ class Details extends Component {
                     <span className="material-icons-outlined">star</span>
                     <span className="material-icons-outlined">star</span>
                     <span className="material-icons-outlined">star</span>
-                    <strong>{details.quality}</strong>
+                    <strong>{items.quality}</strong>
                 </div>
     
                 <div className="item-details-status">
-                    <label>Estado: <Link to="/">{details.status}</Link></label>
-                    <label>Departamento: <Link to="/">{details.department}</Link></label>
+                    <label>Estado: <Link to="/">{items.status}</Link></label>
+                    <label>Departamento: <Link to="/">{items.department}</Link></label>
                 </div>
     
                 <div className="item-details-selection">
@@ -124,10 +149,11 @@ class Details extends Component {
                         <strong>Color:</strong>
 
                         {
-                            details.subItem[0].color.map((val, ind) => {
+                            items.subItem[itemSelected].color.map((val, ind) => {
                                 return (
                                     <label htmlFor={'cl'+val} key={ind}>
-                                        <input type="radio" id={'cl'+val} name="color" />
+                                        <input type="radio" id={'cl'+val} name="color" 
+                                            defaultChecked={(ind === 0)? true:false} />
                                         <mark style={{backgroundColor: val}}></mark>
                                         <span className="material-icons-outlined">done</span>
                                     </label>
@@ -137,9 +163,9 @@ class Details extends Component {
     
                     </div>
 
-                    {this.selectionRender(details, 'Tamaño')}
+                    {this.selectionRender(items, 'Size')}
                     
-                    {this.selectionRender(details, 'Capacidad')}
+                    {this.selectionRender(items, 'Capacity')}
 
                 </div>
     

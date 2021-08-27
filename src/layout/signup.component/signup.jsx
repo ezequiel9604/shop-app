@@ -108,14 +108,14 @@ class Signup extends Component {
                             <button onClick={this.verificationHandler} type="button"
                                 className="btn-form btn-form-login">Crear una cuenta</button>
                             <p>Al hacer clic en "Crear una cuenta", confirmo que he leído y acepto los 
-                                <Link to='/'>Términos y Condiciones</Link>.</p>
+                                <Link to='/'> Términos y Condiciones</Link>.</p>
                         </div>
                     </article>
 
                 </form>
 
                 <div className="create-account">
-                    <span>Ya tienes una cuenta de Zigzol?</span> 
+                    <span>Ya tienes una cuenta?</span> 
                     <Link to='/login' className="btn-form btn-form-create">Accede ahora</Link>
                 </div>
 
