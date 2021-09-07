@@ -28,7 +28,7 @@ div.title-container{
 }
 
 div.title-container h2{
-	font-family: "raleway-semibold";
+	font-family: "raleway-semibold", sans-serif;
 	font-size: 22px;
 	color: #4d4d4d;	
 }
@@ -40,6 +40,7 @@ div.title-container h2{
 	width: fit-content;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	position: relative;
 
 	padding: 4px 8px;
@@ -125,7 +126,7 @@ div.slides-ctn{
 	display: flex;
 	position: relative;
 
-	overflow-x: auto;
+	overflow-x: hidden;
 	scroll-behavior: smooth;
 }
 
@@ -136,7 +137,6 @@ div.slides-ctn::-webkit-scrollbar{
 div.slides{
 	/*border: 1px dashed blue;*/
 	width: 100%;
-	
 	position: relative;
 }
 
@@ -176,7 +176,6 @@ div.samples{
 	z-index: 0;
 }
 
-
 div.samples .samples-header{
 	/* border: 1px solid blue; */
 	display: block;
@@ -194,7 +193,7 @@ div.samples img{
 	object-fit: contain;
 }
 
- .descount{
+.descount{
 	display: block;
 	width: fit-content;
 
@@ -212,8 +211,7 @@ div.samples img{
 	border-radius: 50px;
 
 	position: absolute;
-
-	z-index: 5;
+	z-index: 10;
 }
 
 div.samples .descount{
@@ -226,7 +224,7 @@ div.samples .samples-title{
 	width: 90%;
 	margin: 10px auto;
 
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 13px;
 	color: #4d4d4d;
 	line-height: 16px;
@@ -234,8 +232,14 @@ div.samples .samples-title{
 	overflow: hidden;
 
 	display: -webkit-box;
+	display: -moz-box;
+	display: -o-box;
 	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;	
+	-webkit-box-orient: vertical;
+	-moz-line-clamp: 2;
+	-moz-box-orient: vertical;
+	-o-line-clamp: 2;
+	-o-box-orient: vertical;			
 }
 
 div.samples .samples-price{
@@ -251,14 +255,14 @@ div.samples .samples-price{
 
 div.samples .samples-price span:nth-child(1){
 	display: block;
-	font-family: "raleway-semibold";
+	font-family: "raleway-semibold", sans-serif;
 	font-size: 20px;
 	color: #4d4d4d;
 }
 
 div.samples .samples-price span:nth-child(2){
 	display: block;
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 16px;
 	text-decoration: line-through;
 	color: #808080;
@@ -272,7 +276,7 @@ div.samples .samples-status{
 	display: flex;
 	justify-content: space-around;
 
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 10px;
 	color: #4d4d4d;
 }
@@ -285,7 +289,7 @@ div.samples .samples-status a{
 
 div.samples-column-container{
 	/* border: 1px solid; */
-	width: 95%;
+	width: 100%;
 	margin:0px auto;
 	padding: 20px 0;
 	box-sizing: border-box;
@@ -306,7 +310,6 @@ div.samples-column{
 
 	/*transition: all 0.5s ease;*/
 }
-
 
 div.samples-column .descount{
 	left: -5px;
@@ -346,7 +349,7 @@ div.samples-column .samples-column-sections h3{
 	/*border: 1px solid;*/
 	width: 98%;
 
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 16px;
 	color: #4d4d4d;
 	line-height: 18px;
@@ -354,8 +357,14 @@ div.samples-column .samples-column-sections h3{
 	word-wrap: break-word;
 	overflow: hidden;
 	display: -webkit-box;
+	display: -moz-box;
+	display: -o-box;
 	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;	
+	-webkit-box-orient: vertical;
+	-moz-line-clamp: 2;
+	-moz-box-orient: vertical;
+	-o-line-clamp: 2;
+	-o-box-orient: vertical;	
 }
 
 /*price container*/
@@ -456,7 +465,7 @@ div#modal div section{
 
 div#modal div section h4{
 	text-align: center;
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 16px;
 	color: #4d4d4d;
 }
@@ -468,7 +477,7 @@ div#modal div footer{
 
 div#modal div footer button{
 	width: 50%;
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 16px;
 	color: #4d4d4d;
 	padding: 8px 0;
@@ -485,10 +494,11 @@ div#modal div footer button:hover{
 /* --------------- SIDEBAR STYLES ---------------------- */
 
 aside.sidebar-container{
-	width: 20%;
-	margin: 20px auto;
+	width: 25%;
+	margin: 0px auto;
 	overflow: hidden;
 	background-color: #ffffff;
+	border-radius: 10px;
 }
 
 aside.sidebar-container article{
@@ -503,7 +513,7 @@ aside.sidebar-container article:last-child{
 }
 aside.sidebar-container article > h2,
 aside.sidebar-container article > h3{
-	font-family: "raleway-semibold";
+	font-family: "raleway-semibold", sans-serif;
 	font-size: 16px;
 	color: #4d4d4d;	
 
@@ -529,11 +539,11 @@ aside.sidebar-container th, td {
   font-size: 14px;
 }
 aside.sidebar-container table td:nth-child(1){
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	padding-right: 40px;
 }
 aside.sidebar-container table td:nth-child(2){
-	font-family: "raleway-regular";
+	font-family: "raleway-regular", sans-serif;
 }
 aside.sidebar-container .total{
 	border-top: 1px solid #dddddd;
@@ -543,7 +553,7 @@ aside.sidebar-container table input,
 aside.sidebar-container table button{
 	display: inline-block;
 	width:100%;
-	font-family: "raleway-regular";
+	font-family: "raleway-regular", sans-serif;
 	font-size: 14px;
 	border: 1px solid #dddddd;
 	padding: 4px 6px;
@@ -558,7 +568,7 @@ aside.sidebar-container table button{
 }
 
 aside.sidebar-container .advice{
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 12px;
 	text-align: justify;
 	line-height: 18px;
@@ -629,7 +639,7 @@ aside.sidebar-container .advice a{
 	margin: 10px auto;
 
 	text-align: justify;
-	font-family: "raleway-medium";
+	font-family: "raleway-medium", sans-serif;
 	font-size: 14px;
 	color: #ff6666;
 	line-height: 20px;

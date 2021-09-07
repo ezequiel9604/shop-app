@@ -23,6 +23,8 @@ div.slides-last-viewed{
 	flex-shrink: 0;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
+	-moz-overflow-scrolling: touch;
+	-o-overflow-scrolling: touch;
 }
 
 div.slides-last-viewed div.samples{

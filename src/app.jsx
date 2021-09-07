@@ -11,6 +11,7 @@ import Footer from './layout/footer.component/footer';
 import Home from './pages/home.component/home';
 import SearchResults from './pages/searchResults.component/searchResults';
 import ItemDetails from './pages/itemDetails.component/itemDetails';
+import Cart from './pages/cart.component/cart';
 
 import Login from './layout/login.component/login';
 import Signup from './layout/signup.component/signup';
@@ -42,18 +43,6 @@ function App(){
 
         <Switch>
 
-            <Route path='/login'>
-                <main>
-                <Login />
-                </main>
-            </Route>
-
-            <Route path='/signup'>
-                <main>
-                <Signup />
-                </main>
-            </Route>
-
             <Route path='/' exact={true} >
                 <Header dummy_data={DUMMY_DATA} />
                     <main>
@@ -80,6 +69,32 @@ function App(){
                     <ItemDetails />
                     </main>
                 <Footer />
+            </Route>
+
+            <Route path='/cart' render={(match) => {
+
+                return (
+                    <React.Fragment>
+                        <Header dummy_data={DUMMY_DATA} />
+                            <main>
+                            <Cart />
+                            </main>
+                        <Footer />
+                    </React.Fragment>
+                );
+
+            }} />
+
+            <Route path='/login'>
+                <main>
+                <Login />
+                </main>
+            </Route>
+
+            <Route path='/signup'>
+                <main>
+                <Signup />
+                </main>
             </Route>
 
         </Switch>

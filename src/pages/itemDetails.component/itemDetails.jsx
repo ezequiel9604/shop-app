@@ -25,9 +25,9 @@ class ItemDetails extends Component {
         this.state = {  
 
             Item: { 
-                    id: 1, title: tlt,
-                    status: 'Nuevo', department: 'Electrodomesticos', views: 10, quality: 4.8,
-                    image: [smartTvImage, smartTvImage2, smartTvImage3, smartTvImage4, smartTvImage5],
+                id: 1, title: tlt,
+                status: 'Nuevo', department: 'Electrodomesticos', views: 10, quality: 4.8,
+                image: [smartTvImage, smartTvImage2, smartTvImage3, smartTvImage4, smartTvImage5],
                 
                 subItem: [
                     {

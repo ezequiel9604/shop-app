@@ -13,7 +13,8 @@ function SampleDouble(props) {
                 <Link to="/article" className="samples-header">
                     <img src={props.article.image} alt='' />
                 </Link>	
-                <h3 className='samples-title' title={props.article.title}>{props.article.title}</h3>
+                <h3 className='samples-title' 
+                    title={props.article.title}>{props.article.title}</h3>
                 <div className="samples-price">
                     <span>${props.article.OfferPrice}</span>
                     <span>${props.article.retailPrice}</span>
@@ -30,7 +31,8 @@ function SampleDouble(props) {
             <Link to="/article" className="samples-header">
                 <img src={props.article.image} alt='' />
             </Link>		
-            <h3 className='samples-title' title={props.article.title}>{props.article.title}</h3>
+            <h3 className='samples-title' 
+                title={props.article.title}>{props.article.title}</h3>
             <div className="samples-price">
                 <span>${props.article.retailPrice}</span>
             </div>

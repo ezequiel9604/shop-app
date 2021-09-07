@@ -1,0 +1,86 @@
+
+
+div.cart-and-sidebar{
+	width: 95%;
+	margin: 20px auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+div#cart{
+	width: 72%;
+	box-sizing: border-box;
+
+	border-radius: 10px;
+	background-color: #ffffff;
+	overflow: hidden;
+}
+
+div.samples-column-amount{
+	/*border: 1px solid;*/
+	width: 95%;
+	margin: 10px 0;
+
+	display: flex;
+	align-items: center;
+
+	justify-content: space-between;
+}
+div.samples-column-amount div{
+	/*border: 1px solid;*/
+	display: flex;
+	align-items: center;
+}
+
+div.samples-column-amount div span{
+	margin: 0 8px;
+	font-family: "raleway-medium", sans-serif;
+	font-size: 18px;
+	color: #4d4d4d;
+}
+
+div.samples-column-amount button{
+	width: fit-content;
+	display: flex;
+	padding: 2px 8px;
+	border-radius: 4px;
+}
+
+.btn-decrease, 
+.btn-increase{
+	font-family: "raleway-medium", sans-serif;
+	font-size: 20px;
+	color: #4d4d4d;
+
+	background-color: #dddddd;
+	border: 1px solid #dddddd;
+}
+
+div.amount button{
+	font-size: 14px;
+	color: #4d4d4d;
+
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+}
+
+div.samples-column-selection{
+	/*border: 1px solid;*/
+	width: 100%;
+	margin: 10px 0;
+	display: flex;
+}
+div.samples-column-selection p{
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;
+	margin-right: 10px;
+}
+div.samples-column-selection mark{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
