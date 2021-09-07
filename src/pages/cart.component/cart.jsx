@@ -1,11 +1,10 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 import SamplesCart from '../samples.component/samplesCart';
 import SideBar from "./sidebar.component/sideBar";
 
 import './css-styles/styles.css';
-
-import SmartTv from '../../images/smart-tv.png';
 
 class Cart extends Component {
 
@@ -13,23 +12,8 @@ class Cart extends Component {
 
         super(props);
 
-        const tlt = 'Lorem ipsum dolor sit amet consectetur adipisicing umpedit iste voluptate nulla reprehenderit tempore cum consequatur quis ut quidem.';
-
         this.state = {
-            Items: [
-                { id: 1, image: SmartTv, title: '1'+tlt , retailPrice: 1400, OfferPrice: 1200, 
-                    specifications: {
-                        size: 24, capacity: '4GB', color: 'black'
-                    }, views: 10, amount: 1},
-                { id: 2, image: SmartTv, title: '2'+tlt, retailPrice: 1150, OfferPrice: 0, 
-                    specifications: {
-                        size: 24, capacity: '2GB', color: 'red'
-                    }, views: 2, amount: 2},
-                { id: 3, image: SmartTv, title: '3'+tlt, retailPrice: 800, OfferPrice: 600, 
-                    specifications: {
-                        size: 24, capacity: '1GB', color: 'blue'
-                    }, views: 4, amount: 3},
-            ],
+            Items: props.items,
 
             TotalAmountItems: 6,
             SubtotalItems: 5300
@@ -78,6 +62,8 @@ class Cart extends Component {
             TotalAmountItems: this.getTotalAmount(arr),
             SubtotalItems: this.getSubTotal(arr) 
         });
+
+        this.props.updateItems(arr);
     }
 
     decreaseItemHandler(id){
@@ -92,6 +78,8 @@ class Cart extends Component {
             TotalAmountItems: this.getTotalAmount(arr),
             SubtotalItems: this.getSubTotal(arr) 
         });
+
+        this.props.updateItems(arr);
     }
 
     removeItemHandler(id){
@@ -105,18 +93,31 @@ class Cart extends Component {
             TotalAmountItems: this.getTotalAmount(newArr),
             SubtotalItems: this.getSubTotal(newArr) 
         });
+
+        this.props.updateItems(newArr);
     }
 
     render() { 
+
+        const {Items} = this.state;
 
         return (  
             <div className="cart-and-sidebar">
 
                 <div id="cart">
-                
-                    <div className="samples-column-container">
 
-                        {this.state.Items.map((val)=> {
+                    <h3 className='title-page'>Carrito de compra</h3>
+
+                    {(Items.length === 0)? 
+                    
+                        <div className='alert-empty'>
+                            <h4>Tu carrito de compra esta vacio!</h4>
+                            <Link to='/'>Has click aqui para ver todos los articulos y ofertas.</Link>
+                        </div>:
+                    
+                        <div className="samples-column-container">
+
+                        {Items.map((val)=> {
 
                             return <SamplesCart key={val.id} item={val} 
                                         isInOffered={(val.OfferPrice > 0)? true:false}
@@ -126,7 +127,9 @@ class Cart extends Component {
 
                         })}  
 
-                    </div>
+                        </div>
+                        
+                    }
 
                 </div>
 

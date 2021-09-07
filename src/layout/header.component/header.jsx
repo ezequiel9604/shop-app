@@ -53,6 +53,7 @@ class Header extends Component {
     render(){
 
         const { User } = this.props.dummy_data;
+        const {Cart} = this.props.dummy_data;
 
         return (
         <React.Fragment>
@@ -103,11 +104,11 @@ class Header extends Component {
                     <div className="header-cart-favorite">
                         <Link to="/cart" className="btn">
                             <span className="material-icons-outlined icon-font">shopping_cart</span>	
-                            <i>{User === null? 0 : User.cartArticles.length}</i>
+                            <i>{(User === null)? Cart.length:0}</i>
                         </Link>
                         <Link to="/favorites" className="btn">
                             <span className="material-icons-outlined icon-font">favorite_border</span>	
-                            <i>{User === null? 0 : User.favoriteArticles.length}</i>
+                            <i>{(User === null)? 0 : User.favoriteArticles.length}</i>
                         </Link>
                     </div>
 

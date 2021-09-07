@@ -8,11 +8,41 @@ function SampleCart(props) {
 
         let confirm = prompt("Do you really want to remove this item?");
 
-        if(confirm === 'yes' || confirm === 'y'){
+        if(confirm){
             props.onRemoveItem(id);
         }
+    }
 
-        
+    function formatedNumber(num){
+
+        if(num >= 1000 && num < 10000){
+            let newNum = num+'';
+            let formated = '';
+
+            for(let x = 0; x < newNum.length; x++){
+                if(x === 1){
+                    formated+= ',';
+                }
+                formated+= newNum.charAt(x);
+            }
+
+            return formated;
+        }
+        else if(num >= 10000){
+            let newNum = num+'';
+            let formated = '';
+
+            for(let x = 0; x < newNum.length; x++){
+                if(x === 2){
+                    formated+= ',';
+                }
+                formated+= newNum.charAt(x);
+            }
+
+            return formated;
+        }
+
+        return num;
     }
 
     if(props.isInOffered){
@@ -28,8 +58,8 @@ function SampleCart(props) {
                 <div className="samples-column-sections">
                     <h3>{props.item.title}</h3>
                     <div className="samples-column-price">
-                        <span>${props.item.OfferPrice}</span>
-                        <span>${props.item.retailPrice}</span>
+                        <span>${formatedNumber(props.item.OfferPrice)}</span>
+                        <span>${formatedNumber(props.item.retailPrice)}</span>
                     </div>
                     <div className="samples-column-selection">
                         <p>{props.item.specifications.size} Pulgadas,</p> 
@@ -64,7 +94,7 @@ function SampleCart(props) {
             <div className="samples-column-sections">
                 <h3>{props.item.title}</h3>
                 <div className="samples-column-price">
-                    <span>${props.item.retailPrice}</span>
+                    <span>${formatedNumber(props.item.retailPrice)}</span>
                 </div>
                 <div className="samples-column-selection">
                     <p>{props.item.specifications.size} Pulgadas,</p> 

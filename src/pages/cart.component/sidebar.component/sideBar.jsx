@@ -61,7 +61,10 @@ function SideBar(props) {
                     </tr>
                     <tr className="total">
                         <td>Total:</td>
-                        <td>${formatedNumber(props.subTotal)}.00</td>
+                        {(props.subTotal > 0)? 
+                        <td>${formatedNumber(props.subTotal+150)}.00</td>:
+                        <td>${formatedNumber(props.subTotal)}.00</td>}
+                        
                     </tr>
                     </tbody>
                 </table>

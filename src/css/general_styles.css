@@ -15,24 +15,46 @@ main{
 
 /* --------------- TITLE STYLES ---------------------- */
 
-div.title-container{
-	/*border: 1px solid;*/
+.title-page{
 	width: 90%;
-	margin: 10px auto;
+	margin: 0px auto;
+	margin-top: 10px;
 	box-sizing: border-box;
 	
-	padding: 30px 40px;
+	padding: 20px 40px;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 25px;
+	color: #4d4d4d;	
 
+	border-bottom: 1px solid #dddddd;
 	overflow: hidden;
 	background-color: #ffffff;
 }
 
-div.title-container h2{
+
+.alert-empty{
+	width: 90%;
+	box-sizing: border-box;
+	margin: 40px auto;
+}
+
+.alert-empty h4{
+	text-align: center;
+
+	padding: 20px 0;
 	font-family: "raleway-semibold", sans-serif;
 	font-size: 22px;
 	color: #4d4d4d;	
 }
 
+.alert-empty a{
+	display: block;
+	text-align: center;
+
+	font-family: "raleway-medium", sans-serif;
+	font-size: 16px;
+	color: #0099ff;	
+}
 
 /* --------------- BUTTON STYLES ---------------------- */
 .btn{
@@ -489,14 +511,13 @@ div#modal div footer button:hover{
 	background-color: #dddddd;
 }
 
-
-
 /* --------------- SIDEBAR STYLES ---------------------- */
 
 aside.sidebar-container{
 	width: 25%;
 	margin: 0px auto;
 	overflow: hidden;
+
 	background-color: #ffffff;
 	border-radius: 10px;
 }

@@ -4,6 +4,38 @@ import { Link } from 'react-router-dom';
 
 function SampleSingle(props) {
 
+    function formatedNumber(num){
+
+        if(num >= 1000 && num < 10000){
+            let newNum = num+'';
+            let formated = '';
+
+            for(let x = 0; x < newNum.length; x++){
+                if(x === 1){
+                    formated+= ',';
+                }
+                formated+= newNum.charAt(x);
+            }
+
+            return formated;
+        }
+        else if(num >= 10000){
+            let newNum = num+'';
+            let formated = '';
+
+            for(let x = 0; x < newNum.length; x++){
+                if(x === 2){
+                    formated+= ',';
+                }
+                formated+= newNum.charAt(x);
+            }
+
+            return formated;
+        }
+
+        return num;
+    }
+
     if(props.isInOffered){
         return (
 
@@ -15,8 +47,8 @@ function SampleSingle(props) {
                     <img src={props.article.image} alt='' />
                 </Link>
                 <div className="samples-price">
-                    <span>${props.article.OfferPrice}</span>
-                    <span>${props.article.retailPrice}</span>
+                    <span>${formatedNumber(props.article.OfferPrice)}</span>
+                    <span>${formatedNumber(props.article.retailPrice)}</span>
                 </div>
             </div> 
         );
@@ -28,7 +60,7 @@ function SampleSingle(props) {
                 <img src={props.article.image} alt='' />
             </Link>
             <div className="samples-price">
-                <span>${props.article.retailPrice}</span>
+                <span>${formatedNumber(props.article.retailPrice)}</span>
             </div>
         </div> 
     );
