@@ -58,9 +58,9 @@ class Header extends Component {
         return (
         <React.Fragment>
 
-            <PromoBanner />
-
             <header id="main-header">
+
+                <PromoBanner />
 
                 <HeaderTop user={User} />
 

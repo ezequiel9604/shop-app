@@ -17,7 +17,6 @@ function SideBar(props) {
                 }
                 formated+= newNum.charAt(x);
             }
-
             return formated;
         }
         else if(num >= 10000){
@@ -30,10 +29,8 @@ function SideBar(props) {
                 }
                 formated+= newNum.charAt(x);
             }
-
             return formated;
         }
-
         return num;
     }
 
@@ -64,7 +61,6 @@ function SideBar(props) {
                         {(props.subTotal > 0)? 
                         <td>${formatedNumber(props.subTotal+150)}.00</td>:
                         <td>${formatedNumber(props.subTotal)}.00</td>}
-                        
                     </tr>
                     </tbody>
                 </table>

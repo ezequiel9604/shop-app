@@ -20,7 +20,6 @@ function SampleCart(props) {
                 }
                 formated+= newNum.charAt(x);
             }
-
             return formated;
         }
         else if(num >= 10000){
@@ -33,10 +32,8 @@ function SampleCart(props) {
                 }
                 formated+= newNum.charAt(x);
             }
-
             return formated;
         }
-
         return num;
     }
 

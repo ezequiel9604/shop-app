@@ -72,8 +72,8 @@ function Modal(props) {
                     className="material-icons-outlined btn-close-modal">close</button>
                 <span className="title-modal">Seguro que quiere realizar esta acción:</span>
                 <div>
-                    <button>Si</button>
-                    <button>No</button>
+                    <button onClick={()=> props.onModalConfirm()} >Si</button>
+                    <button onClick={closeModal} >No</button>
                 </div>			
 
             </div>	

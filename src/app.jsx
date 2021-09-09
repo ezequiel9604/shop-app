@@ -63,21 +63,60 @@ class App extends Component {
                         size: 24, capacity: '1GB', color: 'blue'
                     }, views: 4, amount: 3},
             ],
-            isModalWindowOpen: false
+            NewItems: null,
+            IsModalOpen: false,
         }
 
         this.updateCartItems = this.updateCartItems.bind(this);
-        this.changeStateModalHandler = this.changeStateModalHandler.bind(this);
+        this.changeStateModal = this.changeStateModal.bind(this);
+        this.incrementCartItem = this.incrementCartItem.bind(this);
+        this.decrementCartItem = this.decrementCartItem.bind(this);
+        this.changeStateModalConfirmed = this.changeStateModalConfirmed.bind(this);
     }
 
-    updateCartItems(newItems){
-        this.setState({Cart: newItems});
+    updateCartItems(id){
+        let newArr = this.state.Cart.filter((current)=>{
+            return current.id !== id;
+        });
+
+        this.setState({
+            NewItems: newArr,
+            IsModalOpen: true
+        });
     }
 
-    changeStateModalHandler(){
+    incrementCartItem(id){
+        let arr = [...this.state.Cart];
+        for(let i of arr){
+            if(i.id === id){
+                i.amount+= 1;
+            }
+        }
+        this.setState({ Cart: arr });
+    }
+
+    decrementCartItem(id){
+        let arr = [...this.state.Cart];
+        for(let i of arr){
+            if(i.id === id && i.amount > 1){
+                i.amount-= 1;
+            }
+        }
+        this.setState({ Cart: arr });
+    }
+
+    changeStateModal(){
         this.setState((state)=> ({
-            isModalWindowOpen: !state.isModalWindowOpen
+            IsModalOpen: !state.IsModalOpen
         }));
+    }
+
+    changeStateModalConfirmed(){
+        this.setState((state)=> ({
+            Cart: state.NewItems,
+            IsModalOpen: false
+        }));
+
     }
 
     render() { 
@@ -109,11 +148,14 @@ class App extends Component {
                 <Route path='/cart' >
                     <Layout dummy_data={this.state}>
                         <Cart items={this.state.Cart} 
-                            updateItems={this.updateCartItems}
-                            onOpenModal={this.changeStateModalHandler} />
+                            onUpdateItems={this.updateCartItems}
+                            onIncrementCartItem={this.incrementCartItem}
+                            onDecrementCartItem={this.decrementCartItem}/>
                     </Layout>
-                    {(this.state.isModalWindowOpen) && 
-                    <Modal kind='confirmation' onCloseModal={this.changeStateModalHandler} />}
+                    {(this.state.IsModalOpen) && 
+                        <Modal kind='confirmation' 
+                            onCloseModal={this.changeStateModal}
+                            onModalConfirm={this.changeStateModalConfirmed} />}
                 </Route>
 
                 <Route path='/orders'>
@@ -124,10 +166,11 @@ class App extends Component {
 
                 <Route path='/orderDetails'>
                     <Layout dummy_data={this.state}>
-                        <OrderDetails onOpenModal={this.changeStateModalHandler} />
+                        <OrderDetails onOpenModal={this.changeStateModal} />
                     </Layout>
-                    {(this.state.isModalWindowOpen) && 
-                    <Modal kind='address' onCloseModal={this.changeStateModalHandler} />}
+                    {(this.state.IsModalOpen) && 
+                        <Modal kind='address' 
+                            onCloseModal={this.changeStateModal} />}
                 </Route>
     
                 <Route path='/login'>
