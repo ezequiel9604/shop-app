@@ -26,7 +26,7 @@ class Header extends Component {
     // when user types in search input, it will find the coincidences
     // and then returns them as an array.
     findSuggestions(event){
-        let { Departments } = this.props.dummy_data;
+        let { Departments } = this.props.data;
         let sugs = [];
         let keyword = event.target.value.toLowerCase();
 
@@ -52,8 +52,8 @@ class Header extends Component {
     
     render(){
 
-        const { User } = this.props.dummy_data;
-        const {Cart} = this.props.dummy_data;
+        const { User } = this.props.data;
+        const {Cart} = this.props.data;
 
         return (
         <React.Fragment>
@@ -84,7 +84,7 @@ class Header extends Component {
 
                             <ul className="dropdown-department-list">
                             {
-                                this.props.dummy_data.Departments.map((val, ind, arr) => {
+                                this.props.data.Departments.map((val, ind, arr) => {
                                     return  <Link to={'/searchResults?keyword='+val} key={ind}>{val}</Link>;
                                 })
                             }

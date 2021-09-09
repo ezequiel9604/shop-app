@@ -1,0 +1,362 @@
+
+
+
+div#order-details{
+	width: 90%;
+    margin: 20px auto; 
+    box-sizing: border-box;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+	overflow: hidden;
+	z-index: 0;
+
+}
+
+div#order-details article{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 30px auto;
+	padding-bottom: 10px;
+}
+
+div#order-details article h3{
+	/*border: 1px solid;*/
+
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 16px;
+	color: #4d4d4d;	
+
+	border-bottom: 1px solid #dddddd;
+}
+
+/*order box container*/
+div.ordered-articles-container{
+	/*border: 1px solid red;*/
+	width: 95%;
+	margin: 30px auto;
+}
+
+div.ordered-articles{
+	/*border: 1px solid blue;*/
+	width: 100%;
+	margin: 10px 0;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+div.ordered-articles:last-child{
+	border-bottom: 1px solid #dddddd;
+}
+
+div.ordered-articles div:nth-child(1){
+	width: 14%;
+}
+div.ordered-articles div:nth-child(2){
+	width: 36%;
+}
+div.ordered-articles div:nth-child(3){
+	width: 18%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+div.ordered-articles div:nth-child(4){
+	width: 14%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+div.ordered-articles div:nth-child(5){
+	width: 14%;
+}
+
+div.ordered-articles div img{
+	/*border: 1px solid;*/
+	display: block;
+	width: 80px;
+	height: 60px;
+	margin: 0 auto;
+	background-color: #fafafa;
+	border-radius: 2px;
+
+	object-fit: contain;
+}
+
+div.ordered-articles div a{
+	font-family: "raleway-medium", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;	
+	line-height: 20px;
+
+	overflow: hidden;
+   	text-overflow: ellipsis;
+   	display: -webkit-box;
+   	-webkit-line-clamp: 2; /* number of lines to show */
+   	-webkit-box-orient: vertical;
+}
+
+div.ordered-articles div p{
+	/*border: 1px solid;*/
+	padding: 0 4px;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;	
+	line-height: 20px;
+	color: #4d4d4d;
+}
+
+div.track-road{
+	border-top: 1px solid #dddddd;
+	width: 90%;
+	margin: 0 auto;
+}
+
+div.road{
+	/*order: 1px solid #ccc;*/
+	width: 80%;
+	height: 6px;
+	margin: 12px auto;
+
+	display: flex;
+	align-items: stretch;
+	background-color: #dddddd;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+div.road div{
+	width: 0%;
+	height: 100%;
+
+	animation-name: track-animation;
+	animation-delay: 0.5s;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes track-animation{
+	from{width: 0;}
+	to{width: 33.33%;}
+}
+
+div.labels{
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 14px;
+
+	display: flex;
+	align-items: stretch;
+	overflow: hidden;
+}
+
+div.labels > div{
+	width: 33.3%;
+	box-sizing: border-box;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;	
+}
+
+/*info container*/
+div.details-info{
+	/*border: 1px solid;*/
+	width: 95%;
+	margin: 0px auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+div.details-info > div{
+	/*border: 1px solid blue;*/
+	width: 49%;
+}
+
+div.details-info div p,
+div.details-info div button{
+	/*border: 1px solid;*/
+	display: inline-block;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;	
+	padding: 4px 0;
+	margin: 5px;
+	text-align: left;
+	line-height: 20px;
+	border: none;
+	background-color: #ffffff;
+}
+
+div.details-info div button:hover{
+	color: #0099ff;
+}
+
+div.details-info div label{
+	font-family: "raleway-semibold", sans-serif;
+	margin-left: 10px;
+}
+
+div.details-info div span{
+	/*border: 1px solid;*/
+	display: inline-block;
+	width: fit-content;
+	line-height: 20px;
+	font-size: 18px;
+	cursor: default;
+}
+
+.icon-advice{
+	/*border: 1px solid;*/
+	width: fit-content;
+	display: inline-block;
+
+	position: relative;
+	cursor: default;
+}
+
+.icon-advice span{
+	font-size: 16px;
+	color: #4d4d4d;
+}
+
+/*tooltip styles*/
+.tooltip{	
+	width: 200px;
+	border: 1px solid #dddddd;
+	background-color: #fafafa;
+	border-radius: 5px;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 12px;
+	color: #4d4d4d;	
+	line-height: 20px;
+	cursor: default;
+	padding: 12px;
+
+	box-sizing: border-box;
+
+	z-index: 10;
+	position: absolute;
+
+	top: 0px;
+	left:-11px;
+
+	display: none;
+	opacity: 0;
+
+	animation-name: tooltip-animation;
+	animation-delay: 0.1s;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes tooltip-animation{
+	from{
+		opacity: 0;
+		top: 0;
+		left: -11px;
+	}
+	to{
+		opacity: 1;
+		top: 20px;
+		left: -11px;
+	}
+}
+
+
+.icon-advice:hover .tooltip{
+	display: block;
+}
+
+.print-voucher{
+	color: #0099ff;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 16px;
+	text-align: left;
+	line-height: 35px;
+	position: relative;
+}
+
+.print-voucher span{
+	display: inline-block;
+	position: absolute;
+
+	right:-30px;
+	top: 0px;
+}
+
+div.samples-container{
+	/*border: 1px solid;*/
+	width: 90%;
+	margin: 0 auto;
+	padding: 0;
+
+	display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+div.samples-order-details{
+	width: 48%;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.samples-order-details-headers{
+    width: 20%;
+	height: 70px;
+}
+
+.samples-order-details-headers img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.samples-order-details-sections{
+    width: 78%;
+    box-sizing: border-box;
+}
+
+.samples-order-details-sections h4{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+    text-align: justify;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 14px;
+
+    line-height: 20px;
+
+	overflow: hidden;
+   	display: -webkit-box;
+   	display: -moz-box;
+   	display: -o-box;
+   	-webkit-line-clamp: 2; /* number of lines to show */
+   	-webkit-box-orient: vertical;
+   	-moz-line-clamp: 2; /* number of lines to show */
+   	-moz-box-orient: vertical;
+   	-o-line-clamp: 2; /* number of lines to show */
+   	-o-box-orient: vertical;
+   	color: #4d4d4d;
+}
+
+.samples-order-details-status{
+	width: 95%;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 13px;
+	color: #4d4d4d;
+}
+
+.samples-order-details-status label{
+	font-family: "raleway-semibold", sans-serif;
+}
+

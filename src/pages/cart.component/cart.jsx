@@ -84,7 +84,9 @@ class Cart extends Component {
 
     removeItemHandler(id){
 
-        let newArr = this.state.Items.filter((current)=>{
+        this.props.onOpenModal();
+
+        /*let newArr = this.state.Items.filter((current)=>{
             return current.id !== id;
         });
 
@@ -94,7 +96,7 @@ class Cart extends Component {
             SubtotalItems: this.getSubTotal(newArr) 
         });
 
-        this.props.updateItems(newArr);
+        this.props.updateItems(newArr);*/
     }
 
     render() { 

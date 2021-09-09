@@ -1,0 +1,141 @@
+
+div#orders{
+    width: 95%;
+    margin: 20px auto;
+    box-sizing: border-box;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+div.orders-container{
+	/*border: 1px solid red;*/
+	width: 90%;
+	margin: 40px auto;
+    box-sizing: border-box;
+}
+
+/* .orders-headers*/
+.orders-headers{
+	width: 100%;
+	display: flex;
+
+	background-color: #f2f2f2;
+}
+
+.orders-headers div{
+	/*border: 1px solid;*/
+	width: 50%;
+	padding: 5px 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.orders-headers div h5, 
+.orders-headers div h4{
+	/*border: 1px solid;*/
+	width: 47%;
+	margin: 4px auto;
+
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;	
+	text-align: center;
+	line-height: 18px;
+}
+.orders-headers div h5 strong,
+.orders-headers div h4 strong{
+	font-family: "raleway-medium", sans-serif;
+}
+.orders-headers div a{
+	color: #0099ff;
+}
+
+.orders-headers div h4{
+    font-family: "raleway-semibold", sans-serif;
+	font-size: 16px;
+}
+
+/* .orders-body*/
+.orders-body{
+	width: inherit;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+}
+
+.orders-body div{
+	border: 1px solid #f2f2f2;
+}
+.orders-body div:nth-child(1){
+	width: 20%;
+}
+.orders-body div:nth-child(2){
+	width: 40%;
+}
+.orders-body div:nth-child(3){
+	width: 20%;
+}
+.orders-body div:nth-child(4){
+	width: 20%;
+}
+
+.orders-body div a{
+	display: block;
+	width: 100px;
+	height: 80px;
+
+	margin: 14px auto;
+}
+
+.orders-body div a img{
+	width: inherit;
+	height: inherit;
+
+	object-fit: contain;
+}
+
+.orders-body div h3{
+	width: 90%;
+	margin: 14px auto;
+
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;
+	text-align: justify;
+
+	line-height: 18px;
+
+	overflow: hidden;
+   	display: -webkit-box;
+   	display: -moz-box;
+   	display: -o-box;
+   	-webkit-line-clamp: 2; /* number of lines to show */
+   	-webkit-box-orient: vertical;
+   	-moz-line-clamp: 2; /* number of lines to show */
+   	-moz-box-orient: vertical;
+   	-o-line-clamp: 2; /* number of lines to show */
+   	-o-box-orient: vertical;
+   	color: #4d4d4d;
+}
+
+.orders-body .amount, 
+.orders-body .subtotal, 
+.orders-body .condition{
+	width: 90%;
+	margin: 0px auto;
+	margin-top: 14px;
+
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;
+}
+.orders-body .subtotal{
+	font-family: "raleway-medium";
+	text-align: center;
+}
+
+.orders-body .condition{
+	text-align: center;
+}

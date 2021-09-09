@@ -6,13 +6,15 @@ import React from 'react';
 import './css/css_reset.css';
 import './css/general_styles.css';
 
-import Header from './layout/header.component/header';
-import Footer from './layout/footer.component/footer';
+import Layout from './layout/layout';
+import Modal from './pages/modal.component/modal';
 
 import Home from './pages/home.component/home';
 import SearchResults from './pages/searchResults.component/searchResults';
 import ItemDetails from './pages/itemDetails.component/itemDetails';
 import Cart from './pages/cart.component/cart';
+import Orders from './pages/orders.component/orders';
+import OrderDetails from './pages/orderDetails.component/orderDetails';
 
 import Login from './layout/login.component/login';
 import Signup from './layout/signup.component/signup';
@@ -60,14 +62,22 @@ class App extends Component {
                     specifications: {
                         size: 24, capacity: '1GB', color: 'blue'
                     }, views: 4, amount: 3},
-            ]
+            ],
+            isModalWindowOpen: false
         }
 
         this.updateCartItems = this.updateCartItems.bind(this);
+        this.changeStateModalHandler = this.changeStateModalHandler.bind(this);
     }
 
     updateCartItems(newItems){
-        this.setState({Items: newItems});
+        this.setState({Cart: newItems});
+    }
+
+    changeStateModalHandler(){
+        this.setState((state)=> ({
+            isModalWindowOpen: !state.isModalWindowOpen
+        }));
     }
 
     render() { 
@@ -77,58 +87,60 @@ class App extends Component {
             <Switch>
     
                 <Route path='/' exact={true} >
-                    <Header dummy_data={this.state} />
-                        <main>
+                    <Layout dummy_data={this.state}>
                         <Home />
-                        </main>
-                    <Footer />
+                    </Layout>
                 </Route>
     
                 <Route path='/searchResults' render={(match)=>{
                     return (
-                        <React.Fragment>
-                            <Header dummy_data={this.state} />
-                                <main>
-                                <SearchResults />
-                                </main>
-                            <Footer />
-                        </React.Fragment>
-                    )
+                        <Layout dummy_data={this.state}>
+                            <SearchResults />
+                        </Layout>
+                    );
                 }} />
     
                 <Route path='/itemDetails'>
-                    <Header dummy_data={this.state} />
-                        <main>
+                    <Layout dummy_data={this.state}>
                         <ItemDetails />
-                        </main>
-                    <Footer />
+                    </Layout>
                 </Route>
     
-                <Route path='/cart' render={(match) => {
-    
-                    return (
-                        <React.Fragment>
-                            <Header dummy_data={this.state} />
-                                <main>
-                                <Cart items={this.state.Cart} updateItems={this.updateCartItems} />
-                                </main>
-                            <Footer />
-                        </React.Fragment>
-                    );
-    
-                }} />
+                <Route path='/cart' >
+                    <Layout dummy_data={this.state}>
+                        <Cart items={this.state.Cart} 
+                            updateItems={this.updateCartItems}
+                            onOpenModal={this.changeStateModalHandler} />
+                    </Layout>
+                    {(this.state.isModalWindowOpen) && 
+                    <Modal kind='confirmation' onCloseModal={this.changeStateModalHandler} />}
+                </Route>
+
+                <Route path='/orders'>
+                    <Layout dummy_data={this.state}>
+                        <Orders />
+                    </Layout>
+                </Route>
+
+                <Route path='/orderDetails'>
+                    <Layout dummy_data={this.state}>
+                        <OrderDetails onOpenModal={this.changeStateModalHandler} />
+                    </Layout>
+                    {(this.state.isModalWindowOpen) && 
+                    <Modal kind='address' onCloseModal={this.changeStateModalHandler} />}
+                </Route>
     
                 <Route path='/login'>
                     <main>
-                    <Login />
+                        <Login />
                     </main>
                 </Route>
     
                 <Route path='/signup'>
                     <main>
-                    <Signup />
+                        <Signup />
                     </main>
-                </Route>
+                </Route> 
     
             </Switch>
     

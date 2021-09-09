@@ -124,7 +124,7 @@ function SampleColumn(props) {
 
     return (
         <div className="samples-column">
-            <Link to="/searchResults?articles" className="samples-column-headers">
+            <Link to="/searchResults" className="samples-column-headers">
                 <img src={props.article.image} alt='' />
             </Link>	
             <div className="samples-column-sections">

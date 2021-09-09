@@ -5,12 +5,7 @@ import { Link } from 'react-router-dom';
 function SampleCart(props) {
 
     function removingItem(id){
-
-        let confirm = prompt("Do you really want to remove this item?");
-
-        if(confirm){
-            props.onRemoveItem(id);
-        }
+        props.onRemoveItem(id);
     }
 
     function formatedNumber(num){
@@ -52,7 +47,7 @@ function SampleCart(props) {
                 <span className="descount">
                 {parseInt(((props.item.retailPrice-props.item.OfferPrice)/props.item.retailPrice)*100)}%
                 </span>
-                <Link to="/searchResults?items" className="samples-column-headers">
+                <Link to="/searchResults" className="samples-column-headers">
                     <img src={props.item.image} alt='' />
                 </Link>	
                 <div className="samples-column-sections">
@@ -88,7 +83,7 @@ function SampleCart(props) {
 
     return (
         <div className="samples-column">
-            <Link to="/searchResults?items" className="samples-column-headers">
+            <Link to="/searchResults" className="samples-column-headers">
                 <img src={props.item.image} alt='' />
             </Link>	
             <div className="samples-column-sections">

@@ -20,7 +20,7 @@ div.slides-mostviewed-ctn{
 div.slides-ctn-departments{
 	width: 77%;
 	height: 350px;
-	border-radius: 25px;
+	border-radius: 10px;
 }
 
 div.slides-departments{
@@ -67,7 +67,7 @@ div.slide-information a{
 	font-family: "raleway-medium", sans-serif;
 	font-size: 18px;
 	color: #ffffff;
-	border-radius: 25px;
+	border-radius: 10px;
 }
 
 div.slide-information a:hover{
@@ -113,7 +113,7 @@ div.most-viewed-ctn{
 	animation-duration: 1s;
 	animation-fill-mode: forwards;
 
-	border-radius: 25px;
+	border-radius: 10px;
 
 	/* opacity: 0;
 	right: -300px; */
@@ -148,7 +148,7 @@ div.offer-ctn{
 	position: relative;
 	overflow: hidden;
 
-	border-radius: 25px;
+	border-radius: 10px;
 }
 
 div.offer-samples-ctn{
@@ -167,7 +167,7 @@ div.advertisement-ctn{
 	justify-content: space-around;
 
 	background-color: #ffffff;
-	border-radius: 25px;
+	border-radius: 10px;
 	overflow: hidden;
 }
 

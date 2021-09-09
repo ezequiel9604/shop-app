@@ -11,7 +11,7 @@ div#order-offline-banner{
 	justify-content: space-around;
 
 	background: linear-gradient(to bottom, #0099cc 0%, #00bfff 100%);
-	border-radius: 25px;
+	border-radius: 10px;
 	
 	position: relative;
 	z-index: 0;

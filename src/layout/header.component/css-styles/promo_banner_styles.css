@@ -12,6 +12,7 @@ div.promo-banner{
 
 	background-color: #dddddd;
 	overflow: hidden;
+	z-index: 90;
 }
 
 div.promo-banner div{
