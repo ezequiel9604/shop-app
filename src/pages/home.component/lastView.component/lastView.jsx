@@ -10,21 +10,24 @@ class LastView extends Component {
         super(props);
 
         this.state = {
-            articles: props.articles
+            items: props.items
         };
 
         this.counterContainer = 0;
+
+        this.getItems = this.getItems.bind(this);
+        this.moveSlides = this.moveSlides.bind(this);
     }
 
-    // returns an array of articles
-    getArticles = (min, max) => {
+    // returns an array of items
+    getItems(min, max) {
 
-        const arts = this.state.articles;
+        const arts = this.state.items;
         return arts.slice(min, max);
     }
 
     // it makes the container moves back and forward
-    moveSlides = (direction) => {
+    moveSlides(direction){
 
         const widthSlideContainer = this.lastViewContainer.offsetWidth;
 
@@ -59,7 +62,9 @@ class LastView extends Component {
                     <span className="material-icons">arrow_back_ios</span>
                 </button>
 
-                <button className="btn-slide" onClick={() => this.moveSlides('forward')} style={{top: '120px', right: '0px'}}>
+                <button className="btn-slide" 
+                    onClick={() => this.moveSlides('forward')} 
+                        style={{top: '120px', right: '0px'}}>
                     <span className="material-icons">arrow_forward_ios</span>
                 </button>
 
@@ -67,14 +72,15 @@ class LastView extends Component {
 
                     <div className="slides slides-last-viewed ">
 
-                    {
-                        this.getArticles(0, 5).map((val, ind, arr) => {
+                    {this.getItems(0, 5).map((current) => {
                             
-                            if(val.OfferPrice === 0){
-                               return <SampleDouble article={val} isInOffered={false} key={val.id} />;
-                            }
+                            return (
+                                <SampleDouble 
+                                    items={current} 
+                                    isItemOffered={(current.offerPrice)? true:false} 
+                                    key={current.id} />
+                            )
 
-                            return <SampleDouble article={val} isInOffered={true} key={val.id} />;
                         })
                     }
 
@@ -83,13 +89,12 @@ class LastView extends Component {
                     <div className="slides slides-last-viewed ">
 
                     {
-                        this.getArticles(0, 5).map((val, ind, arr) => {
+                        this.getItems(0, 5).map((current) => {
                             
-                            if(val.OfferPrice === 0){
-                                return <SampleDouble article={val} isInOffered={false} key={val.id} />;
-                            }
- 
-                            return <SampleDouble article={val} isInOffered={true} key={val.id} />;
+                            return <SampleDouble 
+                                    items={current} 
+                                    isItemOffered={(current.offerPrice)? true:false} 
+                                    key={current.id} />;
 
                         })
                     }

@@ -10,7 +10,6 @@ class Details extends Component {
         super(props);
 
         this.state = {
-            items: props.details,
 
             itemStock: props.details.subItem[0].stock,
             itemCounter: 0,
@@ -83,7 +82,6 @@ class Details extends Component {
 
     changeItemCounterHandler(simbol){
 
-
         if(simbol === '-'){
             this.setState((state, props)=> ({    
                 itemCounter: (state.itemCounter > 0)? state.itemCounter - 1 : state.itemCounter
@@ -108,7 +106,7 @@ class Details extends Component {
         }
 
         let cont = 0
-        for(let a of this.state.items.subItem){
+        for(let a of this.props.details.subItem){
             if(a.capacity === this.itemCapacity 
                 && a.size === this.itemSize
                 && a.color === this.itemColor){
@@ -132,43 +130,94 @@ class Details extends Component {
 
     }
     
+    qualityRender(quality) {
+        if (quality <= 1) {
+          return (
+            <div className="item-details-quality">
+              <span className="material-icons">star</span>
+              <span className="material-icons">star_outline</span>
+              <span className="material-icons">star_outline</span>
+              <span className="material-icons">star_outline</span>
+              <span className="material-icons">star_outline</span>
+              <strong>{parseFloat(quality)}</strong>
+            </div>
+          );
+        } else if (quality <= 2) {
+          return (
+            <div className="item-details-quality">
+              <span className="material-icons">star</span>
+              <span className="material-icons">star</span>
+              <span className="material-icons">star_outline</span>
+              <span className="material-icons">star_outline</span>
+              <span className="material-icons">star_outline</span>
+              <strong>{parseFloat(quality)}</strong>
+            </div>
+          );
+        } else if (quality <= 3) {
+          return (
+            <div className="item-details-quality">
+              <span className="material-icons">star</span>
+              <span className="material-icons">star</span>
+              <span className="material-icons">star</span>
+              <span className="material-icons">star_outline</span>
+              <span className="material-icons">star_outline</span>
+              <strong>{parseFloat(quality)}</strong>
+            </div>
+          );
+        } else if (quality <= 4) {
+          return (
+            <div className="item-details-quality">
+              <span className="material-icons">star</span>
+              <span className="material-icons">star</span>
+              <span className="material-icons">star</span>
+              <span className="material-icons">star</span>
+              <span className="material-icons">star_outline</span>
+              <strong>{parseFloat(quality)}</strong>
+            </div>
+          );
+        }
+        return (
+          <div className="item-details-quality">
+            <span className="material-icons">star</span>
+            <span className="material-icons">star</span>
+            <span className="material-icons">star</span>
+            <span className="material-icons">star</span>
+            <span className="material-icons">star</span>
+            <strong>{parseFloat(quality)}</strong>
+          </div>
+        );
+      }
+    
 
     render(){
 
-        const { items } = this.state;
+        const { details } = this.props;
         const { itemSelected } = this.state;
 
         return (
             <div className="details">
                         
-                <h3>{items.title}</h3>
+                <h3>{details.title}</h3>
     
                 <div className="item-details-price">
-                    <span>${items.subItem[itemSelected].offerPrice}</span> 
-                    <span>${items.subItem[itemSelected].retailPrice}</span>
+                    <span>${details.subItem[itemSelected].offerPrice}</span> 
+                    <span>${details.subItem[itemSelected].retailPrice}</span>
                 </div>
     
-                <div className="item-details-quality">
-                    <span className="material-icons-outlined">star</span>
-                    <span className="material-icons-outlined">star</span>
-                    <span className="material-icons-outlined">star</span>
-                    <span className="material-icons-outlined">star</span>
-                    <span className="material-icons-outlined">star</span>
-                    <strong>{items.quality}</strong>
-                </div>
+                {this.qualityRender(details.quality)}
     
                 <div className="item-details-status">
-                    <label>Estado: <Link to="/">{items.status}</Link></label>
-                    <label>Departamento: <Link to="/">{items.department}</Link></label>
+                    <label>Estado: <Link to="/">{details.status}</Link></label>
+                    <label>Departamento: <Link to="/">{details.department}</Link></label>
                 </div>
     
                 <div className="item-details-selection">
                     
-                    {this.selectionRender(items, 'Color')}
+                    {this.selectionRender(details, 'Color')}
 
-                    {this.selectionRender(items, 'Size')}
+                    {this.selectionRender(details, 'Size')}
                     
-                    {this.selectionRender(items, 'Capacity')}
+                    {this.selectionRender(details, 'Capacity')}
 
                 </div>
     

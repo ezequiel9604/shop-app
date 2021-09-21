@@ -36,19 +36,21 @@ function SampleSingle(props) {
         return num;
     }
 
-    if(props.isInOffered){
+    const {items} = props;
+
+    if(props.isItemOffered){
         return (
 
             <div className="samples">
                 <span className="descount">
-        {parseInt(((props.article.retailPrice-props.article.OfferPrice)/props.article.retailPrice)*100)}%
+                {parseInt(((items.retailPrice-items.offerPrice)/items.retailPrice)*100)}%
                 </span>
                 <Link to="/itemDetails" className="samples-header">
-                    <img src={props.article.image} alt='' />
+                    <img src={items.image} alt='' />
                 </Link>
                 <div className="samples-price">
-                    <span>${formatedNumber(props.article.OfferPrice)}</span>
-                    <span>${formatedNumber(props.article.retailPrice)}</span>
+                    <span>${formatedNumber(items.offerPrice)}</span>
+                    <span>${formatedNumber(items.retailPrice)}</span>
                 </div>
             </div> 
         );
@@ -57,10 +59,10 @@ function SampleSingle(props) {
     return (
         <div className="samples">
             <Link to="/itemDetails" className="samples-header">
-                <img src={props.article.image} alt='' />
+                <img src={items.image} alt='' />
             </Link>
             <div className="samples-price">
-                <span>${formatedNumber(props.article.retailPrice)}</span>
+                <span>${formatedNumber(items.retailPrice)}</span>
             </div>
         </div> 
     );

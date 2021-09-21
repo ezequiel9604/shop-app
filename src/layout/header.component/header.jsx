@@ -53,10 +53,10 @@ class Header extends Component {
     render(){
 
         const { User } = this.props.data;
-        const {Cart} = this.props.data;
+        const { Cart } = this.props.data;
+        const { Favorite } = this.props.data;
 
         return (
-        <React.Fragment>
 
             <header id="main-header">
 
@@ -108,7 +108,7 @@ class Header extends Component {
                         </Link>
                         <Link to="/favorites" className="btn">
                             <span className="material-icons-outlined icon-font">favorite_border</span>	
-                            <i>{(User === null)? 0 : User.favoriteArticles.length}</i>
+                            <i>{(User === null)? Favorite.length:0}</i>
                         </Link>
                     </div>
 
@@ -116,7 +116,6 @@ class Header extends Component {
 
             </header>	
 
-        </React.Fragment>
         );
     }
 

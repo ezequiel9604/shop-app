@@ -18,7 +18,7 @@ class OfferView extends Component {
         'adipisicing elit atque deleniti reiciendis rerum.';
 
         this.state = {
-            articles: props.articles,
+            items: props.items,
             departments: [
                 { id: 1, image: smartTvImage, name: 'departamento1', title: '1 '+tlt},
                 { id: 2, image: tabletImage, name: 'departamento2', title: '2 '+tlt},
@@ -28,18 +28,22 @@ class OfferView extends Component {
                 { id: 6, image: toolboxImage, name: 'departamento6', title: '6 '+tlt}
             ]    
         }
+
+        this.getItemsInOffer = this.getItemsInOffer.bind(this);
+        this.getMostViewedItems = this.getMostViewedItems.bind(this);
+
     }
 
-    //returns an array with 5 articles in offer
-    getArticlesInOffer = () => {
-        const arts = this.state.articles.filter((art) => {return art.OfferPrice > 0});
-        return arts.slice(0, 5);
+    //returns an array with 5 items in offer
+    getItemsInOffer() {
+        const arr = this.state.items.filter((item) => {return item.offerPrice > 0});
+        return arr.slice(0, 5);
     }
     
-    // returns an array with the most viewed articles
-    getMostViewedArticles = () =>{
-        // creates an array of numbers with view values
-        const views = this.state.articles.map((val) => {return val.views});
+    // returns an array with the most viewed items
+    getMostViewedItems() {
+        // creates an array of numbers with item views 
+        const views = this.state.items.map((current) => {return current.views});
 
         let firstMax = views[0];
         let secondMax = views[1];
@@ -56,12 +60,14 @@ class OfferView extends Component {
                 secondMax = n;
         }
 
-        return this.state.articles.filter((val) => 
-            {return (val.views === firstMax || val.views === secondMax)});   
+        return this.state.items.filter((current) => 
+            {return (current.views === firstMax || current.views === secondMax)});   
 
     }
 
     render() { 
+
+        const { departments } = this.state;
 
         return ( 
 
@@ -71,18 +77,18 @@ class OfferView extends Component {
                 
                     <div className="slides-ctn slides-ctn-departments">
 
-                    {this.state.departments.map((val, ind, arr) => {
+                    {departments.map((current, ind) => {
 
                         return (
-                            <div key={val.id} className={(ind===0)?'slides slides-departments animated-slides':'slides slides-departments'} >		
+                            <div key={current.id} className={(ind===0)?'slides slides-departments animated-slides':'slides slides-departments'} >		
                                 <div className="slide-information">
-                                    <h2>{val.title}</h2>
-                                    <Link to={'/'+val.name}>ver más 
+                                    <h2>{current.title}</h2>
+                                    <Link to={'/'+current.name}>ver más 
                                         <span className="material-icons-sharp">east</span>
                                     </Link>
                                 </div>
                                 <div className="slide-bkg-image">
-                                    <img src={val.image} alt='' />
+                                    <img src={current.image} alt='' />
                                 </div>
                             </div>
                         );
@@ -96,12 +102,12 @@ class OfferView extends Component {
                         
                         <div className="most-viewed-samples-ctn">
 
-                            {this.getMostViewedArticles().map((val, ind, arr) => {
-                                if(val.OfferPrice === 0){
-                                    return ( <SampleSingle article={val} isInOffered={false} key={val.id} /> );
-                                }
+                            {this.getMostViewedItems().map((current) => {
 
-                                return ( <SampleSingle article={val} isInOffered={true} key={val.id} /> );
+                                return <SampleSingle 
+                                            items={current} 
+                                            isItemOffered={(current.offerPrice)? true:false} 
+                                            key={current.id} />
                             })}
                             
                         </div>
@@ -116,9 +122,12 @@ class OfferView extends Component {
                     
                     <div className="offer-samples-ctn">
 
-                        {this.getArticlesInOffer().map((val, ind, arr) => {
+                        {this.getItemsInOffer().map((current) => {
 
-                            return ( <SampleSingle article={val} isInOffered={true} key={val.id} /> );
+                            return <SampleSingle 
+                            items={current} 
+                            isItemOffered={true} 
+                            key={current.id} />
 
                         })}
                         

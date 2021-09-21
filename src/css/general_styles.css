@@ -415,6 +415,13 @@ div.samples-column .samples-column-price span:nth-child(2){
 	color: #808080;
 }
 
+div.samples-column-quality time{
+	font-size: 12px;
+	font-style: italic;
+	margin-left: 10px;
+	color: #4d4d4d;
+}
+
 /* --------------- BUTTONS SAMPLE ROW STYLES ---------------------- */
 
 div.button-actions{

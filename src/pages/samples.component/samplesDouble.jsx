@@ -36,23 +36,29 @@ function SampleDouble(props) {
         return num;
     }
 
-    if(props.isInOffered){
+
+    const {items} = props;
+
+    
+
+    if(props.isItemOffered){
+
         return (
             <div className="samples" >
                 <span className="descount">
-                    {parseInt(((props.article.retailPrice-props.article.OfferPrice)/props.article.retailPrice)*100)}%
+                    {parseInt(((items.retailPrice-items.offerPrice)/items.retailPrice)*100)}%
                 </span>
                 <Link to="/article" className="samples-header">
-                    <img src={props.article.image} alt='' />
+                    <img src={items.image} alt='' />
                 </Link>	
                 <h3 className='samples-title' 
-                    title={props.article.title}>{props.article.title}</h3>
+                    title={items.title}>{items.title}</h3>
                 <div className="samples-price">
-                    <span>${formatedNumber(props.article.OfferPrice)}</span>
-                    <span>${formatedNumber(props.article.retailPrice)}</span>
+                    <span>${formatedNumber(items.offerPrice)}</span>
+                    <span>${formatedNumber(items.retailPrice)}</span>
                 </div>
                 <div className="samples-status">
-                    <label>Estado: <Link to='/'>{props.article.status}</Link></label>
+                    <label>Estado: <Link to='/'>{items.status}</Link></label>
                 </div>
             </div>  
         );
@@ -61,15 +67,15 @@ function SampleDouble(props) {
     return (
         <div className="samples" >
             <Link to="/article" className="samples-header">
-                <img src={props.article.image} alt='' />
+                <img src={items.image} alt='' />
             </Link>		
             <h3 className='samples-title' 
-                title={props.article.title}>{props.article.title}</h3>
+                title={items.title}>{items.title}</h3>
             <div className="samples-price">
-                <span>${props.article.retailPrice}</span>
+                <span>${formatedNumber(items.retailPrice)}</span>
             </div>
             <div className="samples-status">
-                <label>Estado: <Link to='/'>{props.article.status}</Link></label>
+                <label>Estado: <Link to='/'>{items.status}</Link></label>
             </div>
         </div> 
     );

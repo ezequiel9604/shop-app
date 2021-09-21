@@ -1,0 +1,10 @@
+
+div#favorites{
+	width: 72%;
+    margin: 20px auto;
+	box-sizing: border-box;
+
+	border-radius: 10px;
+	background-color: #ffffff;
+	overflow: hidden;
+}
