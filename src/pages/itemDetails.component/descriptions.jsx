@@ -53,8 +53,8 @@ class Description extends Component {
             return (<TechDetails />);
         }
         else{
-            return <Comments data={this.state.Comments} 
-                onAddCommentToItem={this.onAddCommentToItem} />;
+            return (<Comments comments={this.state.Comments} 
+                onAddCommentToItem={this.onAddCommentToItem} />);
         }
 
     }

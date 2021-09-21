@@ -75,6 +75,10 @@ class App extends Component {
             capacity: "2GB",
             color: "black",
           },
+          addingDate: "2021-05-12",
+          quality: 4.8,
+          amount: 1,
+          stock: 12,
           subItem: [
             {
               retailPrice: 1850,
@@ -116,11 +120,7 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ],
-          addingDate: "2021-05-12",
-          quality: 4.8,
-          amount: 1,
-          stock: 12,
+          ]
         },
         {
           id: "ART-025381",
@@ -141,6 +141,48 @@ class App extends Component {
           quality: 3.5,
           amount: 1,
           stock: 9,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock:7,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 8,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 2,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 1,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025136",
@@ -161,6 +203,48 @@ class App extends Component {
           quality: 0.8,
           amount: 1,
           stock: 13,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025014",
@@ -181,6 +265,48 @@ class App extends Component {
           quality: 4.6,
           amount: 1,
           stock: 10,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025489",
@@ -201,6 +327,48 @@ class App extends Component {
           quality: 3.8,
           amount: 1,
           stock: 7,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025322",
@@ -221,6 +389,48 @@ class App extends Component {
           quality: 4.2,
           amount: 1,
           stock: 18,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025189",
@@ -241,6 +451,48 @@ class App extends Component {
           quality: 2.9,
           amount: 1,
           stock: 5,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025777",
@@ -261,6 +513,48 @@ class App extends Component {
           quality: 1.2,
           amount: 1,
           stock: 9,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
         {
           id: "ART-025610",
@@ -281,6 +575,48 @@ class App extends Component {
           quality: 4.9,
           amount: 1,
           stock: 13,
+          subItem: [
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "black",
+              capacity: "2GB",
+              size: '17"',
+              stock: 5,
+            },
+            {
+              retailPrice: 1850,
+              offerPrice: 1700,
+              color: "gray",
+              capacity: "2GB",
+              size: '17"',
+              stock: 10,
+            },
+            {
+              retailPrice: 2350,
+              offerPrice: 2140,
+              color: "gray",
+              capacity: "4GB",
+              size: '32"',
+              stock: 3,
+            },
+            {
+              retailPrice: 1980,
+              offerPrice: 1910,
+              color: "purple",
+              capacity: "4GB",
+              size: '17"',
+              stock: 4,
+            },
+            {
+              retailPrice: 2320,
+              offerPrice: 2290,
+              color: "green",
+              capacity: "6GB",
+              size: '22"',
+              stock: 4,
+            },
+          ]
         },
       ],
 
@@ -381,11 +717,11 @@ class App extends Component {
       <Switch>
         <Route path="/" exact={true}>
           <Layout dummy_data={this.state}>
-            <Home />
+            <Home items={this.state.Items} />
           </Layout>
         </Route>
 
-        <Route
+        <Route 
           path="/searchResults"
           render={(match) => {
             return (
@@ -401,7 +737,10 @@ class App extends Component {
 
         <Route path="/itemDetails">
           <Layout dummy_data={this.state}>
-            <ItemDetails />
+            <ItemDetails 
+              items={this.state.Items} 
+              onAddItemToCart={this.addItemToCart} 
+            />
           </Layout>
         </Route>
 

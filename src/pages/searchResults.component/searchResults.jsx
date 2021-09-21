@@ -149,7 +149,7 @@ class SearchResults extends Component {
     );
   }
 
-  addItemToCart(id) {
+  addItemToCartHandler(id) {
     this.props.onAddItemToCart(id);
   }
 
@@ -172,7 +172,7 @@ class SearchResults extends Component {
                   <div className="button-actions">
                     <button className="btn">Comprar ahora</button>
                     <button
-                      onClick={() => this.addItemToCart(current.id)}
+                      onClick={() => this.addItemToCartHandler(current.id)}
                       className="btn"
                     >
                       Agregar al carrito

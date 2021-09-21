@@ -1,112 +1,82 @@
-import React, { Component } from 'react';
+import { useRef } from "react";
 
-import './css-styles/styles.css';
+import "./css-styles/styles.css";
+import SampleSingle from "../../samples.component/sampleSingle";
 
-import SampleDouble from '../../samples.component/samplesDouble';
+function LastView(props) {
+  const lastViewContainer = useRef();
+  const slideContainer = useRef();
 
-class LastView extends Component {
+  let counterContainer = 0;
 
-    constructor(props){
-        super(props);
+  // returns an array of items
+  function getItems(min, max) {
+    const arts = props.items;
+    return arts.slice(min, max);
+  }
 
-        this.state = {
-            items: props.items
-        };
+  // it makes the container moves back and forward
+  function moveSlides(direction) {
+    const widthSlideContainer = lastViewContainer.current.offsetWidth;
 
-        this.counterContainer = 0;
-
-        this.getItems = this.getItems.bind(this);
-        this.moveSlides = this.moveSlides.bind(this);
+    if (direction === "backward") {
+      if (counterContainer < widthSlideContainer) {
+        counterContainer += widthSlideContainer;
+      } else {
+        counterContainer = 0;
+      }
+      slideContainer.current.scrollTo(counterContainer, 0);
+    } else if (direction === "forward") {
+      if (counterContainer > 0) {
+        counterContainer -= widthSlideContainer;
+      } else {
+        counterContainer = widthSlideContainer;
+      }
+      slideContainer.current.scrollTo(counterContainer, 0);
     }
+  }
 
-    // returns an array of items
-    getItems(min, max) {
+  return (
+    <div id="last-view" ref={lastViewContainer}>
+      <button className="btn-slide" onClick={() => moveSlides("backward")}>
+        <span className="material-icons">arrow_back_ios</span>
+      </button>
 
-        const arts = this.state.items;
-        return arts.slice(min, max);
-    }
+      <button
+        className="btn-slide"
+        onClick={() => moveSlides("forward")}
+        style={{ top: "120px", right: "0px" }}
+      >
+        <span className="material-icons">arrow_forward_ios</span>
+      </button>
 
-    // it makes the container moves back and forward
-    moveSlides(direction){
+      <div className="slides-ctn slide-ctn-last-viewed" ref={slideContainer}>
+        <div className="slides slides-last-viewed ">
+          {getItems(0, 5).map((current) => {
+            return (
+              <SampleSingle key={current.id} item={current}>
+                <h3 className="samples-title" title={current.title}>
+                  {current.title}
+                </h3>
+              </SampleSingle>
+            );
+          })}
+        </div>
 
-        const widthSlideContainer = this.lastViewContainer.offsetWidth;
-
-        if(direction === 'backward'){
-            if(this.counterContainer < widthSlideContainer){
-                this.counterContainer+= widthSlideContainer;
-            }
-            else{
-                this.counterContainer=0;
-            }
-            this.slideContainer.scrollTo(this.counterContainer,0);
-        }
-        else if(direction === "forward"){
-    
-            if(this.counterContainer>0){
-               this.counterContainer-= widthSlideContainer;
-            }
-            else{
-               this.counterContainer= widthSlideContainer;
-            }
-            this.slideContainer.scrollTo(this.counterContainer,0);
-        }
-
-    }
-
-    render() { 
-        return (  
-
-            <div id="last-view" ref={elem => (this.lastViewContainer = elem)}>
-
-                <button className="btn-slide" onClick={() => this.moveSlides('backward')}>
-                    <span className="material-icons">arrow_back_ios</span>
-                </button>
-
-                <button className="btn-slide" 
-                    onClick={() => this.moveSlides('forward')} 
-                        style={{top: '120px', right: '0px'}}>
-                    <span className="material-icons">arrow_forward_ios</span>
-                </button>
-
-                <div className="slides-ctn slide-ctn-last-viewed" ref={elem => (this.slideContainer = elem)} >
-
-                    <div className="slides slides-last-viewed ">
-
-                    {this.getItems(0, 5).map((current) => {
-                            
-                            return (
-                                <SampleDouble 
-                                    items={current} 
-                                    isItemOffered={(current.offerPrice)? true:false} 
-                                    key={current.id} />
-                            )
-
-                        })
-                    }
-
-                    </div> 
-
-                    <div className="slides slides-last-viewed ">
-
-                    {
-                        this.getItems(0, 5).map((current) => {
-                            
-                            return <SampleDouble 
-                                    items={current} 
-                                    isItemOffered={(current.offerPrice)? true:false} 
-                                    key={current.id} />;
-
-                        })
-                    }
-
-                    </div>
-
-                </div>	
-
-            </div>
-
-        );
-    }
+        <div className="slides slides-last-viewed ">
+          {getItems(0, 5).map((current) => {
+            return (
+              <SampleSingle key={current.id} item={current}>
+                <h3 className="samples-title" title={current.title}>
+                  {current.title}
+                </h3>
+              </SampleSingle>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
- 
+
 export default LastView;

@@ -5,12 +5,6 @@ import "./css-styles/styles.css";
 import Details from "./details";
 import Description from "./descriptions";
 
-import smartTvImage from "../../images/smart-tv.png";
-import smartTvImage2 from "../../images/smart-tv-2.png";
-import smartTvImage3 from "../../images/smart-tv-3.png";
-import smartTvImage4 from "../../images/smart-tv-4.png";
-import smartTvImage5 from "../../images/smart-tv-5.png";
-
 import womanAvatar from "../../images/placeholder-woman.png";
 import manAvatar from "../../images/placeholder-man.png";
 
@@ -23,73 +17,6 @@ class ItemDetails extends Component {
       "Repudiandae vero, enim deserunt nemo delectus pariatur soluta illo dolores nihil non.";
 
     this.state = {
-      Item: {
-        id: 1,
-        title: tlt,
-        status: "Nuevo",
-        department: "Electrodomesticos",
-        views: 10,
-        quality: 4.8,
-        image: [
-          smartTvImage,
-          smartTvImage2,
-          smartTvImage3,
-          smartTvImage4,
-          smartTvImage5,
-        ],
-
-        subItem: [
-          {
-            retailPrice: 1850,
-            offerPrice: 1700,
-            color: "black",
-            capacity: "2GB",
-            size: '17"',
-            stock: 5,
-          },
-          {
-            retailPrice: 1850,
-            offerPrice: 1700,
-            color: "gray",
-            capacity: "2GB",
-            size: '17"',
-            stock: 10,
-          },
-          {
-            retailPrice: 2000,
-            offerPrice: 1910,
-            color: "red",
-            capacity: "2GB",
-            size: '22"',
-            stock: 12,
-          },
-          {
-            retailPrice: 2350,
-            offerPrice: 2140,
-            color: "gray",
-            capacity: "4GB",
-            size: '32"',
-            stock: 3,
-          },
-          {
-            retailPrice: 1980,
-            offerPrice: 1910,
-            color: "purple",
-            capacity: "4GB",
-            size: '17"',
-            stock: 4,
-          },
-          {
-            retailPrice: 2320,
-            offerPrice: 2290,
-            color: "green",
-            capacity: "6GB",
-            size: '22"',
-            stock: 4,
-          },
-        ],
-      },
-
       Comments: [
         {
           id: "CMT-025489",
@@ -124,8 +51,12 @@ class ItemDetails extends Component {
     this.setState({ Comments: newComment });
   }
 
+  addItemToCartHandler(id) {
+    this.props.onAddItemToCart(id);
+  }
+
   render() {
-    const { Item } = this.state;
+    const { items } = this.props;
     const { BigImgCounter } = this.state;
 
     return (
@@ -133,18 +64,18 @@ class ItemDetails extends Component {
         <div className="item-details-top">
           <div className="slide-show">
             <div className="img-zoom">
-              <img id="big-img" src={Item.image[BigImgCounter]} alt="" />
+              <img id="big-img" src={items[0].image[BigImgCounter]} alt="" />
               {/* <div id="img-rts" className="img-zoom-rts "></div> */}
             </div>
             <div className="small-imgs">
-              {Item.image.map((val, ind) => {
+              {items[0].image.map((current, ind) => {
                 return (
                   <img
                     style={
                       BigImgCounter === ind ? { borderColor: "#0099cc" } : null
                     }
                     onClick={() => this.changeBigImageHandler(ind)}
-                    src={val}
+                    src={current}
                     key={ind}
                     alt=""
                   />
@@ -153,7 +84,20 @@ class ItemDetails extends Component {
             </div>
           </div>
 
-          <Details details={Item} />
+          <Details detail={items[0]}>
+            <div className="button-actions">
+              <button className="btn">Comprar ahora</button>
+              <button
+                onClick={() => this.addItemToCartHandler(items[0].id)}
+                className="btn"
+              >
+                Agregar al carrito
+              </button>
+              <button className="btn">
+                <span className="material-icons-outlined">favorite_border</span>
+              </button>
+            </div>
+          </Details>
         </div>
 
         <Description
