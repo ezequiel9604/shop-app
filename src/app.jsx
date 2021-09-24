@@ -24,7 +24,6 @@ import smartTvImage3 from "./images/smart-tv-3.png";
 import smartTvImage4 from "./images/smart-tv-4.png";
 import smartTvImage5 from "./images/smart-tv-5.png";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +33,8 @@ class App extends Component {
       " nulla reprehenderit tempore cum consequatur quis ut quidem.";
 
     this.state = {
-      User: null,
-      /*User: {
+      users: null,
+      /*users: {
           code: 'USR-025489', image: UserImage,
           firstName: 'Natalie', lastName: 'Portman', 
           cartArticles: ['Audi', 'Hyundai', 'Toyota', 'Nissan'],
@@ -45,7 +44,7 @@ class App extends Component {
           ]
       },*/
 
-      Departments: [
+      departments: [
         "Ropa para mujer",
         "Ropa para hombre",
         "Carteras y Relojes",
@@ -59,25 +58,25 @@ class App extends Component {
         "Automotriz",
       ],
 
-      Items: [
+      items: [
         {
           id: "ART-025493",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 1850,
           offerPrice: 1700,
           status: "Nuevo",
           views: 10,
           department: "Electrodomesticos",
-          specifications: {
-            size: 17,
-            capacity: "2GB",
-            color: "black",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 4.8,
-          amount: 1,
           stock: 12,
           subItem: [
             {
@@ -102,7 +101,7 @@ class App extends Component {
               color: "gray",
               capacity: "4GB",
               size: '32"',
-              stock: 3,
+              stock: 6,
             },
             {
               retailPrice: 1980,
@@ -120,26 +119,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025381",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 1150,
           offerPrice: 0,
           status: "Nuevo",
           views: 2,
           department: "Electrodomesticos",
-          specifications: {
-            size: 22,
-            capacity: "2GB",
-            color: "gray",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 3.5,
-          amount: 1,
           stock: 9,
           subItem: [
             {
@@ -148,7 +147,7 @@ class App extends Component {
               color: "black",
               capacity: "2GB",
               size: '17"',
-              stock:7,
+              stock: 7,
             },
             {
               retailPrice: 1850,
@@ -182,26 +181,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025136",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 900,
           offerPrice: 845,
           status: "Usado",
           views: 60,
           department: "Electrodomesticos",
-          specifications: {
-            size: 22,
-            capacity: "4GB",
-            color: "black",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 0.8,
-          amount: 1,
           stock: 13,
           subItem: [
             {
@@ -244,26 +243,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025014",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 800,
           offerPrice: 600,
           status: "Nuevo",
           views: 4,
           department: "Electrodomesticos",
-          specifications: {
-            size: 17,
-            capacity: "2GB",
-            color: "black",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 4.6,
-          amount: 1,
           stock: 10,
           subItem: [
             {
@@ -306,26 +305,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025489",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 570,
           offerPrice: 0,
           status: "Usado",
           views: 15,
           department: "Electrodomesticos",
-          specifications: {
-            size: 22,
-            capacity: "2GB",
-            color: "red",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 3.8,
-          amount: 1,
           stock: 7,
           subItem: [
             {
@@ -368,26 +367,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025322",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 1400,
           offerPrice: 1200,
           status: "Usado",
           views: 36,
           department: "Electrodomesticos",
-          specifications: {
-            size: 24,
-            capacity: "2GB",
-            color: "black",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 4.2,
-          amount: 1,
           stock: 18,
           subItem: [
             {
@@ -430,26 +429,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025189",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 1600,
           offerPrice: 1400,
           status: "Reparado",
           views: 3,
           department: "Electrodomesticos",
-          specifications: {
-            size: 17,
-            capacity: "2GB",
-            color: "green",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 2.9,
-          amount: 1,
           stock: 5,
           subItem: [
             {
@@ -492,26 +491,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025777",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 600,
           offerPrice: 0,
           status: "Nuevo",
           views: 39,
           department: "Electrodomesticos",
-          specifications: {
-            size: 17,
-            capacity: "4GB",
-            color: "black",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 1.2,
-          amount: 1,
           stock: 9,
           subItem: [
             {
@@ -554,26 +553,26 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
         {
           id: "ART-025610",
-          image: [smartTvImage,smartTvImage2,smartTvImage3,
-          smartTvImage4,smartTvImage5],
+          image: [
+            smartTvImage,
+            smartTvImage2,
+            smartTvImage3,
+            smartTvImage4,
+            smartTvImage5,
+          ],
           title: tlt,
           retailPrice: 425,
           offerPrice: 0,
           status: "Usado",
           views: 17,
           department: "Electrodomesticos",
-          specifications: {
-            size: 32,
-            capacity: "4GB",
-            color: "gray",
-          },
+          isInCart: false,
           addingDate: "2021-05-12",
           quality: 4.9,
-          amount: 1,
           stock: 13,
           subItem: [
             {
@@ -616,20 +615,20 @@ class App extends Component {
               size: '22"',
               stock: 4,
             },
-          ]
+          ],
         },
       ],
 
-      Cart: [],
-      Favorite: [],
+      cartList: [],
+      favoriteList: [],
 
       CartNewItems: null,
       FavoriteNewItems: null,
       IsModalOpen: false,
     };
 
-    this.addItemToCart = this.addItemToCart.bind(this);
-    this.updateCartItems = this.updateCartItems.bind(this);
+    this.addItemToCartList = this.addItemToCartList.bind(this);
+    this.removeItemFromCartList = this.removeItemFromCartList.bind(this);
     this.updateFavoriteItems = this.updateFavoriteItems.bind(this);
     this.changeStateModal = this.changeStateModal.bind(this);
     this.incrementCartItem = this.incrementCartItem.bind(this);
@@ -640,19 +639,29 @@ class App extends Component {
       this.changeStateModalConfirmedFavorite.bind(this);
   }
 
-  updateCartItems(id) {
-    let newArr = this.state.Cart.filter((current) => {
+  removeItemFromCartList(id) {
+    let newArr = this.state.cartList.filter((current) => {
       return current.id !== id;
     });
 
+    let arr = [...this.state.items];
+
+    for(let i of arr){
+      if(i.id === id){
+        i.isInCart= false;
+      }
+    }
+
     this.setState({
       CartNewItems: newArr,
+      items: arr,
       IsModalOpen: true,
     });
+
   }
 
   updateFavoriteItems(id) {
-    let newArr = this.state.Favorite.filter((current) => {
+    let newArr = this.state.favoriteList.filter((current) => {
       return current.id !== id;
     });
 
@@ -663,23 +672,23 @@ class App extends Component {
   }
 
   incrementCartItem(id) {
-    let arr = [...this.state.Cart];
+    let arr = [...this.state.cartList];
     for (let i of arr) {
       if (i.id === id) {
         i.amount += 1;
       }
     }
-    this.setState({ Cart: arr });
+    this.setState({ cartList: arr });
   }
 
   decrementCartItem(id) {
-    let arr = [...this.state.Cart];
+    let arr = [...this.state.cartList];
     for (let i of arr) {
       if (i.id === id && i.amount > 1) {
         i.amount -= 1;
       }
     }
-    this.setState({ Cart: arr });
+    this.setState({ cartList: arr });
   }
 
   changeStateModal() {
@@ -690,45 +699,67 @@ class App extends Component {
 
   changeStateModalConfirmedCart() {
     this.setState((state) => ({
-      Cart: state.CartNewItems,
+      cartList: state.CartNewItems,
       IsModalOpen: false,
     }));
   }
 
   changeStateModalConfirmedFavorite() {
     this.setState((state) => ({
-      Favorite: state.FavoriteNewItems,
+      favoriteList: state.FavoriteNewItems,
       IsModalOpen: false,
     }));
   }
 
-  addItemToCart(id) {
-    let newArr = this.state.Items.filter((current) => {
-      return current.id === id;
-    });
+  addItemToCartList(data) {
 
-    this.setState((state) => ({
-      Cart: state.Cart.concat(newArr),
-    }));
+    // extracts the item that was chosen
+    let newItemToAdd = data;
+    for (let i of this.state.items) {
+      if (i.id === newItemToAdd.id) {
+        i.isInCart = true;
+      }
+    }
+
+    // verifies if the item was already chosen
+    let condition = false;
+    for (let j of this.state.cartList) {
+      if (j.id === newItemToAdd.id) {
+        condition = true;
+      }
+    }
+
+    // if it was not chosen than add the item
+    if (!condition) {
+      this.setState((state) => ({
+        cartList: state.cartList.concat(newItemToAdd),
+      }));
+    } else {
+      console.log("this item is already in the cart.");
+    }
+
   }
 
   render() {
+
+    const {items} = this.state;
+
     return (
       <Switch>
         <Route path="/" exact={true}>
           <Layout dummy_data={this.state}>
-            <Home items={this.state.Items} />
+            <Home items={items} />
           </Layout>
         </Route>
 
-        <Route 
+        <Route
           path="/searchResults"
           render={(match) => {
             return (
               <Layout dummy_data={this.state}>
                 <SearchResults
-                  items={this.state.Items}
-                  onAddItemToCart={this.addItemToCart}
+                  items={items}
+                  onAddItemToCartList={this.addItemToCartList}
                 />
               </Layout>
             );
@@ -737,18 +768,17 @@ class App extends Component {
 
         <Route path="/itemDetails">
           <Layout dummy_data={this.state}>
-            <ItemDetails 
-              items={this.state.Items} 
-              onAddItemToCart={this.addItemToCart} 
+            <ItemDetails
+              items={items}
+              onAddItemToCartList={this.addItemToCartList}
             />
           </Layout>
         </Route>
 
         <Route path="/cart">
           <Layout dummy_data={this.state}>
-            <Cart
-              items={this.state.Cart}
-              onUpdateItems={this.updateCartItems}
+            <Cart items={this.state.cartList}
+              onUpdateItems={this.removeItemFromCartList}
               onIncrementCartItem={this.incrementCartItem}
               onDecrementCartItem={this.decrementCartItem}
             />
@@ -765,7 +795,7 @@ class App extends Component {
         <Route path="/favorites">
           <Layout dummy_data={this.state}>
             <Favorites
-              items={this.state.Favorite}
+              items={this.state.favoriteList}
               onUpdateFavorites={this.updateFavoriteItems}
             />
           </Layout>

@@ -26,11 +26,11 @@ class Header extends Component {
     // when user types in search input, it will find the coincidences
     // and then returns them as an array.
     findSuggestions(event){
-        let { Departments } = this.props.data;
+        let { departments } = this.props.data;
         let sugs = [];
         let keyword = event.target.value.toLowerCase();
 
-        for(let d of Departments){
+        for(let d of departments){
             let element = d.toLowerCase();
             if(element.indexOf(keyword) !== -1 && keyword !== ' ' && keyword !== ''){
                 sugs.push(d);
@@ -52,9 +52,9 @@ class Header extends Component {
     
     render(){
 
-        const { User } = this.props.data;
-        const { Cart } = this.props.data;
-        const { Favorite } = this.props.data;
+        const { users } = this.props.data;
+        const { cartList } = this.props.data;
+        const { favoriteList } = this.props.data;
 
         return (
 
@@ -62,7 +62,7 @@ class Header extends Component {
 
                 <PromoBanner />
 
-                <HeaderTop user={User} />
+                <HeaderTop user={users} />
 
                 <div className="bottom-part">
                         
@@ -84,7 +84,7 @@ class Header extends Component {
 
                             <ul className="dropdown-department-list">
                             {
-                                this.props.data.Departments.map((val, ind, arr) => {
+                                this.props.data.departments.map((val, ind) => {
                                     return  <Link to={'/searchResults?keyword='+val} key={ind}>{val}</Link>;
                                 })
                             }
@@ -104,11 +104,11 @@ class Header extends Component {
                     <div className="header-cart-favorite">
                         <Link to="/cart" className="btn">
                             <span className="material-icons-outlined icon-font">shopping_cart</span>	
-                            <i>{(User === null)? Cart.length:0}</i>
+                            <i>{(users === null)? cartList.length:0}</i>
                         </Link>
                         <Link to="/favorites" className="btn">
                             <span className="material-icons-outlined icon-font">favorite_border</span>	
-                            <i>{(User === null)? Favorite.length:0}</i>
+                            <i>{(users === null)? favoriteList.length:0}</i>
                         </Link>
                     </div>
 

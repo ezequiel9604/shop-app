@@ -14,7 +14,7 @@ div#item-details{
 div.item-details-top{
 	width: 90%;
 	margin: 20px auto;
-	padding: 30px;
+	padding: 50px;
 
 	display: flex;
 	justify-content: space-between;
@@ -423,6 +423,7 @@ div.results-comments div span{
 div.add-comments div button,
 div.add-comments div input{
 	margin: 5px 0;
+	box-sizing: border-box;
 	
 	font-family: "raleway-medium", sans-serif;
   	font-size: 14px;
@@ -430,11 +431,17 @@ div.add-comments div input{
 	color: #4d4d4d;
 
 	border: 1px solid #dddddd;
-	border-radius: 2px;
+	border-radius: 2px;	
 }
 
 div.add-comments div input{
 	width: 100%;
+	padding: 6px 10px;
+	transition: box-shadow 0.2s ease-in-out;
+}
+
+div.add-comments div input:focus{
+	box-shadow: 0px 0px 5px #dddddd;
 }
 
 div.add-comments div button{
@@ -443,7 +450,7 @@ div.add-comments div button{
 }
 
 /*results comments container */
-div.results-comments{
+div.result-comments{
 	/* border: 1px solid; */
 	width: 80%;
 	margin: 10px auto;
@@ -452,14 +459,14 @@ div.results-comments{
 	justify-content: space-between;
 }
 
-div.results-comments > div:nth-child(1){
+div.result-comments > div:nth-child(1){
 	width: 8%;
 	text-align: right;
 }
-div.results-comments > div:nth-child(2){
+div.result-comments > div:nth-child(2){
 	width: 90%;
 }
-div.results-comments div img{
+div.result-comments div img{
 	width: 40px;
 	height: 40px;
 	margin: 5px 0;
@@ -467,8 +474,8 @@ div.results-comments div img{
 
 	border-radius: 50px;
 }
-div.results-comments .headers, 
-div.results-comments .sections{
+.result-comments-headers, 
+.result-comments-sections{
 	/*border: 1px solid;*/
 	width: 80%;
 	margin: 5px 0;
@@ -480,12 +487,12 @@ div.results-comments .sections{
 	padding: 4px 6px;
 	text-align: justify;
 }
-div.results-comments .headers a{
+.result-comments-headers a{
 	font-family: "raleway-semibold", sans-serif;
 	color: #4d4d4d;
 	margin-right: 10px;
 }
-div.results-comments .headers time{
+.result-comments-headers time{
 	font-family: "raleway-regular", sans-serif;
 	color: #4d4d4d;
 }

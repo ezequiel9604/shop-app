@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
-import SamplesColumn from "../samples.component/samplesColumn";
 import SideBar from "./sidebar.component/sideBar";
+import CartItems from "./cartItems";
 
 import "./css-styles/styles.css";
 
 function Cart(props) {
+
   function getTotalAmount(items) {
     let sum = 0;
     for (let i of items) {
@@ -26,16 +27,16 @@ function Cart(props) {
     return sum;
   }
 
-  function increaseItemHandler(id) {
+  function removeItemHandler(id){
+    props.onUpdateItems(id);
+  }
+
+  function incrementCartItem(id){
     props.onIncrementCartItem(id);
   }
 
-  function decreaseItemHandler(id) {
+  function decrementCartItem(id){
     props.onDecrementCartItem(id);
-  }
-
-  function removeItemHandler(id) {
-    props.onUpdateItems(id);
   }
 
   const { items } = props;
@@ -54,47 +55,12 @@ function Cart(props) {
           </div>
         ) : (
           <div className="samples-column-container">
-            {items.map((current) => {
-              return (
-                <SamplesColumn key={current.id} item={current}>
-                  <div className="samples-column-selection">
-                    <p>{current.specifications.size} Pulgadas,</p>
-                    <p>{current.specifications.capacity},</p>
-                    <p>Color:</p>
-                    <mark
-                      title={current.specifications.color}
-                      style={{
-                        backgroundColor: current.specifications.color,
-                      }}
-                    ></mark>
-                  </div>
-                  <div className="samples-column-amount">
-                    <div>
-                      <button
-                        className="btn btn-decrease"
-                        onClick={() => decreaseItemHandler(current.id)}
-                      >
-                        -
-                      </button>
-                      <span className="txt-amnt">{current.amount}</span>
-                      <button
-                        className="btn btn-increase"
-                        onClick={() => increaseItemHandler(current.id)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <button
-                      className="btn btn-remove"
-                      onClick={() => removeItemHandler(current.id)}
-                    >
-                      <span className="material-icons-outlined">
-                        delete_forever
-                      </span>
-                    </button>
-                  </div>
-                </SamplesColumn>
-              );
+            {items.map((current)=>{
+              return (<CartItems item={current} 
+                        onDecrementCart={decrementCartItem} 
+                        onIncrementItem={incrementCartItem} 
+                        onRemoveItem={removeItemHandler}
+                        key={current.id}  />);
             })}
           </div>
         )}
@@ -104,6 +70,7 @@ function Cart(props) {
         totalAmount={getTotalAmount(items)}
         subTotal={getSubTotal(items)}
       />
+
     </div>
   );
 }

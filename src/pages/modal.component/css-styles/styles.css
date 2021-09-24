@@ -6,7 +6,7 @@ div#modal{
 	left: 0;
 	position: fixed;
 	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 99;
+	z-index: 90;
 	display: block;
 }
 
@@ -19,6 +19,9 @@ div.modal-content{
 	overflow: hidden;
 	position: relative;
 	transform: scale(0);
+
+	position: relative;
+	z-index: 99;
 
 	animation-name: modal-animation;
 	animation-duration: 0.5s;

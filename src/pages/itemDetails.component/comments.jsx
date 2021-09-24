@@ -47,16 +47,16 @@ function Comments(props) {
 
       {comments.map((current) => {
         return (
-          <div className="results-comments" key={current.id}>
+          <div className="result-comments" key={current.id}>
             <div>
               <img src={current.image} alt="" />
             </div>
             <div>
-              <div className="headers">
+              <div className="result-comments-headers">
                 <Link to="/">{current.userName}</Link>
                 <time>publicado: {current.date.toDateString()}</time>
               </div>
-              <div className="sections">{current.text}</div>
+              <div className="result-comments-sections">{current.text}</div>
             </div>
           </div>
         );

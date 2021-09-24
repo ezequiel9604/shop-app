@@ -7,11 +7,8 @@ header#main-header{
 	width: 100%;
 	box-sizing: border-box;
 
-	position: sticky;
-	position: -webkit-sticky; /* Safari */
-	position: -moz-sticky; /* mozilla */
-	position: -ms-sticky; /* Safari */
-	top: 0;
+	position: relative;
+
 	z-index: 50;
 	
 	background-color: #ffffff;

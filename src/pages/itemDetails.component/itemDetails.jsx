@@ -9,6 +9,7 @@ import womanAvatar from "../../images/placeholder-woman.png";
 import manAvatar from "../../images/placeholder-man.png";
 
 class ItemDetails extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -39,6 +40,7 @@ class ItemDetails extends Component {
 
     this.changeBigImageHandler = this.changeBigImageHandler.bind(this);
     this.onAddComment = this.onAddComment.bind(this);
+    this.addItemToCartHandler = this.addItemToCartHandler.bind(this);
   }
 
   changeBigImageHandler(id) {
@@ -51,9 +53,10 @@ class ItemDetails extends Component {
     this.setState({ Comments: newComment });
   }
 
-  addItemToCartHandler(id) {
-    this.props.onAddItemToCart(id);
+  addItemToCartHandler(data) {
+    this.props.onAddItemToCartList(data);
   }
+
 
   render() {
     const { items } = this.props;
@@ -84,20 +87,7 @@ class ItemDetails extends Component {
             </div>
           </div>
 
-          <Details detail={items[0]}>
-            <div className="button-actions">
-              <button className="btn">Comprar ahora</button>
-              <button
-                onClick={() => this.addItemToCartHandler(items[0].id)}
-                className="btn"
-              >
-                Agregar al carrito
-              </button>
-              <button className="btn">
-                <span className="material-icons-outlined">favorite_border</span>
-              </button>
-            </div>
-          </Details>
+          <Details detail={items[0]} onAddItemToCart={this.addItemToCartHandler} />
         </div>
 
         <Description
