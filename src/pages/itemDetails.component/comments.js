@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import manAvatar from "../../images/placeholder-man.png";
 
 function Comments(props) {
+  
+  // PROPERTIES
   const [commentInput, setCommentInput] = useState("");
 
-  function changeCommentInputState(event) {
+  // METHODS
+  function changeCommentInput(event) {
     setCommentInput(event.target.value);
   }
 
@@ -22,8 +25,7 @@ function Comments(props) {
     props.onAddCommentToItem(newComment);
   }
 
-  const { comments } = props;
-
+  // RENDERING
   return (
     <div id="comments" className="tab">
       <div className="add-comments">
@@ -33,7 +35,7 @@ function Comments(props) {
         <div>
           <input
             defaultValue={commentInput}
-            onChange={changeCommentInputState}
+            onChange={changeCommentInput}
             type="text"
             placeholder="agrega un comentario!"
           />
@@ -44,8 +46,8 @@ function Comments(props) {
           </button>
         </div>
       </div>
-
-      {comments.map((current) => {
+    
+      {props.comments.map((current) => {
         return (
           <div className="result-comments" key={current.id}>
             <div>

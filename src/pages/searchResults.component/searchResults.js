@@ -1,48 +1,40 @@
-import React, { Component } from "react";
+import { useState, useContext } from "react";
 
 import "./css-styles/styles.css";
 
+import { CartContext } from "../../store/cartContext";
 import SideBarFilter from "./sideBarFilter.component/sideBarFilter";
 import SamplesColumn from "../samples.component/samplesColumn";
 
-class SearchResults extends Component {
-  constructor(props) {
-    super(props);
+function SearchResults(props) {
 
-    this.state = {
-      filterOffer: false,
-      filterPrice: [0, 10000],
-      filterStatus: 0,
-      filterQuality: 0,
-    };
+  // PROPERTIES
+  const [filterOffer, setFilterOffer] = useState(false);
+  const [filterPrice, setFilterPrice] = useState([0, 10000]);
+  const [filterStatus, setFilterStatus] = useState(0);
+  const [filterQuality, setFilterQuality] = useState(0);
+  const { addItemToCart } = useContext(CartContext);
 
-    this.onFilterByOffers = this.onFilterByOffers.bind(this);
-    this.onFilterByPrices = this.onFilterByPrices.bind(this);
-    this.onFilterByStatus = this.onFilterByStatus.bind(this);
-    this.onFilterByQuality = this.onFilterByQuality.bind(this);
+  // METHODS
+  function changeFilterByOffers(value) {
+    setFilterOffer(value);
   }
 
-  onFilterByOffers(value) {
-    this.setState({ filterOffer: value });
+  function changeFilterByPrices(value) {
+    setFilterPrice(value);
   }
 
-  onFilterByPrices(value) {
-    this.setState({ filterPrice: value });
+  function changeFilterByStatus(value) {
+    setFilterStatus(value);
   }
 
-  onFilterByStatus(value) {
-    this.setState({ filterStatus: value });
+  function changeFilterByQuality(value) {
+    setFilterQuality(value);
   }
 
-  onFilterByQuality(value) {
-    this.setState({ filterQuality: value });
-  }
-
-  getItemsOnFilter() {
-    const { filterPrice } = this.state;
-
-    let arts = this.props.items.filter((val) => {
-      if (this.state.filterOffer) {
+  function getItemsOnFilter() {
+    let arts = props.items.filter((val) => {
+      if (filterOffer) {
         return (
           val.offerPrice > 0 &&
           val.retailPrice >= filterPrice[0] &&
@@ -57,17 +49,17 @@ class SearchResults extends Component {
     });
 
     arts = arts.filter((val) => {
-      if (this.state.filterStatus === 1) {
+      if (filterStatus === 1) {
         return val.status === "Nuevo";
-      } else if (this.state.filterStatus === 3) {
+      } else if (filterStatus === 3) {
         return val.status === "Usado";
-      } else if (this.state.filterStatus === 5) {
+      } else if (filterStatus === 5) {
         return val.status === "Reparado";
-      } else if (this.state.filterStatus === 4) {
+      } else if (filterStatus === 4) {
         return val.status === "Nuevo" || val.status === "Usado";
-      } else if (this.state.filterStatus === 6) {
+      } else if (filterStatus === 6) {
         return val.status === "Nuevo" || val.status === "Reparado";
-      } else if (this.state.filterStatus === 8) {
+      } else if (filterStatus === 8) {
         return val.status === "Usado" || val.status === "Reparado";
       } else {
         return val.status !== -1;
@@ -75,13 +67,13 @@ class SearchResults extends Component {
     });
 
     arts = arts.filter((val) => {
-      if (this.state.filterQuality === 1) {
+      if (filterQuality === 1) {
         return val.quality <= 1;
-      } else if (this.state.filterQuality === 2) {
+      } else if (filterQuality === 2) {
         return val.quality <= 2;
-      } else if (this.state.filterQuality === 3) {
+      } else if (filterQuality === 3) {
         return val.quality <= 3;
-      } else if (this.state.filterQuality === 4) {
+      } else if (filterQuality === 4) {
         return val.quality <= 4;
       } else {
         return val.quality <= 5;
@@ -91,7 +83,7 @@ class SearchResults extends Component {
     return arts;
   }
 
-  setQuality(quality) {
+  function setQuality(quality) {
     if (quality <= 1) {
       return (
         <div className="samples-column-quality">
@@ -149,43 +141,52 @@ class SearchResults extends Component {
     );
   }
 
-  addItemToCartHandler(id) {
-    this.props.onAddItemToCart(id);
+  function addItemToCartHandler(item, ind) {
+    const data = item;
+    data.amount = 1;
+    data.retailPrice = props.items[ind].subItem[0].retailPrice;
+    data.offerPrice = props.items[ind].subItem[0].offerPrice;
+    data.stock = props.items[ind].subItem[0].stock;
+    data.subItem = {
+      color: props.items[ind].subItem[0].color,
+      capacity: props.items[ind].subItem[0].capacity,
+      size: props.items[ind].subItem[0].size,
+    };
+    addItemToCart(data);
   }
 
-  render() {
-    return (
-      <div className="search-results-sidebar-filter">
-        <SideBarFilter
-          onOffer={this.onFilterByOffers}
-          onPrice={this.onFilterByPrices}
-          onStatus={this.onFilterByStatus}
-          onQuality={this.onFilterByQuality}
-        />
+  // RENDERING
+  return (
+    <div className="search-results-sidebar-filter">
+      <SideBarFilter
+        onOffer={changeFilterByOffers}
+        onPrice={changeFilterByPrices}
+        onStatus={changeFilterByStatus}
+        onQuality={changeFilterByQuality}
+      />
 
-        <div id="search-results">
-          <div className="samples-column-container">
-            {this.getItemsOnFilter().map((current) => {
-              return (
-                <SamplesColumn item={current} key={current.id}>
-                  {this.setQuality(current.quality)}
-                  <div className="button-actions">
-                    <button className="btn">Comprar ahora</button>
-                    <button
-                      onClick={() => this.addItemToCartHandler(current.id)}
-                      className="btn"
-                    >
-                      Agregar al carrito
-                    </button>
-                  </div>
-                </SamplesColumn>
-              );
-            })}
-          </div>
+      <div id="search-results">
+        <div className="samples-column-container">
+          {getItemsOnFilter().map((current, ind) => {
+            return (
+              <SamplesColumn item={current} key={current.id}>
+                {setQuality(current.quality)}
+                <div className="button-actions">
+                  <button className="btn">Comprar ahora</button>
+                  <button
+                    className="btn"
+                    onClick={() => addItemToCartHandler(current, ind)}
+                  >
+                    Agregar al carrito
+                  </button>
+                </div>
+              </SamplesColumn>
+            );
+          })}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default SearchResults;

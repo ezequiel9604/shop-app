@@ -7,6 +7,7 @@ import "./css-styles/styles.css";
 
 function Cart(props) {
 
+  // METHODS
   function getTotalAmount(items) {
     let sum = 0;
     for (let i of items) {
@@ -27,50 +28,34 @@ function Cart(props) {
     return sum;
   }
 
-  function removeItemHandler(id){
-    props.onUpdateItems(id);
-  }
+  console.log(props.items);
 
-  function incrementCartItem(id){
-    props.onIncrementCartItem(id);
-  }
-
-  function decrementCartItem(id){
-    props.onDecrementCartItem(id);
-  }
-
-  const { items } = props;
-
+  // RENDERING
   return (
     <div className="cart-and-sidebar">
       <div id="cart">
         <h3 className="title-page">Carrito de compra</h3>
 
-        {items.length === 0 ? (
+        { (props.items.length)? (
+          <div className="samples-column-container">
+            {props.items.map((current)=>{
+              return (<CartItems item={current} key={current.id} />);
+            })}
+          </div>
+        ) : (
           <div className="alert-empty">
             <h4>Tu carrito de compra esta vacio!</h4>
             <Link to="/">
               Has click aqui para ver todos los articulos y ofertas.
             </Link>
           </div>
-        ) : (
-          <div className="samples-column-container">
-            {items.map((current)=>{
-              return (<CartItems item={current} 
-                        onDecrementCart={decrementCartItem} 
-                        onIncrementItem={incrementCartItem} 
-                        onRemoveItem={removeItemHandler}
-                        key={current.id}  />);
-            })}
-          </div>
         )}
       </div>
 
       <SideBar
-        totalAmount={getTotalAmount(items)}
-        subTotal={getSubTotal(items)}
+        totalAmount={getTotalAmount(props.items)}
+        subTotal={getSubTotal(props.items)}
       />
-
     </div>
   );
 }

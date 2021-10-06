@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import { CartContext } from "../../store/cartContext";
+import { FavoriteContext } from "../../store/favoriteContext";
 
 function Details(props) {
 
+  // PROPERTIES
   const { detail } = props;
-
   let [itemCapacity, setItemCapacity] = useState(detail.subItem[0].capacity);
   let [itemSize, setItemSize] = useState(detail.subItem[0].size);
   let [itemColor, setItemColor] = useState(detail.subItem[0].color);
@@ -13,7 +17,10 @@ function Details(props) {
   const [itemCounter, setItemCounter] = useState(0);
   const [itemSelected, setItemSelected] = useState(0);
   const [isTooltipShow, setIsTooltipShow] = useState(false);
+  const { addItemToCart } = useContext(CartContext);
+  const { addItemToFavorite } = useContext(FavoriteContext);
 
+  // METHODS
   function selectionRender(details, selection) {
     let arr = [];
 
@@ -178,25 +185,6 @@ function Details(props) {
     setIsTooltipShow(false);
   }
 
-  function checkAddToCart(){
-    if(itemCounter>0){
-      const data = {...props.detail};
-
-    console.log(itemCapacity, itemSize, itemColor);
-
-      data.amount = itemCounter;
-      data.retailPrice = props.detail.subItem[itemSelected].retailPrice;
-      data.offerPrice = props.detail.subItem[itemSelected].offerPrice;
-      data.stock = props.detail.subItem[itemSelected].stock;
-      data.subItem = {
-        color: itemColor,
-        capacity: itemCapacity,
-        size: itemSize
-      }
-      props.onAddItemToCart(data)
-    }
-  }
-
   function formatedNumber(num) {
     if (num >= 1000 && num < 10000) {
       let newNum = num + "";
@@ -225,8 +213,43 @@ function Details(props) {
     }
 
     return num;
+  }  
+
+  function checkAddToCart(){
+    if(itemCounter>0){
+      const data = {...props.detail};
+
+      data.amount = itemCounter;
+      data.retailPrice = props.detail.subItem[itemSelected].retailPrice;
+      data.offerPrice = props.detail.subItem[itemSelected].offerPrice;
+      data.stock = props.detail.subItem[itemSelected].stock;
+      data.subItem = {
+        color: itemColor,
+        capacity: itemCapacity,
+        size: itemSize
+      }
+      addItemToCart(data);
+    }
   }
 
+  function checkAddTofavorite(){
+    if(itemCounter>0){
+      const data = {...props.detail};
+
+      data.amount = itemCounter;
+      data.retailPrice = props.detail.subItem[itemSelected].retailPrice;
+      data.offerPrice = props.detail.subItem[itemSelected].offerPrice;
+      data.stock = props.detail.subItem[itemSelected].stock;
+      data.subItem = {
+        color: itemColor,
+        capacity: itemCapacity,
+        size: itemSize
+      }
+      addItemToFavorite(data);
+    }
+  }
+
+  // RENDERING
   return (
     <div className="details">
       <h3>{detail.title}</h3>
@@ -249,19 +272,17 @@ function Details(props) {
 
       <div className="item-details-selection">
         {selectionRender(detail, "Color")}
-
         {selectionRender(detail, "Size")}
-
         {selectionRender(detail, "Capacity")}
       </div>
 
       <div className="item-details-amount">
         <div>
-          <button onClick={() => changeItemCounterHandler("-")} className="btn">
+          <button className="btn" onClick={() => changeItemCounterHandler("-")} >
             -
           </button>
           <span>{itemCounter}</span>
-          <button onClick={() => changeItemCounterHandler("+")} className="btn">
+          <button className="btn" onClick={() => changeItemCounterHandler("+")} >
             +
           </button>
         </div>
@@ -273,11 +294,11 @@ function Details(props) {
           Comprar ahora
         </button>
 
-        <button className={(detail.isInCart)?'btn btn-added-to-cart':'btn'}
+        <button className={'btn'}
           onClick={checkAddToCart}
           onMouseEnter={checkShowTooltip}
           onMouseLeave={changeIsTooltipShow}>
-          {(detail.isInCart)? 'Agregado al carrito':'Agregar al carrito'}
+          {'Agregar al carrito'}
 
           <div style={(isTooltipShow)?{display:"block"}:{display:"none"}}
             className="tooltips-button-actions">
@@ -286,7 +307,7 @@ function Details(props) {
 
         </button>
 
-        <button className="btn">
+        <button className="btn" onClick={checkAddTofavorite}>
           <span className="material-icons-outlined">favorite_border</span>
         </button>
       </div>

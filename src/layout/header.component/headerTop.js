@@ -7,13 +7,13 @@ function HeaderTop(props) {
     <div className="top-part">
       <div>
         <p>Ayuda, Llama al Tel.: 809-111-2000</p>
-        <button type="button" className="btn" id="btn-header-chat">
+        <button className="btn" id="btn-header-chat">
           Chat online
         </button>
       </div>
 
       <div>
-        <button type="button" className="btn" id="btn-header-login">
+        <button className="btn" id="btn-header-login">
           {props.user === null ? (
             <div>
               <img className="icon-img" src={womanAvatar} alt="" />
