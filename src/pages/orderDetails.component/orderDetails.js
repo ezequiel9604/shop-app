@@ -1,66 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Order } from "../../dummyData";
+import { formatedNumber, formatOrderStatus } from "../../helpers";
 
 import "./css-styles/styles.css";
 
-import SmartTv from "../../images/smart-tv.png";
-
 function OrderDetails(props) {
-  const tlt =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt reiciendis harum molestiae magni veniam iure dolore esse.";
-  const [order, setOrder] = useState({
-    id: "ORD-025984",
-    orderDate: "2021-05-07",
-    deliveredDate: "2021-05-08",
-    orderStatus: "r",
-    shippingCost: 150,
-    shippingMethod: "regular",
-    total: 5155.91,
-    items: [
-      { image: SmartTv, title: tlt, amount: 2, price: 1527.33, condition: "n" },
-      { image: SmartTv, title: tlt, amount: 1, price: 2101.25, condition: "n" },
-    ],
-    client: {
-      name: "John Doe",
-      email: "johndoe0102@gmail.com",
-      phone: "809-111-0000",
-      address:
-        "Casa 8, Francisco Henriquez y Carvajal, Brisas del Este, Santo Domingo Este",
-      indications:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium quaerat " +
-        "suscipit esse voluptate! Odit quia id possimus.",
-    },
-  });
-
-  function formatedNumber(num) {
-    if (num >= 1000 && num < 10000) {
-      let newNum = num + "";
-      let formated = "";
-
-      for (let x = 0; x < newNum.length; x++) {
-        if (x === 1) {
-          formated += ",";
-        }
-        formated += newNum.charAt(x);
-      }
-
-      return formated;
-    } else if (num >= 10000) {
-      let newNum = num + "";
-      let formated = "";
-
-      for (let x = 0; x < newNum.length; x++) {
-        if (x === 2) {
-          formated += ",";
-        }
-        formated += newNum.charAt(x);
-      }
-
-      return formated;
-    }
-
-    return num;
-  }
+ 
+  const [order, setOrder] = useState(Order);
 
   function formatAmountItems(items) {
     let sum = 0;
@@ -76,20 +23,6 @@ function OrderDetails(props) {
       sum += i.price * i.amount;
     }
     return sum;
-  }
-
-  function formatOrderStatus(status) {
-    if (status === "gettingout") {
-      return "De salida";
-    } else if (status === "onitsway") {
-      return "En camino";
-    } else if (status === "received") {
-      return "Recibido";
-    } else if (status === "canceled") {
-      return "Cancelado";
-    } else if (status === "errorpayment") {
-      return "Error en pago";
-    }
   }
 
   function formatShippingMethod(method) {

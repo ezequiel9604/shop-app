@@ -38,7 +38,7 @@ div.img-zoom{
 	border-radius: 2px;
 }
 img#big-img{
-	/*border: 1px solid #ccc;*/
+	border: 1px solid #dddddd;
 	background-color: #ffffff;
 	display: block;
 	width: 99%;

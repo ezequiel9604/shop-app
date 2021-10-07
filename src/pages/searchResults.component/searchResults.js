@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
+import { setQuality } from "../../helpers";
+import { CartContext } from "../../store/cartContext";
 
 import "./css-styles/styles.css";
 
-import { CartContext } from "../../store/cartContext";
 import SideBarFilter from "./sideBarFilter.component/sideBarFilter";
 import SamplesColumn from "../samples.component/samplesColumn";
 
@@ -33,116 +34,58 @@ function SearchResults(props) {
   }
 
   function getItemsOnFilter() {
-    let arts = props.items.filter((val) => {
+    let arts = props.items.filter((current) => {
       if (filterOffer) {
         return (
-          val.offerPrice > 0 &&
-          val.retailPrice >= filterPrice[0] &&
-          val.retailPrice <= filterPrice[1]
+          current.offerPrice > 0 &&
+          current.retailPrice >= filterPrice[0] &&
+          current.retailPrice <= filterPrice[1]
         );
       }
       return (
-        val.offerPrice >= 0 &&
-        val.retailPrice >= filterPrice[0] &&
-        val.retailPrice <= filterPrice[1]
+        current.offerPrice >= 0 &&
+        current.retailPrice >= filterPrice[0] &&
+        current.retailPrice <= filterPrice[1]
       );
     });
 
-    arts = arts.filter((val) => {
+    arts = arts.filter((current) => {
       if (filterStatus === 1) {
-        return val.status === "Nuevo";
+        return current.status === "Nuevo";
       } else if (filterStatus === 3) {
-        return val.status === "Usado";
+        return current.status === "Usado";
       } else if (filterStatus === 5) {
-        return val.status === "Reparado";
+        return current.status === "Reparado";
       } else if (filterStatus === 4) {
-        return val.status === "Nuevo" || val.status === "Usado";
+        return current.status === "Nuevo" || current.status === "Usado";
       } else if (filterStatus === 6) {
-        return val.status === "Nuevo" || val.status === "Reparado";
+        return current.status === "Nuevo" || current.status === "Reparado";
       } else if (filterStatus === 8) {
-        return val.status === "Usado" || val.status === "Reparado";
+        return current.status === "Usado" || current.status === "Reparado";
       } else {
-        return val.status !== -1;
+        return current.status !== -1;
       }
     });
 
-    arts = arts.filter((val) => {
+    arts = arts.filter((current) => {
       if (filterQuality === 1) {
-        return val.quality <= 1;
+        return current.quality <= 1;
       } else if (filterQuality === 2) {
-        return val.quality <= 2;
+        return current.quality <= 2;
       } else if (filterQuality === 3) {
-        return val.quality <= 3;
+        return current.quality <= 3;
       } else if (filterQuality === 4) {
-        return val.quality <= 4;
+        return current.quality <= 4;
       } else {
-        return val.quality <= 5;
+        return current.quality <= 5;
       }
     });
 
     return arts;
   }
 
-  function setQuality(quality) {
-    if (quality <= 1) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    } else if (quality <= 2) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    } else if (quality <= 3) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    } else if (quality <= 4) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    }
-    return (
-      <div className="samples-column-quality">
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <strong>{parseFloat(quality)}</strong>
-      </div>
-    );
-  }
-
   function addItemToCartHandler(item, ind) {
-    const data = item;
+    const data = {...item};
     data.amount = 1;
     data.retailPrice = props.items[ind].subItem[0].retailPrice;
     data.offerPrice = props.items[ind].subItem[0].offerPrice;

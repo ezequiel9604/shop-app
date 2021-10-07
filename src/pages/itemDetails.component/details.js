@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-
 import { CartContext } from "../../store/cartContext";
 import { FavoriteContext } from "../../store/favoriteContext";
+import { setQuality, formatedNumber } from "../../helpers";
 
 function Details(props) {
-
   // PROPERTIES
   const { detail } = props;
   let [itemCapacity, setItemCapacity] = useState(detail.subItem[0].capacity);
@@ -17,8 +16,8 @@ function Details(props) {
   const [itemCounter, setItemCounter] = useState(0);
   const [itemSelected, setItemSelected] = useState(0);
   const [isTooltipShow, setIsTooltipShow] = useState(false);
-  const { addItemToCart } = useContext(CartContext);
-  const { addItemToFavorite } = useContext(FavoriteContext);
+  const { cartList, addItemToCart } = useContext(CartContext);
+  const { favoriteList, addItemToFavorite } = useContext(FavoriteContext);
 
   // METHODS
   function selectionRender(details, selection) {
@@ -84,7 +83,6 @@ function Details(props) {
   }
 
   function changeSelectionHandler(value, selection) {
-
     if (selection === "Capacity") {
       setItemCapacity(value);
     } else if (selection === "Size") {
@@ -100,7 +98,6 @@ function Details(props) {
         i.size === itemSize &&
         i.color === itemColor
       ) {
-        
         setItemSelected(cont);
         setItemCounter(0);
         setItemStock(i.stock);
@@ -115,109 +112,21 @@ function Details(props) {
     setItemStock(0);
   }
 
-  function qualityRender(quality) {
-    if (quality <= 1) {
-      return (
-        <div className="item-details-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    } else if (quality <= 2) {
-      return (
-        <div className="item-details-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    } else if (quality <= 3) {
-      return (
-        <div className="item-details-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    } else if (quality <= 4) {
-      return (
-        <div className="item-details-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-        </div>
-      );
-    }
-    return (
-      <div className="item-details-quality">
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <strong>{parseFloat(quality)}</strong>
-      </div>
-    );
-  }
-
-  function checkShowTooltip(){
-    if(itemCounter>0 || detail.isInCart){
+  function checkShowTooltip() {
+    if (itemCounter > 0 || detail.isInCart) {
       setIsTooltipShow(false);
-    }else{
+    } else {
       setIsTooltipShow(true);
     }
   }
 
-  function changeIsTooltipShow(){
+  function changeIsTooltipShow() {
     setIsTooltipShow(false);
   }
 
-  function formatedNumber(num) {
-    if (num >= 1000 && num < 10000) {
-      let newNum = num + "";
-      let formated = "";
-
-      for (let x = 0; x < newNum.length; x++) {
-        if (x === 1) {
-          formated += ",";
-        }
-        formated += newNum.charAt(x);
-      }
-
-      return formated;
-    } else if (num >= 10000) {
-      let newNum = num + "";
-      let formated = "";
-
-      for (let x = 0; x < newNum.length; x++) {
-        if (x === 2) {
-          formated += ",";
-        }
-        formated += newNum.charAt(x);
-      }
-
-      return formated;
-    }
-
-    return num;
-  }  
-
-  function checkAddToCart(){
-    if(itemCounter>0){
-      const data = {...props.detail};
+  function checkAddToCart() {
+    if (itemCounter > 0) {
+      const data = { ...props.detail };
 
       data.amount = itemCounter;
       data.retailPrice = props.detail.subItem[itemSelected].retailPrice;
@@ -226,15 +135,15 @@ function Details(props) {
       data.subItem = {
         color: itemColor,
         capacity: itemCapacity,
-        size: itemSize
-      }
+        size: itemSize,
+      };
       addItemToCart(data);
     }
   }
 
-  function checkAddTofavorite(){
-    if(itemCounter>0){
-      const data = {...props.detail};
+  function checkAddTofavorite() {
+    if (itemCounter > 0) {
+      const data = { ...props.detail };
 
       data.amount = itemCounter;
       data.retailPrice = props.detail.subItem[itemSelected].retailPrice;
@@ -243,10 +152,30 @@ function Details(props) {
       data.subItem = {
         color: itemColor,
         capacity: itemCapacity,
-        size: itemSize
-      }
+        size: itemSize,
+      };
       addItemToFavorite(data);
     }
+  }
+
+  function isCurrentItemInCart(current){
+    let condition = false;
+    for(let item of cartList){
+      if(item.id===current){
+        condition = true;
+      }
+    }
+    return condition;
+  }
+
+  function isCurrentItemInFavorite(current){
+    let condition = false;
+    for(let item of favoriteList){
+      if(item.id===current){
+        condition = true;
+      }
+    }
+    return condition;
   }
 
   // RENDERING
@@ -259,7 +188,7 @@ function Details(props) {
         <span>${formatedNumber(detail.subItem[itemSelected].retailPrice)}</span>
       </div>
 
-      {qualityRender(detail.quality)}
+      {setQuality(detail.quality)}
 
       <div className="item-details-status">
         <label>
@@ -278,11 +207,11 @@ function Details(props) {
 
       <div className="item-details-amount">
         <div>
-          <button className="btn" onClick={() => changeItemCounterHandler("-")} >
+          <button className="btn" onClick={() => changeItemCounterHandler("-")}>
             -
           </button>
           <span>{itemCounter}</span>
-          <button className="btn" onClick={() => changeItemCounterHandler("+")} >
+          <button className="btn" onClick={() => changeItemCounterHandler("+")}>
             +
           </button>
         </div>
@@ -290,28 +219,27 @@ function Details(props) {
       </div>
 
       <div className="button-actions">
-        <button className="btn">
-          Comprar ahora
-        </button>
+        <button className="btn">Comprar ahora</button>
 
-        <button className={'btn'}
+        <button
+          className={isCurrentItemInCart(detail.id)===true? "btn btn-added-to-cart": "btn"}
           onClick={checkAddToCart}
-          onMouseEnter={checkShowTooltip}
-          onMouseLeave={changeIsTooltipShow}>
-          {'Agregar al carrito'}
+        >
+          {isCurrentItemInCart(detail.id)===true? "Agregado ya al carrito":"Agregar al carrito"}
 
-          <div style={(isTooltipShow)?{display:"block"}:{display:"none"}}
-            className="tooltips-button-actions">
+          <div
+            style={isTooltipShow ? { display: "block" } : { display: "none" }}
+            className="tooltips-button-actions"
+          >
             Selecciona una de las opciones del producto.
           </div>
-
         </button>
 
-        <button className="btn" onClick={checkAddTofavorite}>
+        <button className={isCurrentItemInFavorite(detail.id)===true? "btn btn-added-to-cart": "btn"} 
+        onClick={checkAddTofavorite}>
           <span className="material-icons-outlined">favorite_border</span>
         </button>
       </div>
-      
     </div>
   );
 }

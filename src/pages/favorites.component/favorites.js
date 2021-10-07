@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-
-import "./css-styles/styles.css";
-
 import { CartContext } from "../../store/cartContext";
 import { FavoriteContext } from "../../store/favoriteContext";
+import { setQuality } from "../../helpers";
+
+import "./css-styles/styles.css";
 import SamplesColumn from "../samples.component/samplesColumn";
 
 function Favorites(props) {
@@ -13,69 +13,6 @@ function Favorites(props) {
   const { addItemToCart } = useContext(CartContext);
 
   // METHODS
-  function setQuality(quality, date) {
-    if (quality <= 1) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-          <time>Agregado {new Date(date).toLocaleDateString()}</time>
-        </div>
-      );
-    } else if (quality <= 2) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-          <time>Agregado {new Date(date).toLocaleDateString()}</time>
-        </div>
-      );
-    } else if (quality <= 3) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-          <time>Agregado {new Date(date).toLocaleDateString()}</time>
-        </div>
-      );
-    } else if (quality <= 4) {
-      return (
-        <div className="samples-column-quality">
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star</span>
-          <span className="material-icons">star_outline</span>
-          <strong>{parseFloat(quality)}</strong>
-          <time>Agregado {new Date(date).toLocaleDateString()}</time>
-        </div>
-      );
-    }
-    return (
-      <div className="samples-column-quality">
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <span className="material-icons">star</span>
-        <strong>{parseFloat(quality)}</strong>
-        <time>Agregado {new Date(date).toLocaleDateString()}</time>
-      </div>
-    );
-  }
-
   function removeItemHandler(id) {
     let confirm = prompt("Are you sure want to remove this item? (Y/n)", "Y");
     if (confirm === "Y") {

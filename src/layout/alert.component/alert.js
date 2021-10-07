@@ -1,6 +1,5 @@
-import React from "react";
 
-function Alert(props) {
+function Alert() {
   return (
     <div className="alert">
       <span className="material-icons-outlined">report_problem</span>

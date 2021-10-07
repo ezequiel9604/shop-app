@@ -1,35 +1,6 @@
-//import SampleSingle from "../../samples.component/sampleSingle";
-
-import React from "react";
+import { formatedNumber } from "../../../helpers";
 
 function SideBar(props) {
-  function formatedNumber(num) {
-    if (num >= 1000 && num < 10000) {
-      let newNum = num + "";
-      let formated = "";
-
-      for (let x = 0; x < newNum.length; x++) {
-        if (x === 1) {
-          formated += ",";
-        }
-        formated += newNum.charAt(x);
-      }
-      return formated;
-    } else if (num >= 10000) {
-      let newNum = num + "";
-      let formated = "";
-
-      for (let x = 0; x < newNum.length; x++) {
-        if (x === 2) {
-          formated += ",";
-        }
-        formated += newNum.charAt(x);
-      }
-      return formated;
-    }
-    return num;
-  }
-
   return (
     <aside className="sidebar-container">
       <article>
@@ -77,9 +48,9 @@ function SideBar(props) {
                 
                 <h3>Relacionados:</h3>
 
-                {state.Items.map((val) => {
-                    return <SampleSingle article={val} 
-                        isInOffered={(val.OfferPrice > 0)? true: false} key={val.id} />;
+                {state.Items.map((current) => {
+                    return <SampleSingle article={current} 
+                        isInOffered={(current.OfferPrice > 0)? true: false} key={current.id} />;
                 })}
 
             </article>	 */}

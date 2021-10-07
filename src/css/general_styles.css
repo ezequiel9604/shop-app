@@ -449,6 +449,7 @@ div.button-actions .btn-added-to-cart{
 	transition: all 0.5s ease-in;
 }
 
+
 .tooltips-button-actions{
 	border: 1px solid #cccccc;
 	width: 200%;
@@ -732,4 +733,30 @@ div.block-box select:focus{
 	margin-bottom: 10px;
 	font-family: 'raleway-regular', sans-serif;
 	font-size: 14px;
+}
+
+
+.samples-column .samples-column-quality{
+	/* border: 1px solid; */
+	width: 98%;
+	margin-bottom: 5px;
+
+	display: flex;
+	align-items: center;
+
+	color: #4d4d4d;
+	font-family: "raleway-medium";
+	line-height: 25px;
+}
+
+.samples-column .samples-column-quality span{
+	color: #0099cc;
+	font-size: 20px;
+	cursor: default;
+}
+
+.samples-column .samples-column-quality strong{
+	font-size: 16px;
+	margin-left: 10px;
+	color: #4d4d4d;
 }

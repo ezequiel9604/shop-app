@@ -52,7 +52,6 @@ function App() {
     let newlist = favoriteList.filter((current) => {
       return current.id !== id;
     });
-
     setFavoriteList(newlist);
   }
 
