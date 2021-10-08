@@ -210,7 +210,7 @@ div.details-info div span{
 	cursor: default;
 }
 
-.icon-advice{
+.advice-icon{
 	/*border: 1px solid;*/
 	width: fit-content;
 	display: inline-block;
@@ -219,7 +219,7 @@ div.details-info div span{
 	cursor: default;
 }
 
-.icon-advice span{
+.advice-icon span{
 	font-size: 16px;
 	color: #4d4d4d;
 }
@@ -268,7 +268,7 @@ div.details-info div span{
 }
 
 
-.icon-advice:hover .tooltip{
+.advice-icon:hover .tooltip{
 	display: block;
 }
 

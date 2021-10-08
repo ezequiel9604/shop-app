@@ -6,7 +6,6 @@ import CartItems from "./cartItems";
 import "./css-styles/styles.css";
 
 function Cart(props) {
-
   // METHODS
   function getTotalAmount(items) {
     let sum = 0;
@@ -28,18 +27,16 @@ function Cart(props) {
     return sum;
   }
 
-  console.log(props.items);
-
   // RENDERING
   return (
     <div className="cart-and-sidebar">
       <div id="cart">
         <h3 className="title-page">Carrito de compra</h3>
 
-        { (props.items.length)? (
+        {props.items.length ? (
           <div className="samples-column-container">
-            {props.items.map((current)=>{
-              return (<CartItems item={current} key={current.id} />);
+            {props.items.map((current) => {
+              return <CartItems item={current} key={current.id} />;
             })}
           </div>
         ) : (

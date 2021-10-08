@@ -8,13 +8,12 @@ import SideBarFilter from "./sideBarFilter.component/sideBarFilter";
 import SamplesColumn from "../samples.component/samplesColumn";
 
 function SearchResults(props) {
-
   // PROPERTIES
   const [filterOffer, setFilterOffer] = useState(false);
   const [filterPrice, setFilterPrice] = useState([0, 10000]);
   const [filterStatus, setFilterStatus] = useState(0);
   const [filterQuality, setFilterQuality] = useState(0);
-  const { addItemToCart } = useContext(CartContext);
+  const { cartList, addItemToCart } = useContext(CartContext);
 
   // METHODS
   function changeFilterByOffers(value) {
@@ -85,7 +84,7 @@ function SearchResults(props) {
   }
 
   function addItemToCartHandler(item, ind) {
-    const data = {...item};
+    const data = { ...item };
     data.amount = 1;
     data.retailPrice = props.items[ind].subItem[0].retailPrice;
     data.offerPrice = props.items[ind].subItem[0].offerPrice;
@@ -96,6 +95,16 @@ function SearchResults(props) {
       size: props.items[ind].subItem[0].size,
     };
     addItemToCart(data);
+  }
+
+  function isCurrentItemInCart(current) {
+    let condition = false;
+    for (let item of cartList) {
+      if (item.id === current) {
+        condition = true;
+      }
+    }
+    return condition;
   }
 
   // RENDERING
@@ -117,10 +126,16 @@ function SearchResults(props) {
                 <div className="button-actions">
                   <button className="btn">Comprar ahora</button>
                   <button
-                    className="btn"
+                    className={
+                      isCurrentItemInCart(current.id)
+                        ? "btn btn-added-to-cart"
+                        : "btn"
+                    }
                     onClick={() => addItemToCartHandler(current, ind)}
                   >
-                    Agregar al carrito
+                    {isCurrentItemInCart(current.id)
+                      ? "Agregado ya al carrito"
+                      : "Agregar al carrito"}
                   </button>
                 </div>
               </SamplesColumn>

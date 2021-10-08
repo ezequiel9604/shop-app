@@ -132,24 +132,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
-        color: "black",
-        capacity: "2GB",
-        size: '17"',
-        stock: 7,
-      },
-      {
-        retailPrice: 1850,
-        offerPrice: 1700,
-        color: "gray",
-        capacity: "2GB",
-        size: '17"',
-        stock: 8,
-      },
-      {
-        retailPrice: 2350,
-        offerPrice: 2140,
+        retailPrice: 1150,
+        offerPrice: 0,
         color: "gray",
         capacity: "4GB",
         size: '32"',
@@ -210,8 +194,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 900,
+        offerPrice: 845,
         color: "black",
         capacity: "2GB",
         size: '17"',
@@ -288,8 +272,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 800,
+        offerPrice: 600,
         color: "black",
         capacity: "2GB",
         size: '17"',
@@ -367,8 +351,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 570,
+        offerPrice: 0,
         color: "black",
         capacity: "2GB",
         size: '17"',
@@ -445,8 +429,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 1400,
+        offerPrice: 1200,
         color: "black",
         capacity: "2GB",
         size: '17"',
@@ -524,8 +508,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 1600,
+        offerPrice: 1400,
         color: "black",
         capacity: "2GB",
         size: '17"',
@@ -603,8 +587,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 600,
+        offerPrice: 0,
         color: "black",
         capacity: "2GB",
         size: '17"',
@@ -681,8 +665,8 @@ export const Items = [
     ],
     subItem: [
       {
-        retailPrice: 1850,
-        offerPrice: 1700,
+        retailPrice: 450,
+        offerPrice: 0,
         color: "black",
         capacity: "2GB",
         size: '17"',

@@ -71,7 +71,7 @@ main{
 	border: 1px solid #dddddd;
 	background-color: #ffffff;
 	color: #4d4d4d;
-	border-radius: 10px;
+	border-radius: 4%;
 	outline: none;
 
 	font-family: 'raleway-medium', sans-serif;
@@ -194,7 +194,7 @@ div.samples{
 
 	position: relative;
 	background-color: #ffffff;
-	border-radius: 4px;
+	border-radius: 4%;
 
 	z-index: 0;
 }
@@ -231,7 +231,7 @@ div.samples img{
 	text-align: center;
 	letter-spacing: 2px;
 
-	border-radius: 50px;
+	border-radius: 25%;
 
 	position: absolute;
 	z-index: 10;
@@ -355,7 +355,7 @@ div.samples-column .samples-column-headers img{
 	width: 100%;
 	height: 100%;
 	background-color: #fafafa;
-	border-radius: 2px;
+	border-radius: 4%;
 
 	object-fit: contain;
 }
@@ -451,27 +451,22 @@ div.button-actions .btn-added-to-cart{
 
 
 .tooltips-button-actions{
-	border: 1px solid #cccccc;
-	width: 200%;
-	padding: 8px 15px;
+	border: 1px solid #dddddd;
+	width: 220%;
 	box-sizing: border-box;
-	cursor: default;
 
 	position: absolute;
-	top: 120%;
+	top: 40px;
 	left: 0;
-	z-index: 20;
 
-	font-family: "raleway-medium",sans-serif;
-	font-size: 12px;
-	text-align: left;
-	color: #333333;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 1px 1px 1px #f2f2f2;
+	font-family: "raleway-semibold", sans-serif;
+	color: #4d4d4d;
+	font-size: 13px;
 
-	display: none;
-	transition: all 0.5s ease-in-out;
+	padding: 6px;
+	border-radius: 4%;
+	transition: all 0.2s ease-in;
+	opacity: 1;
 }
 
 /* --------------- SIDEBAR STYLES ---------------------- */
@@ -482,7 +477,7 @@ aside.sidebar-container{
 	overflow: hidden;
 
 	background-color: #ffffff;
-	border-radius: 10px;
+	border-radius: 4%;
 }
 
 aside.sidebar-container article{
@@ -541,7 +536,7 @@ aside.sidebar-container table button{
 	font-size: 14px;
 	border: 1px solid #dddddd;
 	padding: 4px 6px;
-	border-radius: 2px;
+	border-radius: 4%;
 
 	box-sizing: border-box;
 }
@@ -593,7 +588,7 @@ aside.sidebar-container .advice a{
 	display: block; /*block or none*/
 	opacity: 1;
 	background-color: #ffffff;
-	border-radius: 5px;
+	border-radius: 4%;
 	animation-name: alert-animation;
 	animation-duration: 1s;
 }
@@ -673,7 +668,7 @@ div.block-box select{
 	font-size: 14px;
 	color: #4d4d4d;
 	padding: 10px 15px;
-	border-radius: 5px;
+	border-radius: 4%;
 
 	transition: box-shadow 0.2s ease-in-out;
 }
@@ -696,7 +691,7 @@ div.block-box select:focus{
 
 	padding: 4px 8px;
 
-	border-radius: 5px;
+	border-radius: 4%;
 	outline: none;
 
 	text-align: center;

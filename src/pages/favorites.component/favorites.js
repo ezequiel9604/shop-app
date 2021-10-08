@@ -10,7 +10,7 @@ import SamplesColumn from "../samples.component/samplesColumn";
 function Favorites(props) {
   // PROPERTIES
   const { removeItemFromFavorite } = useContext(FavoriteContext);
-  const { addItemToCart } = useContext(CartContext);
+  const { cartList, addItemToCart } = useContext(CartContext);
 
   // METHODS
   function removeItemHandler(id) {
@@ -18,6 +18,16 @@ function Favorites(props) {
     if (confirm === "Y") {
       removeItemFromFavorite(id);
     }
+  }
+
+  function isCurrentItemInCart(current) {
+    let condition = false;
+    for (let item of cartList) {
+      if (item.id === current) {
+        condition = true;
+      }
+    }
+    return condition;
   }
 
   function addItemToCartHandler(data) {
@@ -45,10 +55,16 @@ function Favorites(props) {
                 <div className="button-actions">
                   <button className="btn">Comprar ahora</button>
                   <button
-                    className="btn"
+                    className={
+                      isCurrentItemInCart(current.id)
+                        ? "btn btn-added-to-cart"
+                        : "btn"
+                    }
                     onClick={() => addItemToCartHandler(current)}
                   >
-                    Agregar al carrito
+                    {isCurrentItemInCart(current.id)
+                      ? "Agregado ya al carrito"
+                      : "Agregar al carrito"}
                   </button>
                   <button
                     className="btn btn-remove"

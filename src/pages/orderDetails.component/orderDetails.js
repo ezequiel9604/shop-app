@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Order } from "../../dummyData";
-import { formatedNumber, formatOrderStatus } from "../../helpers";
+import {
+  formatedNumber,
+  formatOrderStatus,
+  formatShippingMethod,
+} from "../../helpers";
 
 import "./css-styles/styles.css";
+import AdviceIcon from "./adviceIcon";
+import TrackOrder from "./trackOrder";
+import DetailsInfo from "./detailsInfo";
 
 function OrderDetails(props) {
- 
   const [order, setOrder] = useState(Order);
+  const [orderCounter, setOrderCounter] = useState(0);
 
   function formatAmountItems(items) {
     let sum = 0;
@@ -25,25 +32,15 @@ function OrderDetails(props) {
     return sum;
   }
 
-  function formatShippingMethod(method) {
-    if (method === "regular") {
-      return "Regular";
-    } else if (method === "fast") {
-      return "Rapido";
-    } else if (method === "free") {
-      return "Gratis";
-    }
-  }
-
   return (
     <div id="order-details">
       <article>
         <h3>Articulos del Pedido:</h3>
 
         <div className="ordered-articles-container">
-          {order.items.map((current) => {
+          {order[orderCounter].items.map((current, ind) => {
             return (
-              <div className="ordered-articles" key={current.id}>
+              <div className="ordered-articles" key={ind}>
                 <div>
                   <img src={current.image} alt="" />
                 </div>
@@ -63,20 +60,7 @@ function OrderDetails(props) {
             );
           })}
 
-          <div className="track-road">
-            <div className="road">
-              <div style={{ backgroundColor: "#dddddd" }}></div>
-              <div style={{ backgroundColor: "#ffcc00" }}></div>
-              <div style={{ backgroundColor: "#0099ff" }}></div>
-              <div style={{ backgroundColor: "#dddddd" }}></div>
-            </div>
-            <div className="labels">
-              <div style={{ textAlign: "left" }}>Cancelado</div>
-              <div style={{ textAlign: "center" }}>De salida</div>
-              <div style={{ textAlign: "center" }}>En camino</div>
-              <div style={{ textAlign: "right" }}>Recibido</div>
-            </div>
-          </div>
+          <TrackOrder status={order[orderCounter].orderStatus} />
         </div>
       </article>
 
@@ -84,29 +68,24 @@ function OrderDetails(props) {
         <h3>Detalles del pedido:</h3>
 
         <div className="details-info">
-          <div>
-            <p>
-              <label>Cantidad: </label>
-              {formatAmountItems(order.items)} articulos
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Subtotal: </label>
-              {formatedNumber(formatSubtotal(order.items))}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Envio: </label>${order.shippingCost}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Total: </label>$
-              {formatedNumber(order.total + order.shippingCost)}
-            </p>
-          </div>
+          <DetailsInfo
+            title="Cantidad"
+            info={formatAmountItems(order[orderCounter].items) + " articulos"}
+          />
+          <DetailsInfo
+            title="Subtotal"
+            info={formatedNumber(formatSubtotal(order[orderCounter].items))}
+          />
+          <DetailsInfo
+            title="Envio"
+            info={"$" + order[orderCounter].shippingCost}
+          />
+          <DetailsInfo
+            title="Total"
+            info={formatedNumber(
+              order[orderCounter].total + order[orderCounter].shippingCost
+            )}
+          />
         </div>
       </article>
 
@@ -114,42 +93,24 @@ function OrderDetails(props) {
         <h3>Informacion del pedido:</h3>
 
         <div className="details-info">
-          <div>
-            <p>
-              <label>Codigo: </label>
-              {order.id}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Metodo de pago: </label>
-              TC - visa
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Estado: </label>
-              {formatOrderStatus(order.orderStatus)}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Fecha de envio: </label>
-              {new Date(order.deliveredDate).toLocaleString()}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Fecha de pedido: </label>
-              {new Date(order.orderDate).toLocaleString()}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Metodo de envio: </label>
-              {formatShippingMethod(order.shippingMethod)}
-            </p>
-          </div>
+          <DetailsInfo title="Codigo" info={order[orderCounter].id} />
+          <DetailsInfo title="Metodo de pago" info={"TC - visa"} />
+          <DetailsInfo
+            title="Estado"
+            info={formatOrderStatus(order[orderCounter].orderStatus)}
+          />
+          <DetailsInfo
+            title="Fecha de pedido"
+            info={new Date(order[orderCounter].orderDate).toLocaleString()}
+          />
+          <DetailsInfo
+            title="Fecha de envio"
+            info={new Date(order[orderCounter].deliveredDate).toLocaleString()}
+          />
+          <DetailsInfo
+            title="Metodo de envio"
+            info={formatShippingMethod("regular")}
+          />
         </div>
       </article>
 
@@ -157,36 +118,21 @@ function OrderDetails(props) {
         <h3>Informacion del cliente:</h3>
 
         <div className="details-info">
-          <div>
-            <p>
-              <label>Nombre: </label>
-              {order.client.name}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Email: </label>
-              {order.client.email}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Telefonos: </label>
-              {order.client.phone}
-            </p>
-          </div>
-          <div>
-            <p>
-              <label>Dirección: </label>
-              {order.client.address}
-            </p>
-          </div>
-          <div style={{ width: "100%" }}>
-            <p>
-              <label>Indicaciones: </label>
-              {order.client.indications}
-            </p>
-          </div>
+          <DetailsInfo title="Nombre" info={order[orderCounter].client.name} />
+          <DetailsInfo title="Email" info={order[orderCounter].client.email} />
+          <DetailsInfo
+            title="Telefonos"
+            info={order[orderCounter].client.phone}
+          />
+          <DetailsInfo
+            title="Dirección"
+            info={order[orderCounter].client.address}
+          />
+          <DetailsInfo
+            title="Indicaciones"
+            info={order[orderCounter].client.indications}
+            wider={true}
+          />
         </div>
       </article>
 
@@ -196,38 +142,17 @@ function OrderDetails(props) {
         <div className="details-info">
           <div>
             <button>Cambiar dirección</button>
-            <div className="icon-advice">
-              <span className="material-icons-outlined">help</span>
-              <div className="tooltip">
-                Lorem, ipsum dolor sit amet consectetur adipisicing, elit.
-                Dignissimos eius velit deleniti, dolores ullam, soluta et quasi
-                deserunt dolor.
-              </div>
-            </div>
+            <AdviceIcon icon="help" />
           </div>
 
           <div>
             <button>Cancelar pedido</button>
-            <div className="icon-advice">
-              <span className="material-icons-outlined">help</span>
-              <div className="tooltip">
-                Lorem, ipsum dolor sit amet consectetur adipisicing, elit.
-                Dignissimos eius velit deleniti, dolores ullam, soluta et quasi
-                deserunt dolor.
-              </div>
-            </div>
+            <AdviceIcon icon="help" />
           </div>
 
           <div>
             <button>Devolver articulos</button>
-            <div className="icon-advice">
-              <span className="material-icons-outlined">help</span>
-              <div className="tooltip">
-                Lorem, ipsum dolor sit amet consectetur adipisicing, elit.
-                Dignissimos eius velit deleniti, dolores ullam, soluta et quasi
-                deserunt dolor.
-              </div>
-            </div>
+            <AdviceIcon icon="help" />
           </div>
         </div>
       </article>

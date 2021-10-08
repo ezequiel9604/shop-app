@@ -21,6 +21,7 @@ div.item-details-top{
 	background-color: #ffffff;
 	box-sizing: border-box;
 	overflow: hidden;
+	border-radius: 2%;
 }
 
 div.slide-show{
@@ -35,7 +36,7 @@ div.img-zoom{
 	margin: 0px auto;
 	position: relative;
 	overflow: hidden;
-	border-radius: 2px;
+	border-radius: 4%;
 }
 img#big-img{
 	border: 1px solid #dddddd;
@@ -45,9 +46,7 @@ img#big-img{
 	height: 99%;
 
 	object-fit: contain;
-
-	/* cursor: zoom-in; */
-	transition: transform 0.5s;
+	border-radius: 4%;
 }
 div.small-imgs{
 	width: 90%;
@@ -65,7 +64,7 @@ div.small-imgs img{
 	width: 80px;
 	height: 50px;
 	cursor: pointer;
-	border-radius: 2px;
+	border-radius: 4%;
 	border: 3px solid #dddddd;
 }
 
@@ -182,7 +181,7 @@ div.details h3{
 	width: fit-content;
 	display: flex;
 	padding: 2px 8px;
-	border-radius: 4px;
+	border-radius: 4%;
 
     background-color: #dddddd;
 	border: 1px solid #dddddd;
@@ -219,7 +218,7 @@ div.details h3{
 	margin-right: 10px;
 	display: flex;
 
-	border-radius: 20px;
+	border-radius: 4%;
 	background-color: #f2f2f2;
 	cursor: pointer;
 	position: relative;
@@ -231,7 +230,6 @@ div.details h3{
 	font-family: "raleway-semibold", sans-serif;
 	font-size: 12px;
 	color: #4d4d4d;
-	
 }
 .item-details-selection input{
 	width: 0;
@@ -254,7 +252,7 @@ div.details h3{
 	padding: 2px 0;
 	margin: 2px 0;
 
-	border-radius: 25%;
+	border-radius: 4%;
 }
 .item-details-selection input:checked ~ span{ color: #0099cc; }
 .item-details-selection input:checked ~ label{ border-color: #0099cc; }
@@ -416,7 +414,7 @@ div.results-comments div span{
 	line-height: 40px;
 	background-color: #dddddd;
 	color: #4d4d4d;
-	border-radius: 50%;
+	border-radius: 4%;
 	cursor: default;
 }
 
@@ -431,7 +429,7 @@ div.add-comments div input{
 	color: #4d4d4d;
 
 	border: 1px solid #dddddd;
-	border-radius: 2px;	
+	border-radius: 4%;	
 }
 
 div.add-comments div input{
@@ -472,7 +470,7 @@ div.result-comments div img{
 	margin: 5px 0;
 	object-fit: cover;
 
-	border-radius: 50px;
+	border-radius: 50%;
 }
 .result-comments-headers, 
 .result-comments-sections{

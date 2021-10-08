@@ -1,4 +1,3 @@
-
 export function setQuality(quality) {
   if (quality <= 1) {
     return (
@@ -88,15 +87,25 @@ export function formatedNumber(num) {
 }
 
 export function formatOrderStatus(status) {
-    if (status === "gettingout") {
-      return "De salida";
-    } else if (status === "onitsway") {
-      return "En camino";
-    } else if (status === "received") {
-      return "Recibido";
-    } else if (status === "canceled") {
-      return "Cancelado";
-    } else if (status === "errorpayment") {
-      return "Error en pago";
-    }
+  if (status === "gettingout") {
+    return "De salida";
+  } else if (status === "onitsway") {
+    return "En camino";
+  } else if (status === "received") {
+    return "Recibido";
+  } else if (status === "canceled") {
+    return "Cancelado";
+  } else if (status === "errorpayment") {
+    return "Error en pago";
   }
+}
+
+export function formatShippingMethod(method) {
+  if (method === "regular") {
+    return "Regular";
+  } else if (method === "fast") {
+    return "Rapido";
+  } else if (method === "free") {
+    return "Gratis";
+  }
+}

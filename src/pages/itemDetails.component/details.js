@@ -112,18 +112,6 @@ function Details(props) {
     setItemStock(0);
   }
 
-  function checkShowTooltip() {
-    if (itemCounter > 0 || detail.isInCart) {
-      setIsTooltipShow(false);
-    } else {
-      setIsTooltipShow(true);
-    }
-  }
-
-  function changeIsTooltipShow() {
-    setIsTooltipShow(false);
-  }
-
   function checkAddToCart() {
     if (itemCounter > 0) {
       const data = { ...props.detail };
@@ -158,24 +146,36 @@ function Details(props) {
     }
   }
 
-  function isCurrentItemInCart(current){
+  function isCurrentItemInCart(current) {
     let condition = false;
-    for(let item of cartList){
-      if(item.id===current){
+    for (let item of cartList) {
+      if (item.id === current) {
         condition = true;
       }
     }
     return condition;
   }
 
-  function isCurrentItemInFavorite(current){
+  function isCurrentItemInFavorite(current) {
     let condition = false;
-    for(let item of favoriteList){
-      if(item.id===current){
+    for (let item of favoriteList) {
+      if (item.id === current) {
         condition = true;
       }
     }
     return condition;
+  }
+
+  function changeIsTooltipShow() {
+    if(itemCounter<1){
+      setIsTooltipShow(true);
+    }else{
+      setIsTooltipShow(false);
+    }
+  }
+
+  function hideIsTooltipShow(){
+    setIsTooltipShow(false);
   }
 
   // RENDERING
@@ -222,21 +222,30 @@ function Details(props) {
         <button className="btn">Comprar ahora</button>
 
         <button
-          className={isCurrentItemInCart(detail.id)===true? "btn btn-added-to-cart": "btn"}
+          className={
+            isCurrentItemInCart(detail.id) ? "btn btn-added-to-cart" : "btn"
+          }
           onClick={checkAddToCart}
+          onMouseEnter={changeIsTooltipShow}
+          onMouseLeave={hideIsTooltipShow}
         >
-          {isCurrentItemInCart(detail.id)===true? "Agregado ya al carrito":"Agregar al carrito"}
+          {isCurrentItemInCart(detail.id)
+            ? "Agregado ya al carrito"
+            : "Agregar al carrito"}
 
-          <div
-            style={isTooltipShow ? { display: "block" } : { display: "none" }}
+          <div style={isTooltipShow? {opacity:1}:{opacity:0}}
             className="tooltips-button-actions"
           >
             Selecciona una de las opciones del producto.
           </div>
         </button>
 
-        <button className={isCurrentItemInFavorite(detail.id)===true? "btn btn-added-to-cart": "btn"} 
-        onClick={checkAddTofavorite}>
+        <button
+          className={
+            isCurrentItemInFavorite(detail.id) ? "btn btn-added-to-cart" : "btn"
+          }
+          onClick={checkAddTofavorite}
+        >
           <span className="material-icons-outlined">favorite_border</span>
         </button>
       </div>
