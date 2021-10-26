@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import SamplesColumn from "../samples.component/samplesColumn";
-import { CartContext } from "../../store/cartContext";
+import { CartContext } from "../../store/context";
 
 function CartItems(props) {
   // PROPERTIES

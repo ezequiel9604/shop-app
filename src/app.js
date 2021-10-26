@@ -1,7 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import { useState } from "react";
-import { CartContext } from "./store/cartContext";
-import { FavoriteContext } from "./store/favoriteContext";
+import { CartContext, FavoriteContext } from "./store/context";
 
 import "./css/css_reset.css";
 import "./css/general_styles.css";
@@ -14,6 +13,7 @@ import Cart from "./pages/cart.component/cart";
 import Orders from "./pages/orders.component/orders";
 import OrderDetails from "./pages/orderDetails.component/orderDetails";
 import Favorites from "./pages/favorites.component/favorites";
+import Checkout from "./pages/checkout.component/checkout";
 
 import Login from "./layout/login.component/login";
 import Signup from "./layout/signup.component/signup";
@@ -161,6 +161,12 @@ function App() {
           <Route path="/orderDetails">
             <Layout user={users} departments={departmentList}>
               <OrderDetails onOpenModal={null} />
+            </Layout>
+          </Route>
+
+          <Route path="/checkout">
+            <Layout user={users} departments={departmentList}>
+              <Checkout items={cartList} />
             </Layout>
           </Route>
 

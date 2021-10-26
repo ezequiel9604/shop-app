@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../../store/cartContext";
-import { FavoriteContext } from "../../store/favoriteContext";
+import { CartContext, FavoriteContext } from "../../store/context";
 import { setQuality } from "../../helpers";
 
 import "./css-styles/styles.css";

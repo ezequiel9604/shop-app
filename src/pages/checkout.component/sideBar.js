@@ -1,10 +1,11 @@
-import { formatedNumber } from "../../../helpers";
+import { formatedNumber } from "../../helpers";
+import { Link } from "react-router-dom";
 
 function SideBar(props) {
   return (
     <aside className="sidebar-container">
       <article>
-        <h2>Resumen del pedido:</h2>
+        <h2>Realizar comprar:</h2>
 
         <table>
           <tbody>
@@ -13,17 +14,29 @@ function SideBar(props) {
               <td>({props.totalAmount}) articulos</td>
             </tr>
             <tr>
+              <td>Sub-total: </td>
+              <td>${formatedNumber(props.subTotal)}.00</td>
+            </tr>
+            <tr>
               <td>Envio:</td>
               <td>$150.00</td>
             </tr>
             <tr>
-              <td>Sub-total: </td>
-              <td>${formatedNumber(props.subTotal)}.00</td>
+              <td>
+                <input type="text" placeholder="codigo" />
+              </td>
+              <td>
+                <button type="button">Verificar</button>
+              </td>
+            </tr>
+            <tr id="descount">
+              <td>Descuento:</td>
+              <td>$50.00</td>
             </tr>
             <tr className="total">
               <td>Total:</td>
               {props.subTotal > 0 ? (
-                <td>${formatedNumber(props.subTotal + 150)}.00</td>
+                <td>${formatedNumber(props.subTotal + 150 - 50)}.00</td>
               ) : (
                 <td>${formatedNumber(props.subTotal)}.00</td>
               )}
@@ -33,27 +46,15 @@ function SideBar(props) {
 
         <div className="button-actions">
           <button className="btn" style={{ width: "100%" }}>
-            Comprar ({props.totalAmount})
+            Realizar Pago
           </button>
         </div>
 
         <p className="advice">
-          Lorem, ipsum dolor sit amet, consectetur adipisicing elit. Hic qui
-          odit explicabo atque natus quibusdam, debitis quos odio animi ullam
-          assumenda.
+          Al hacer clic en "Realizar pago", confirmo que he leído y acepto los{" "}
+          <Link to="">Términos y Condiciones</Link>.
         </p>
       </article>
-
-      {/* <article>
-                
-                <h3>Relacionados:</h3>
-
-                {state.Items.map((current) => {
-                    return <SampleSingle article={current} 
-                        isInOffered={(current.OfferPrice > 0)? true: false} key={current.id} />;
-                })}
-
-            </article>	 */}
     </aside>
   );
 }

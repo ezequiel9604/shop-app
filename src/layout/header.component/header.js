@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../store/cartContext";
-import { FavoriteContext } from "../../store/favoriteContext";
+import { CartContext, FavoriteContext } from "../../store/context";
 
 import "./css-styles/top_part_styles.css";
 import "./css-styles/bottom_part_styles.css";
@@ -62,10 +61,10 @@ function Header(props) {
             <p>Departamentos</p>
             <span className="material-icons-sharp">arrow_drop_down</span>
             <ul className="dropdown-department-list">
-              {props.departments.map((val) => {
+              {props.departments.map((current) => {
                 return (
-                  <Link to={"/searchResults?keyword=" + val} key={val}>
-                    {val}
+                  <Link to={"/searchResults?keyword=" + current} key={current}>
+                    {current}
                   </Link>
                 );
               })}

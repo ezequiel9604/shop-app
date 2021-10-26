@@ -1,0 +1,248 @@
+
+div.checkout-and-sidebar{
+	width: 95%;
+	margin: 20px auto;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+div#checkout{
+	width: 72%;
+	box-sizing: border-box;
+
+	border-radius: 10px;
+	background-color: #ffffff;
+	overflow: hidden;
+}
+
+div#checkout article{
+	width: 90%;
+	margin: 20px auto;
+	overflow: hidden;
+    border-bottom: 1px solid #dddddd;
+}
+
+div.user-info{
+	width: 100%;
+	margin: 10px 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+div.user-info div:nth-child(1){
+	width: 80%;
+}
+div.user-info div:nth-child(2){
+	width: 20%;
+}
+
+div.user-info p{
+	width: 95%;
+	margin: 5px 0;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 13px;
+	color: #4d4d4d;	
+	line-height: 20px;
+}
+
+div.user-info strong{
+	display: inline-block;
+	font-family: "raleway-semibold", sans-serif;
+	margin-right: 5px;
+}
+
+div.user-info div:nth-child(2) a{
+	/*border: 1px solid;*/
+	display: block;
+	margin: 14px auto;
+
+	font-family: "raleway-medium", sans-serif;
+	font-size: 13px;
+	color: #0099ff;
+}
+
+/*payment method container*/
+div.payment-info{
+	width: fit-content;
+	margin: 10px auto;
+	display: flex;
+	align-items: center;
+}
+div.payment-info label{
+	border: none;
+	width: fit-content;
+	display: flex;
+
+	margin: 0px 10px;
+	padding: 6px;
+
+	border-radius: 4%;
+	background-color: #ffffff;
+	cursor: pointer;
+	position: relative;
+}
+
+div.payment-info label:hover{
+    border-color: #0099ff;
+}
+
+div.payment-info label i{
+	font-size: 34px;
+    color: #999999;
+	transition: border 0.2s ease-in-out;
+}
+
+div.payment-info label input{
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+div.payment-info input:checked ~ i{ color: #0099cc; }
+
+/*form container*/
+form.creditCard-info{
+	width: 90%;
+	margin: 20px auto;
+	box-sizing: border-box;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+
+	background-color: #d9d9d9;
+	border-radius: 6px;
+}
+
+div.creditcard{
+	width: 50%;
+	padding: 20px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+div.creditcard > input{
+	border: 1px solid #b3b3b3;
+	box-sizing: border-box;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 16px;
+	color: #4d4d4d;
+	padding: 6px 8px;
+	background-color: #b3b3b3;
+}
+
+div.creditcard > input:nth-child(1){
+	width: 60%;
+}
+
+div.creditcard > input:nth-child(2){
+	width: 28%;
+	margin-left: 15px;
+}
+
+div.creditcard > input:nth-child(3){
+	width: 72%;
+	margin-top: 20px;
+}
+
+div.creditcard > input:nth-child(4){
+	width: 15%;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+
+div.creditcard label {
+	width: 90%;
+	display: block;
+	margin-top: 20px;
+
+	font-family: "raleway-medium", sans-serif;
+	font-size: 13px;
+	color: #4d4d4d;
+}
+
+div.billing-address{
+	width: 50%;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+div.billing-address input, select{
+	border: 1px solid #b3b3b3;
+	box-sizing: border-box;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 13px;
+	color: #4d4d4d;
+	padding: 6px 8px;
+	background-color: #b3b3b3;
+}
+
+div.billing-address input:nth-child(1){
+	width: 12%;
+	margin-right: 10px;
+}
+
+div.billing-address input:nth-child(2){
+	width: 83%;
+}
+
+div.billing-address select{
+	width: 48%;
+	font-size: 12px;
+	margin-top: 20px;
+	margin-right: 5px;
+}
+
+/*shipping method container*/
+div.shipping-info{
+	width: 95%;
+	margin: 10px auto;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	overflow: hidden;
+}
+
+div.shipping-info label{
+	display: flex;
+	width: 32%;
+	margin-bottom: 10px;
+
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+div.shipping-info input{
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+div.shipping-info label p{
+	border: 4px solid #dddddd;
+	padding: 8px;
+	
+	font-family: "raleway-regular", sans-serif;
+	font-size: 13px;
+	color: #4d4d4d;
+	line-height: 18px;
+	border-radius: 4px;
+	transition: border 0.2s ease-in-out;
+}
+
+div.shipping-info label p:hover{
+	border: 4px solid #0099cc;
+}
+div.shipping-info input:checked ~ p{ 
+	border: 4px solid #0099cc;
+	font-family: "raleway-medium", sans-serif;
+}
+
+div.shipping-info strong {
+	font-family: "raleway-medium", sans-serif;
+	line-height: 18px;
+    font-size: 14px;
+}
+

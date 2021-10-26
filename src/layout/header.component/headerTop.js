@@ -31,7 +31,7 @@ function HeaderTop(props) {
                 Identifícate
               </Link>
             ) : null}
-            <Link to="/profile" className="header-links">
+            <Link to="/checkout" className="header-links">
               Mi perfil
             </Link>
             <Link to="/orders" className="header-links">

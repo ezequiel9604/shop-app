@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import SideBar from "./sidebar.component/sideBar";
+import SideBar from "./sideBar";
 import CartItems from "./cartItems";
 
 import "./css-styles/styles.css";

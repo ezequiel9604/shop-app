@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { setQuality } from "../../helpers";
-import { CartContext } from "../../store/cartContext";
+import { CartContext } from "../../store/context";
 
 import "./css-styles/styles.css";
 

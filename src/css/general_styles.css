@@ -14,7 +14,6 @@ main{
 }
 
 /* --------------- TITLE STYLES ---------------------- */
-
 .title-page{
 	width: 90%;
 	margin: 0px auto;
@@ -536,7 +535,7 @@ aside.sidebar-container table button{
 	font-size: 14px;
 	border: 1px solid #dddddd;
 	padding: 4px 6px;
-	border-radius: 4%;
+	border-radius: 0%;
 
 	box-sizing: border-box;
 }
@@ -668,7 +667,7 @@ div.block-box select{
 	font-size: 14px;
 	color: #4d4d4d;
 	padding: 10px 15px;
-	border-radius: 4%;
+	border-radius: 0%;
 
 	transition: box-shadow 0.2s ease-in-out;
 }

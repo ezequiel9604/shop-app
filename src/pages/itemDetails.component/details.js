@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../../store/cartContext";
-import { FavoriteContext } from "../../store/favoriteContext";
+import { CartContext, FavoriteContext } from "../../store/context";
 import { setQuality, formatedNumber } from "../../helpers";
 
 function Details(props) {
@@ -54,8 +53,8 @@ function Details(props) {
                 <input
                   onClick={() => changeSelectionHandler(current, selection)}
                   type="radio"
-                  id={selection + current}
                   name={selection}
+                  id={selection + current}
                   defaultChecked={ind === 0 ? true : false}
                 />
                 {selection !== "Color" ? (
