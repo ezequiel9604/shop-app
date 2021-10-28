@@ -2,6 +2,16 @@ import { formatedNumber } from "../../helpers";
 import { Link } from "react-router-dom";
 
 function SideBar(props) {
+  function renderShipping(ship) {
+    if (ship === "regular") {
+      return 150;
+    } else if (ship === "fast") {
+      return 200;
+    } else {
+      return 0;
+    }
+  }
+
   return (
     <aside className="sidebar-container">
       <article>
@@ -19,7 +29,7 @@ function SideBar(props) {
             </tr>
             <tr>
               <td>Envio:</td>
-              <td>$150.00</td>
+              <td>${renderShipping(props.shipping)}</td>
             </tr>
             <tr>
               <td>
@@ -31,12 +41,18 @@ function SideBar(props) {
             </tr>
             <tr id="descount">
               <td>Descuento:</td>
-              <td>$50.00</td>
+              <td>$0.00</td>
             </tr>
             <tr className="total">
               <td>Total:</td>
               {props.subTotal > 0 ? (
-                <td>${formatedNumber(props.subTotal + 150 - 50)}.00</td>
+                <td>
+                  $
+                  {formatedNumber(
+                    props.subTotal + renderShipping(props.shipping) - 50
+                  )}
+                  .00
+                </td>
               ) : (
                 <td>${formatedNumber(props.subTotal)}.00</td>
               )}

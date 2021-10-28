@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { formatedNumber } from "../../helpers";
 
 function SideBar(props) {
@@ -32,9 +33,15 @@ function SideBar(props) {
         </table>
 
         <div className="button-actions">
-          <button className="btn" style={{ width: "100%" }}>
-            Comprar ({props.totalAmount})
-          </button>
+          {props.totalAmount > 0 ? (
+            <Link to="/checkout" className="btn" style={{ width: "100%" }}>
+              Comprar ({props.totalAmount})
+            </Link>
+          ) : (
+            <button className="btn" style={{ width: "100%" }}>
+              Comprar ({props.totalAmount})
+            </button>
+          )}
         </div>
 
         <p className="advice">
@@ -44,16 +51,6 @@ function SideBar(props) {
         </p>
       </article>
 
-      {/* <article>
-                
-                <h3>Relacionados:</h3>
-
-                {state.Items.map((current) => {
-                    return <SampleSingle article={current} 
-                        isInOffered={(current.OfferPrice > 0)? true: false} key={current.id} />;
-                })}
-
-            </article>	 */}
     </aside>
   );
 }

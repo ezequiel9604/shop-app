@@ -7,14 +7,12 @@ import TechDetails from "./techDetails";
 
 function Descriptions(props) {
   // PROPERTIES
-  const txt =
+  const description =
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad nemo, " +
     "ea reiciendis vero exercitationem reprehenderit, voluptates doloremque! Voluptatem molestias " +
     "atque ipsum fuga assumenda suscipit, quidem nemo, " +
     "est minus, eligendi totam. Lorem ipsum dolor sit amet consectetur adipisicing elit.";
 
-  const [comments, setComments] = useState(props.comments);
-  const [description, setDescription] = useState(txt);
   const [containerSwitcher, setContainerSwitcher] = useState(0);
 
   // METHODS
@@ -41,7 +39,7 @@ function Descriptions(props) {
     } else {
       return (
         <Comments
-          comments={comments}
+          comments={props.comments}
           onAddCommentToItem={addCommentToItemHandler}
         />
       );
@@ -70,7 +68,7 @@ function Descriptions(props) {
           className={containerSwitcher === 2 ? "tablinks active" : "tablinks"}
           onClick={() => changeContainerSwitcherHandler(2)}
         >
-          Comentarios ({comments.length})
+          Comentarios ({props.comments.length})
         </button>
       </div>
 

@@ -1,5 +1,5 @@
 import { Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CartContext, FavoriteContext } from "./store/context";
 
 import "./css/css_reset.css";
@@ -18,15 +18,19 @@ import Checkout from "./pages/checkout.component/checkout";
 import Login from "./layout/login.component/login";
 import Signup from "./layout/signup.component/signup";
 
-import { Items, Departments } from "./dummyData";
+import { User, Items, Departments } from "./dummyData";
 
 function App() {
   // PROPERTIES
-  const [users, setUsers] = useState(null);
   const departmentList = Departments;
+  const [user, setUser] = useState(null);
   const [itemList, setItemList] = useState(Items);
   const [cartList, setCartList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
+
+  useEffect(()=>{
+    setUser(User);
+  }, []);
 
   // METHODS
   function addItemToFavorite(data) {
@@ -120,31 +124,31 @@ function App() {
       <CartContext.Provider value={cartContextValue}>
         <FavoriteContext.Provider value={favoriteContextValue}>
           <Route path="/" exact={true}>
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <Home items={itemList} />
             </Layout>
           </Route>
 
           <Route path="/searchResults">
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <SearchResults items={itemList} />
             </Layout>
           </Route>
 
           <Route path="/itemDetails">
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <ItemDetails items={itemList} />
             </Layout>
           </Route>
 
           <Route path="/cart">
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <Cart items={cartList} />
             </Layout>
           </Route>
 
           <Route path="/favorites">
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <Favorites
                 items={favoriteList}
                 onRemoveItemFromFavorite={removeItemFromFavorite}
@@ -153,20 +157,20 @@ function App() {
           </Route>
 
           <Route path="/orders">
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <Orders />
             </Layout>
           </Route>
 
           <Route path="/orderDetails">
-            <Layout user={users} departments={departmentList}>
+            <Layout user={user} departments={departmentList}>
               <OrderDetails onOpenModal={null} />
             </Layout>
           </Route>
 
           <Route path="/checkout">
-            <Layout user={users} departments={departmentList}>
-              <Checkout items={cartList} />
+            <Layout user={user} departments={departmentList}>
+              <Checkout user={user} items={cartList} />
             </Layout>
           </Route>
 

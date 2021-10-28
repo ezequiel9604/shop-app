@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import womanAvatar from "../../images/placeholder-woman.png";
 
 function HeaderTop(props) {
@@ -22,7 +21,7 @@ function HeaderTop(props) {
           ) : (
             <div>
               <img className="icon-img" src={props.user.image} alt="" />
-              <p>{props.user.firstName}</p>
+              <p>{props.user.name}</p>
             </div>
           )}
           <ul className="option-account-list">
@@ -31,7 +30,7 @@ function HeaderTop(props) {
                 Identifícate
               </Link>
             ) : null}
-            <Link to="/checkout" className="header-links">
+            <Link to="/profile" className="header-links">
               Mi perfil
             </Link>
             <Link to="/orders" className="header-links">

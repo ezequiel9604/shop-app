@@ -7,10 +7,10 @@ function PaymentInfo(props) {
   const [creditcardOwnerInput, setCreditcardOwnerInput] = useState("");
   const [creditcardCodeInput, setCreditcardCodeInput] = useState("");
 
-  const [streetNumberInput, setStreetNumberInput] = useState("8");
-  const [streetNameInput, setStreetNameInput] = useState(
-    "Francisco Henriquez y Carvajal"
-  );
+  const [streetNumberInput, setStreetNumberInput] = useState(props.user.address.streetNo);
+  const [streetNameInput, setStreetNameInput] = useState(props.user.address.streetName);
+  const [cityInput, setCityInput] = useState(props.user.address.city);
+  const [stateInput, setStateInput] = useState(props.user.address.state);
 
   function changepaymentMethodInput(event) {
     setPaymentMethodInput(event.target.value);
@@ -99,65 +99,66 @@ function PaymentInfo(props) {
           <i className="fab fa-cc-paypal"></i>
         </label>
       </div>
-
-      <form action="/" method="post" className="creditCard-info">
-        <div className="creditcard">
-          <input
-            type="text"
-            onChange={changeCreditcardNumberInput}
-            defaultValue={creditcardNumberInput}
-            placeholder="0000-0000-0000-0000"
-          />
-          <input
-            type="text"
-            onChange={changeExperiationDateInput}
-            defaultValue={experiationDateInput}
-            placeholder="00/0000"
-          />
-          <input
-            type="text"
-            onChange={changeCreditcardOwnerInput}
-            defaultValue={creditcardOwnerInput}
-            placeholder="nombre del titular"
-          />
-          <input
-            type="text"
-            onChange={changeCreditcardCodeInput}
-            defaultValue={creditcardCodeInput}
-            placeholder="000"
-          />
-          <label htmlFor="creditCard-address">
-            <input type="checkbox" id="creditCard-address" defaultChecked />{" "}
-            Igual dirección de envio!
-          </label>
-        </div>
-        <div className="billing-address">
-          <input
-            type="text"
-            onChange={changeStreetNumberInput}
-            defaultValue={streetNumberInput}
-            placeholder="casa #"
-          />
-          <input
-            type="text"
-            onChange={changeStreetNameInput}
-            defaultValue={streetNameInput}
-            placeholder="calle y apartamento"
-          />
-          <select name="city" id="">
-            <option defaultValue="">Brisas del este</option>
-            <option defaultValue="">Los Frailes I</option>
-            <option defaultValue="">Los Frailes II</option>
-            <option defaultValue="">Invivienda</option>
-            <option defaultValue="">Villa Mella</option>
-          </select>
-          <select name="state" id="">
-            <option defaultValue="">Santo domingo este</option>
-            <option defaultValue="">Santo domingo norte</option>
-            <option defaultValue="">Zona Oriental</option>
-          </select>
-        </div>
-      </form>
+      {paymentMethodInput !== "paypal" ? (
+        <form action="/" method="post" className="creditCard-info">
+          <div className="creditcard">
+            <input
+              type="text"
+              onChange={changeCreditcardNumberInput}
+              defaultValue={creditcardNumberInput}
+              placeholder="0000-0000-0000-0000"
+            />
+            <input
+              type="text"
+              onChange={changeExperiationDateInput}
+              defaultValue={experiationDateInput}
+              placeholder="00/0000"
+            />
+            <input
+              type="text"
+              onChange={changeCreditcardOwnerInput}
+              defaultValue={creditcardOwnerInput}
+              placeholder="nombre del titular"
+            />
+            <input
+              type="text"
+              onChange={changeCreditcardCodeInput}
+              defaultValue={creditcardCodeInput}
+              placeholder="000"
+            />
+            <label htmlFor="creditCard-address">
+              <input type="checkbox" id="creditCard-address" defaultChecked />{" "}
+              Igual dirección de envio!
+            </label>
+          </div>
+          <div className="billing-address">
+            <input
+              type="text"
+              onChange={changeStreetNumberInput}
+              defaultValue={streetNumberInput}
+              placeholder="casa #"
+            />
+            <input
+              type="text"
+              onChange={changeStreetNameInput}
+              defaultValue={streetNameInput}
+              placeholder="calle y apartamento"
+            />
+            <select name="city" id="">
+              <option defaultValue="">{cityInput}</option>
+              <option defaultValue="">Los Frailes I</option>
+              <option defaultValue="">Los Frailes II</option>
+              <option defaultValue="">Invivienda</option>
+              <option defaultValue="">Villa Mella</option>
+            </select>
+            <select name="state" id="">
+              <option defaultValue="">{stateInput}</option>
+              <option defaultValue="">Santo domingo norte</option>
+              <option defaultValue="">Zona Oriental</option>
+            </select>
+          </div>
+        </form>
+      ) : null}
     </div>
   );
 }

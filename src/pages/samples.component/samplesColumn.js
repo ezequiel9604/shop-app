@@ -14,7 +14,7 @@ function SamplesColumn(props) {
           %
         </span>
       ) : null}
-      <Link to="/searchResults" className="samples-column-headers">
+      <Link to="/itemDetails" className="samples-column-headers">
         <img src={item.image[0]} alt="" />
       </Link>
       <div className="samples-column-sections">

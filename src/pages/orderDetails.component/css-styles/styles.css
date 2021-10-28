@@ -50,10 +50,6 @@ div.ordered-articles{
 	justify-content: space-between;
 }
 
-div.ordered-articles:last-child{
-	border-bottom: 1px solid #dddddd;
-}
-
 div.ordered-articles div:nth-child(1){
 	width: 14%;
 }
@@ -266,7 +262,6 @@ div.details-info div span{
 		left: -11px;
 	}
 }
-
 
 .advice-icon:hover .tooltip{
 	display: block;

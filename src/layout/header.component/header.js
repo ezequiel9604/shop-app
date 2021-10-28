@@ -11,11 +11,20 @@ import Suggestion from "./suggestion";
 
 function Header(props) {
   // PROPERTIES
+  const [itemName, setItemName] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const { cartList } = useContext(CartContext);
   const { favoriteList } = useContext(FavoriteContext);
 
   // METHODS
+  function getTotalAmount(items) {
+    let sum = 0;
+    for (let i of items) {
+      sum += i.amount;
+    }
+    return sum;
+  }
+
   function findSuggestions(event) {
     let sugs = [];
     let keyword = event.target.value.toLowerCase();
@@ -30,6 +39,7 @@ function Header(props) {
       }
     }
     setSuggestions(sugs);
+    setItemName(keyword);
   }
 
   function onSuggestionsEmpty() {
@@ -39,8 +49,12 @@ function Header(props) {
     return { display: "block" };
   }
 
-  // RENDERING
+  function handleSubmit(event){
+    event.preventDefault();
+    window.location.assign("/searchResults?keyword="+itemName);
+  }
 
+  // RENDERING
   return (
     <header id="main-header">
       <PromoBanner />
@@ -56,7 +70,7 @@ function Header(props) {
             ShopSite
           </Link>
         </div>
-        <form action="/" method="get" className="header-form-search">
+        <form onSubmit={handleSubmit} action="/searchResults" method="get" className="header-form-search">
           <div className="dropdown-department">
             <p>Departamentos</p>
             <span className="material-icons-sharp">arrow_drop_down</span>
@@ -87,7 +101,7 @@ function Header(props) {
             <span className="material-icons-outlined icon-font">
               shopping_cart
             </span>
-            <i>{cartList ? cartList.length : 0}</i>
+            <i>{cartList ? getTotalAmount(cartList) : 0}</i>
           </Link>
           <Link to="/favorites" className="btn">
             <span className="material-icons-outlined icon-font">

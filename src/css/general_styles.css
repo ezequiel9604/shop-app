@@ -64,7 +64,7 @@ main{
 	justify-content: center;
 	position: relative;
 
-	padding: 4px 8px;
+	padding: 2px 8px;
 	margin: 5px;
 
 	border: 1px solid #dddddd;
@@ -74,7 +74,7 @@ main{
 	outline: none;
 
 	font-family: 'raleway-medium', sans-serif;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .btn:hover, .btn:focus{
@@ -135,7 +135,7 @@ main{
 .btn-slide span{
 	/*border: 1px solid;*/
 	display: block;
-	font-size: 25px;
+	font-size: 22px;
 	color: #4d4d4d;
 }
 
@@ -226,11 +226,11 @@ div.samples img{
 	background-color:#0099cc;
 	
 	font-size: 13px;
-	font-family: "raleway-semibold";
+	font-family: "raleway-semibold", sans-serif;
 	text-align: center;
 	letter-spacing: 2px;
 
-	border-radius: 25%;
+	border-radius: 30%;
 
 	position: absolute;
 	z-index: 10;
@@ -343,7 +343,7 @@ div.samples-column:last-child{
 div.samples-column .samples-column-headers{
 	/*border: 1px solid;*/
 	width: 18%;
-	height: 140px;
+	height: 120px;
 
 	position: relative;
 }
@@ -370,7 +370,7 @@ div.samples-column .samples-column-sections h3{
 	width: 98%;
 
 	font-family: "raleway-medium", sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 	color: #4d4d4d;
 	line-height: 18px;
 
@@ -401,14 +401,14 @@ div.samples-column .samples-column-price span:nth-child(1){
 	display: block;
 	margin-right: 30px;
 	font-family: "raleway-semibold", sans-serif;
-	font-size: 22px;
+	font-size: 20px;
 	color: #4d4d4d;
 }
 
 div.samples-column .samples-column-price span:nth-child(2){
 	display: block;
 	font-family: "raleway-medium",sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 	text-decoration: line-through;
 	color: #808080;
 }
@@ -460,7 +460,7 @@ div.button-actions .btn-added-to-cart{
 
 	font-family: "raleway-semibold", sans-serif;
 	color: #4d4d4d;
-	font-size: 13px;
+	font-size: 12px;
 
 	padding: 6px;
 	border-radius: 4%;

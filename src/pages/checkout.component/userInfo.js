@@ -5,26 +5,29 @@ function UserInfo(props) {
     <div className="user-info">
       <div>
         <p>
-          <strong>Nombre: </strong>John Doe
+          <strong>Nombre: </strong>
+          {props.user.name}
         </p>
 
         <p>
-          <strong>Telefonos: </strong>809-111-2000{" "}
+          <strong>Telefonos: </strong>
+          {props.user.phone + " "}
         </p>
 
         <p>
-          <strong>Correo Electronico: </strong>johndoe01@gmail.com
+          <strong>Correo Electronico: </strong>
+          {props.user.email}
         </p>
 
         <p>
-          <strong>Dirección de Envio: </strong> Casa 8, Francisco Henriquez y
-          Carvajal, Brisas del Este, Santo Domingo Este
+          <strong>Dirección de Envio: </strong>
+          {props.user.address.streetName+", "+props.user.address.streetNo+", "+
+          props.user.address.city+", "+props.user.address.state}
         </p>
 
         <p>
-          <strong>Instrucciones: </strong>Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Aperiam explicabo inventore debitis neque excepturi
-          architecto rerum temporibus incidunt.
+          <strong>Instrucciones: </strong>
+          {props.user.instructions}
         </p>
       </div>
       <div>

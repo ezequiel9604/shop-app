@@ -166,15 +166,32 @@ function Details(props) {
   }
 
   function changeIsTooltipShow() {
-    if(itemCounter<1){
+    if (itemCounter < 1) {
       setIsTooltipShow(true);
-    }else{
+    } else {
       setIsTooltipShow(false);
     }
   }
 
-  function hideIsTooltipShow(){
+  function hideIsTooltipShow() {
     setIsTooltipShow(false);
+  }
+
+  function checkAddToPurchase(){
+    if (itemCounter > 0) {
+      const data = { ...props.detail };
+
+      data.amount = itemCounter;
+      data.retailPrice = props.detail.subItem[itemSelected].retailPrice;
+      data.offerPrice = props.detail.subItem[itemSelected].offerPrice;
+      data.stock = props.detail.subItem[itemSelected].stock;
+      data.subItem = {
+        color: itemColor,
+        capacity: itemCapacity,
+        size: itemSize,
+      };
+      addItemToCart(data);
+    }
   }
 
   // RENDERING
@@ -218,7 +235,9 @@ function Details(props) {
       </div>
 
       <div className="button-actions">
-        <button className="btn">Comprar ahora</button>
+        {isTooltipShow? (<button className="btn">Comprar ahora</button>):
+        <Link to="/checkout" onClick={checkAddToPurchase} className="btn">Comprar ahora</Link>}
+        
 
         <button
           className={
@@ -232,7 +251,8 @@ function Details(props) {
             ? "Agregado ya al carrito"
             : "Agregar al carrito"}
 
-          <div style={isTooltipShow? {opacity:1}:{opacity:0}}
+          <div
+            style={isTooltipShow ? { opacity: 1 } : { opacity: 0 }}
             className="tooltips-button-actions"
           >
             Selecciona una de las opciones del producto.

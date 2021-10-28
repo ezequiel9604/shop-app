@@ -1,10 +1,8 @@
-import { useState } from "react";
 
 function ShippingInfo(props) {
-  const [shippingMethodInput, setShippingMethodInput] = useState("regular");
 
   function changeShippingMethodInput(event) {
-    setShippingMethodInput(event.target.value);
+    props.onChangeShippingMethod(event.target.value);
   }
 
   return (

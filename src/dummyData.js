@@ -6,6 +6,7 @@ import smartTvImage5 from "./images/smart-tv-5.png";
 
 import manAvatar from "./images/placeholder-man.png";
 import womanAvatar from "./images/placeholder-woman.png";
+import userImage from "./images/user-image.jpg";
 
 const itemTitle =
   "Lorem ipsum dolor sit amet consectetur adipisicing umpedit iste voluptate" +
@@ -14,6 +15,20 @@ const itemTitle =
 const tlt =
   "Lorem ipsum dolor sit amet consectetur adipisicing, elit. " +
   "Repudiandae vero, enim deserunt nemo delectus pariatur soluta illo dolores nihil non.";
+
+export const User = {
+  name: "Natalie Portman",
+  email: "johndoe1@gmail.com",
+  image: userImage,
+  address: {
+    streetNo: 8,
+    streetName: "Francisco Henriquez y Carvajal",
+    city: "Brisas del Este",
+    state: "Santo Domingo Este",
+  },
+  phone: "897-458-1248",
+  instructions: null,
+};
 
 export const Items = [
   {
