@@ -54,7 +54,6 @@ function Header(props) {
     window.location.assign("/searchResults?keyword="+itemName);
   }
 
-  // RENDERING
   return (
     <header id="main-header">
       <PromoBanner />
@@ -67,7 +66,7 @@ function Header(props) {
             <div></div>
           </button>
           <Link to="/" className="logo-title">
-            ShopSite
+            Shop-app
           </Link>
         </div>
         <form onSubmit={handleSubmit} action="/searchResults" method="get" className="header-form-search">

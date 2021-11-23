@@ -5,7 +5,7 @@ import { CartContext } from "../../store/context";
 function CartItems(props) {
   // PROPERTIES
   const [amount, setAmount] = useState(props.item.amount);
-  const { removeItemFromCart, incrementItemInCart, decrementItemInCart } =
+  const { confirmBeforeRemoveItemFromCart, incrementItemInCart, decrementItemInCart } =
     useContext(CartContext);
 
   // METHODS
@@ -23,11 +23,8 @@ function CartItems(props) {
     }
   }
 
-  function removeItemHandler() {
-    let confirm = prompt("Are you sure want to remove this item? (Y/n)", "Y");
-    if(confirm === "Y"){
-      removeItemFromCart(props.item.id);
-    }
+  function removeItemHandler() { 
+    confirmBeforeRemoveItemFromCart(props.item.id);
   }
 
   // RENDERING

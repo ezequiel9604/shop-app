@@ -1,27 +1,52 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 import "./css-styles/styles.css";
 
 function SideBarFilter(props) {
   // PROPERTIES
-  const offerInput = useRef(null);
   const minPriceInput = useRef(null);
   const maxPriceInput = useRef(null);
+  const [statusInput, setStatusInput] = useState(0);
 
   // METHODS
-  function offerHandler() {
-    props.onOffer(offerInput);
+  function offerHandler(event) {
+    props.onOffer(event.target.checked);
   }
 
   function priceHandler() {
-    let min = parseInt(minPriceInput);
-    let max = parseInt(maxPriceInput);
-
+    let min = parseInt(minPriceInput.current.value);
+    let max = parseInt(maxPriceInput.current.value);
+  
     props.onPrice([isNaN(min) ? 0 : min, isNaN(max) ? 10000 : max]);
   }
 
   function qualityHandler(quality) {
     props.onQuality(quality);
+  }
+
+  function changingStatus(event){
+    let total; 
+    if(event.target.id === "new"){
+      if(event.target.checked){
+        total = statusInput + 1;
+      } else{
+        total = statusInput - 1;
+      }
+    } else if(event.target.id === "used"){
+      if(event.target.checked){
+        total = statusInput + 3;
+      } else{
+        total = statusInput - 3;
+      }
+    } else if(event.target.id === "repair"){
+      if(event.target.checked){
+        total = statusInput + 5;
+      } else{
+        total = statusInput - 5;
+      }
+    }
+    props.onStatus(total);
+    setStatusInput(total);
   }
 
   // RENDERING
@@ -70,14 +95,13 @@ function SideBarFilter(props) {
         <h3>Estado: </h3>
         <ul>
           <label htmlFor="new">
-            {" "}
-            <input type="checkbox" id="new" /> Nuevo
+            <input onChange={changingStatus} type="checkbox" id="new" /> Nuevo
           </label>
           <label htmlFor="used">
-            <input type="checkbox" id="used" /> Usado
+            <input onChange={changingStatus} type="checkbox" id="used" /> Usado
           </label>
           <label htmlFor="repair">
-            <input type="checkbox" id="repair" /> Reparado
+            <input onChange={changingStatus} type="checkbox" id="repair" /> Reparado
           </label>
         </ul>
       </article>
@@ -87,30 +111,11 @@ function SideBarFilter(props) {
         <ul>
           <label htmlFor="offers">
             <input
-              onClick={offerHandler}
-              ref={offerInput}
+              onChange={offerHandler}
               type="checkbox"
               id="offers"
             />{" "}
-            En ofertas
-          </label>
-        </ul>
-      </article>
-
-      <article>
-        <h3>Tamaño: </h3>
-        <ul>
-          <label htmlFor="sise_xl">
-            <input type="checkbox" id="sise_xl" name="" /> XL
-          </label>
-          <label htmlFor="size_l">
-            <input type="checkbox" id="size_l" name="" /> L
-          </label>
-          <label htmlFor="size_m">
-            <input type="checkbox" id="size_m" name="" /> M
-          </label>
-          <label htmlFor="size_s">
-            <input type="checkbox" id="size_s" name="" /> S
+            Solo ofertas
           </label>
         </ul>
       </article>
@@ -149,6 +154,24 @@ function SideBarFilter(props) {
           >
             star_outline
           </span>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Tamaño: </h3>
+        <ul>
+          <label htmlFor="sise_xl">
+            <input type="checkbox" id="sise_xl" name="" /> XL
+          </label>
+          <label htmlFor="size_l">
+            <input type="checkbox" id="size_l" name="" /> L
+          </label>
+          <label htmlFor="size_m">
+            <input type="checkbox" id="size_m" name="" /> M
+          </label>
+          <label htmlFor="size_s">
+            <input type="checkbox" id="size_s" name="" /> S
+          </label>
         </ul>
       </article>
 

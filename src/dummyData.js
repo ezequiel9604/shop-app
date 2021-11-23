@@ -16,7 +16,7 @@ const tlt =
   "Lorem ipsum dolor sit amet consectetur adipisicing, elit. " +
   "Repudiandae vero, enim deserunt nemo delectus pariatur soluta illo dolores nihil non.";
 
-export const User = {
+/*export const User = {
   name: "Natalie Portman",
   email: "johndoe1@gmail.com",
   image: userImage,
@@ -28,7 +28,9 @@ export const User = {
   },
   phone: "897-458-1248",
   instructions: null,
-};
+};*/
+
+export const User = null;
 
 export const Items = [
   {
@@ -46,7 +48,6 @@ export const Items = [
     status: "Nuevo",
     views: 10,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 4.8,
     stock: 12,
@@ -124,7 +125,6 @@ export const Items = [
     status: "Nuevo",
     views: 2,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 3.5,
     stock: 9,
@@ -187,7 +187,6 @@ export const Items = [
     status: "Usado",
     views: 60,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 0.8,
     stock: 13,
@@ -265,7 +264,6 @@ export const Items = [
     status: "Nuevo",
     views: 4,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 4.6,
     stock: 10,
@@ -343,7 +341,6 @@ export const Items = [
     status: "Usado",
     views: 15,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 3.8,
     stock: 7,
@@ -422,7 +419,6 @@ export const Items = [
     status: "Usado",
     views: 36,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 4.2,
     stock: 18,
@@ -500,7 +496,6 @@ export const Items = [
     status: "Reparado",
     views: 3,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 2.9,
     stock: 5,
@@ -579,7 +574,6 @@ export const Items = [
     status: "Nuevo",
     views: 39,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 1.2,
     stock: 9,
@@ -658,7 +652,6 @@ export const Items = [
     status: "Usado",
     views: 17,
     department: "Electrodomesticos",
-    isInCart: false,
     addingDate: "2021-05-12",
     quality: 4.9,
     stock: 13,

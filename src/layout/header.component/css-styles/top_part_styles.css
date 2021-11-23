@@ -1,20 +1,15 @@
 
-
 header#main-header{
-	/*border: 1px solid red;*/
 	border-top: 1px solid #dddddd;
 	border-bottom: 1px solid #dddddd;
 	width: 100%;
 	box-sizing: border-box;
 
 	position: relative;
-
-	z-index: 50;
-	
 	background-color: #ffffff;
+	z-index: 50;
 }
 
-/*top part*/
 div.top-part{
 	border-bottom: 1px solid #dddddd;
 	width: 98%;
@@ -27,7 +22,6 @@ div.top-part{
 }
 
 div.top-part div{
-	/*border: 1px solid red;*/
 	width: fit-content;
 	box-sizing: border-box;
 
@@ -37,7 +31,6 @@ div.top-part div{
 }
 
 div.top-part div > p{
-	/*border: 1px solid;*/
 	display: flex;
 	align-items: center;	
 
@@ -46,8 +39,6 @@ div.top-part div > p{
 	font-size: 14px;
 }
 
-
-/*option account list*/
 .option-account-list{
 	display: none; /*this will change*/
 	border: 1px solid #dddddd;
@@ -59,7 +50,6 @@ div.top-part div > p{
 
 	background-color: #ffffff;
 	border-radius: 2px 0 2px 2px;
-
 	z-index: 99;
 }
 
@@ -76,7 +66,6 @@ div.top-part div > p{
 	font-family: "raleway-medium", sans-serif;	
 	font-size: 14px;
 	color: #4d4d4d;
-
 	outline: none;
 }
 

@@ -8,15 +8,12 @@ import SamplesColumn from "../samples.component/samplesColumn";
 
 function Favorites(props) {
   // PROPERTIES
-  const { removeItemFromFavorite } = useContext(FavoriteContext);
+  const { ConfirmBeforeRemoveItemFromFavorite } = useContext(FavoriteContext);
   const { cartList, addItemToCart } = useContext(CartContext);
 
   // METHODS
   function removeItemHandler(id) {
-    let confirm = prompt("Are you sure want to remove this item? (Y/n)", "Y");
-    if (confirm === "Y") {
-      removeItemFromFavorite(id);
-    }
+      ConfirmBeforeRemoveItemFromFavorite(id);
   }
 
   function isCurrentItemInCart(current) {

@@ -1,0 +1,165 @@
+
+#modal{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 99;
+	display: none;
+}
+
+div.modal-content{
+	width: 40%;
+	margin: 0px auto;
+	margin-top: 200px;
+
+	background-color: #ffffff;
+	overflow: hidden;
+	position: relative;
+	transform: scale(0);
+
+	animation-name: modal-animation;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes modal-animation{
+	from{transform: scale(0);}
+	to{transform: scale(1);}
+}
+
+.btn-close-modal{
+	border: none;
+	background-color: #ffffff;
+	font-size: 30px;
+	color: #4d4d4d;
+	padding: 4px;
+
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	cursor: pointer;
+}
+
+.btn-close-modal:hover{
+	background-color: #ff4d4d;
+	color: #ffffff;
+	border-color: #ff4d4d;
+}
+
+.title-modal{
+	width: 80%;
+	margin: 30px auto;
+	display: block;
+
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 18px;
+	color: #4d4d4d;	
+	line-height: 20px;
+}
+
+div.modal-content form{
+	width: 80%;
+	margin: 0 auto;
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+
+	margin-bottom: 30px;
+}
+
+div.modal-content form label{
+	width: 90%;
+	display: block;
+	margin-bottom: 10px;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;	
+}
+#street-no, #street,
+div.modal-content form select,
+div.modal-content form > input{
+	width: 100%;
+	border: 1px solid #dddddd;
+	box-sizing: border-box;
+	padding: 4px 6px;
+
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #4d4d4d;
+	border-radius: 2px;
+}
+
+div.modal-content form button{
+	width: 100%;
+	display: block;
+	margin: 15px 0;
+
+	background-color: #0099cc;
+	border: none;
+	box-sizing: border-box;
+
+	font-family: "raleway-regular", sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	padding: 4px 6px;
+	border-radius: 2px;
+}
+
+div.modal-content form button:hover{
+	background-color: #0086b3;
+}
+
+div.modal-input-box{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#street-no{
+	width: 12%;
+}
+#street{
+	width: 85%;
+}
+
+div.modal-content form select{
+	width: 48%;
+	margin-top: 10px;
+}
+
+div.modal-content div{
+	width: 95%;
+	margin: 20px auto;
+
+	display: flex;
+	justify-content: space-around;
+}
+
+div.modal-content div button{
+	border: none;
+	width: 40%;
+
+	font-family: "raleway-regular", sans-serif;
+	font-size: 20px;
+	color: #4d4d4d;
+	padding: 10px 0px;
+	border-radius: 2px;
+	background-color: #f2f2f2;
+}
+
+div.modal-content div button:first-child:hover{
+	background-color: #0099cc;
+	color: #ffffff;
+}
+
+div.modal-content div button:last-child:hover{
+	background-color: #ff4d4d;
+	color: #ffffff;
+}
+

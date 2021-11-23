@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import Loading from "../loading.component/loading";
 import { setQuality } from "../../helpers";
 import { CartContext } from "../../store/context";
 
@@ -119,7 +120,9 @@ function SearchResults(props) {
 
       <div id="search-results">
         <div className="samples-column-container">
-          {getItemsOnFilter().map((current, ind) => {
+          {props.items === null?
+          (<Loading />):
+          (getItemsOnFilter().map((current, ind) => {
             return (
               <SamplesColumn item={current} key={current.id}>
                 {setQuality(current.quality)}
@@ -140,7 +143,7 @@ function SearchResults(props) {
                 </div>
               </SamplesColumn>
             );
-          })}
+          }))}
         </div>
       </div>
     </div>

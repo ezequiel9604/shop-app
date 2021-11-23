@@ -14,25 +14,26 @@ import Orders from "./pages/orders.component/orders";
 import OrderDetails from "./pages/orderDetails.component/orderDetails";
 import Favorites from "./pages/favorites.component/favorites";
 import Checkout from "./pages/checkout.component/checkout";
+import Modal from "./layout/modal.component/modal";
 
 import Login from "./layout/login.component/login";
 import Signup from "./layout/signup.component/signup";
-
 import { User, Items, Departments } from "./dummyData";
 
 function App() {
-  // PROPERTIES
   const departmentList = Departments;
   const [user, setUser] = useState(null);
-  const [itemList, setItemList] = useState(Items);
+  const [itemList, setItemList] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
   const [cartList, setCartList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     setUser(User);
+    setItemList(Items);
   }, []);
 
-  // METHODS
   function addItemToFavorite(data) {
     let newItemToAdd = data;
     let condition = false;
@@ -52,11 +53,17 @@ function App() {
     }
   }
 
-  function removeItemFromFavorite(id) {
+  function ConfirmBeforeRemoveItemFromFavorite(id) {
+    setShowModal(true);
+    setSelectedItem(id);
+  }
+
+  function removeItemFromFavorite() {
     let newlist = favoriteList.filter((current) => {
-      return current.id !== id;
+      return current.id !== selectedItem;
     });
     setFavoriteList(newlist);
+    setShowModal(false);
   }
 
   function addItemToCart(data) {
@@ -77,11 +84,18 @@ function App() {
     }
   }
 
-  function removeItemFromCart(id) {
+  function confirmBeforeRemoveItemFromCart(id) {
+    setShowModal(true);
+    setSelectedItem(id);
+  }
+
+  function removeItemFromCart() {
     let newlist = cartList.filter((current) => {
-      return current.id !== id;
+      return current.id !== selectedItem;
     });
     setCartList(newlist);
+    setShowModal(false);
+    setSelectedItem(null);
   }
 
   function incrementItemInCart(id) {
@@ -104,21 +118,24 @@ function App() {
     setCartList(newlist);
   }
 
+  function handleModalClose() {
+    setShowModal(false);
+  }
+
   // CONTEXT PROPERTIES
   const cartContextValue = {
     cartList,
     addItemToCart,
-    removeItemFromCart,
+    confirmBeforeRemoveItemFromCart,
     incrementItemInCart,
     decrementItemInCart,
   };
   const favoriteContextValue = {
     favoriteList,
     addItemToFavorite,
-    removeItemFromFavorite,
+    ConfirmBeforeRemoveItemFromFavorite,
   };
 
-  // RENDERING
   return (
     <Switch>
       <CartContext.Provider value={cartContextValue}>
@@ -145,15 +162,32 @@ function App() {
             <Layout user={user} departments={departmentList}>
               <Cart items={cartList} />
             </Layout>
+            <Modal
+              show={showModal}
+              onClose={handleModalClose}
+              title="Seguro que quiere realizar esta acción"
+            >
+              <div>
+                <button onClick={removeItemFromCart}>Si</button>
+                <button onClick={handleModalClose}>No</button>
+              </div>
+            </Modal>
           </Route>
 
           <Route path="/favorites">
             <Layout user={user} departments={departmentList}>
-              <Favorites
-                items={favoriteList}
-                onRemoveItemFromFavorite={removeItemFromFavorite}
-              />
+              <Favorites items={favoriteList} />
             </Layout>
+            <Modal
+              show={showModal}
+              onClose={handleModalClose}
+              title="Seguro que quiere realizar esta acción"
+            >
+              <div>
+                <button onClick={removeItemFromFavorite}>Si</button>
+                <button onClick={handleModalClose}>No</button>
+              </div>
+            </Modal>
           </Route>
 
           <Route path="/orders">
