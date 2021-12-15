@@ -1,22 +1,24 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Loading from "../loading.component/loading";
-import { setQuality } from "../../helpers";
-import { CartContext } from "../../store/context";
-
-import "./css-styles/styles.css";
-
 import SideBarFilter from "./sideBarFilter.component/sideBarFilter";
 import SamplesColumn from "../samples.component/samplesColumn";
+import { getItemsOnFilter, setQuality } from "../../helpers";
+import { CartContext } from "../../store/context";
+import { Items } from "../../dummyData";
+import "./css-styles/styles.css";
 
 function SearchResults(props) {
-  // PROPERTIES
+  const [items, setItems] = useState([]);
   const [filterOffer, setFilterOffer] = useState(false);
   const [filterPrice, setFilterPrice] = useState([0, 10000]);
   const [filterStatus, setFilterStatus] = useState(0);
   const [filterQuality, setFilterQuality] = useState(0);
   const { cartList, addItemToCart } = useContext(CartContext);
 
-  // METHODS
+  useEffect(() => {
+    setItems(Items);
+  }, []);
+
   function changeFilterByOffers(value) {
     setFilterOffer(value);
   }
@@ -33,67 +35,16 @@ function SearchResults(props) {
     setFilterQuality(value);
   }
 
-  function getItemsOnFilter() {
-    let arts = props.items.filter((current) => {
-      if (filterOffer) {
-        return (
-          current.offerPrice > 0 &&
-          current.retailPrice >= filterPrice[0] &&
-          current.retailPrice <= filterPrice[1]
-        );
-      }
-      return (
-        current.offerPrice >= 0 &&
-        current.retailPrice >= filterPrice[0] &&
-        current.retailPrice <= filterPrice[1]
-      );
-    });
-
-    arts = arts.filter((current) => {
-      if (filterStatus === 1) {
-        return current.status === "Nuevo";
-      } else if (filterStatus === 3) {
-        return current.status === "Usado";
-      } else if (filterStatus === 5) {
-        return current.status === "Reparado";
-      } else if (filterStatus === 4) {
-        return current.status === "Nuevo" || current.status === "Usado";
-      } else if (filterStatus === 6) {
-        return current.status === "Nuevo" || current.status === "Reparado";
-      } else if (filterStatus === 8) {
-        return current.status === "Usado" || current.status === "Reparado";
-      } else {
-        return current.status !== -1;
-      }
-    });
-
-    arts = arts.filter((current) => {
-      if (filterQuality === 1) {
-        return current.quality <= 1;
-      } else if (filterQuality === 2) {
-        return current.quality <= 2;
-      } else if (filterQuality === 3) {
-        return current.quality <= 3;
-      } else if (filterQuality === 4) {
-        return current.quality <= 4;
-      } else {
-        return current.quality <= 5;
-      }
-    });
-
-    return arts;
-  }
-
   function addItemToCartHandler(item, ind) {
     const data = { ...item };
     data.amount = 1;
-    data.retailPrice = props.items[ind].subItem[0].retailPrice;
-    data.offerPrice = props.items[ind].subItem[0].offerPrice;
-    data.stock = props.items[ind].subItem[0].stock;
+    data.retailPrice = items[ind].subItem[0].retailPrice;
+    data.offerPrice = items[ind].subItem[0].offerPrice;
+    data.stock = items[ind].subItem[0].stock;
     data.subItem = {
-      color: props.items[ind].subItem[0].color,
-      capacity: props.items[ind].subItem[0].capacity,
-      size: props.items[ind].subItem[0].size,
+      color: items[ind].subItem[0].color,
+      capacity: items[ind].subItem[0].capacity,
+      size: items[ind].subItem[0].size,
     };
     addItemToCart(data);
   }
@@ -108,7 +59,6 @@ function SearchResults(props) {
     return condition;
   }
 
-  // RENDERING
   return (
     <div className="search-results-sidebar-filter">
       <SideBarFilter
@@ -120,30 +70,38 @@ function SearchResults(props) {
 
       <div id="search-results">
         <div className="samples-column-container">
-          {props.items === null?
-          (<Loading />):
-          (getItemsOnFilter().map((current, ind) => {
-            return (
-              <SamplesColumn item={current} key={current.id}>
-                {setQuality(current.quality)}
-                <div className="button-actions">
-                  <button className="btn">Comprar ahora</button>
-                  <button
-                    className={
-                      isCurrentItemInCart(current.id)
-                        ? "btn btn-added-to-cart"
-                        : "btn"
-                    }
-                    onClick={() => addItemToCartHandler(current, ind)}
-                  >
-                    {isCurrentItemInCart(current.id)
-                      ? "Agregado ya al carrito"
-                      : "Agregar al carrito"}
-                  </button>
-                </div>
-              </SamplesColumn>
-            );
-          }))}
+          {items.length ? (
+            getItemsOnFilter(
+              items,
+              filterOffer,
+              filterPrice,
+              filterStatus,
+              filterQuality
+            ).map((current, ind) => {
+              return (
+                <SamplesColumn item={current} key={current.id}>
+                  {setQuality(current.quality)}
+                  <div className="button-actions">
+                    <button className="btn">Comprar ahora</button>
+                    <button
+                      className={
+                        isCurrentItemInCart(current.id)
+                          ? "btn btn-added-to-cart"
+                          : "btn"
+                      }
+                      onClick={() => addItemToCartHandler(current, ind)}
+                    >
+                      {isCurrentItemInCart(current.id)
+                        ? "Agregado ya al carrito"
+                        : "Agregar al carrito"}
+                    </button>
+                  </div>
+                </SamplesColumn>
+              );
+            })
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </div>

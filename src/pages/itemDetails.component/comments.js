@@ -1,31 +1,33 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import manAvatar from "../../images/placeholder-man.png";
 
 function Comments(props) {
   
-  // PROPERTIES
   const [commentInput, setCommentInput] = useState("");
 
-  // METHODS
   function changeCommentInput(event) {
     setCommentInput(event.target.value);
   }
 
   function createCommentHandler() {
-    const newComment = {
-      id: "CMT-025314",
-      userName: "Ezequiel Diaz Peña",
-      image: manAvatar,
-      date: new Date(),
-      text: commentInput,
-    };
+    if(props.user !== null){
+      const gen = Math.floor(Math.random()*10000);
+      const newComment = {
+        id: "CMT-025"+gen,
+        userName: props.user,
+        image: manAvatar,
+        date: new Date(),
+        text: commentInput,
+      };
+      props.onAddCommentToItem(newComment);
+    }
+    else{
+      alert("You need to be Logged in to leave a comment!")
+    }
 
-    props.onAddCommentToItem(newComment);
   }
 
-  // RENDERING
   return (
     <div id="comments" className="tab">
       <div className="add-comments">

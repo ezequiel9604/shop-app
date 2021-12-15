@@ -1,17 +1,29 @@
-import { useState } from "react";
-
-import "./css-styles/styles.css";
-
+import { useState, useEffect } from "react";
 import Details from "./details";
 import Description from "./descriptions";
+import Loading from "../loading.component/loading";
+import "./css-styles/styles.css";
+
+import { Items } from "../../dummyData";
 
 function ItemDetails(props) {
-  // PROPERTIES
-
-  const [comments, setComments] = useState(props.items[0].comments);
+  const [user, setUser] = useState(props.user)
+  const [item, setItem] = useState(null);
+  const [comments, setComments] = useState([]);
   const [bigImageCounter, setBigImageCounter] = useState(0);
 
-  // METHODS
+  useEffect(()=>{
+    
+    const url = new URL(window.location.href);
+    const itemid = url.searchParams.get("id");
+    const arr = [...Items].filter((curr)=>{
+      return curr.id === itemid;
+    });
+
+    setItem(arr[0]);
+    setComments(arr[0].comments);
+  }, []);
+
   function changeBigImageHandler(counter) {
     setBigImageCounter(counter);
   }
@@ -22,38 +34,37 @@ function ItemDetails(props) {
     setComments(arr);
   }
 
-  // RENDERING
   return (
     <div id="item-details">
       <div className="item-details-top">
-        <div className="slide-show">
-          <div className="img-zoom">
-            <img
-              id="big-img"
-              src={props.items[0].image[bigImageCounter]}
-              alt=""
-            />
-            {/* <div id="img-rts" className="img-zoom-rts "></div> */}
-          </div>
-          <div className="small-imgs">
-            {props.items[0].image.map(function (current, ind) {
-              return (
-                <img
-                  style={bigImageCounter === ind ? { borderColor: "#0099cc" }:null}
-                  onClick={() => changeBigImageHandler(ind)}
-                  src={current}
-                  key={ind}
-                  alt=""
-                />
-              );
-            })}
-          </div>
+        {item? 
+        (<div className="slide-show">
+        <div className="img-zoom">
+          <img
+            id="big-img"
+            src={item.image[bigImageCounter]}
+            alt=""
+          />
         </div>
+        <div className="small-imgs">
+          {item.image.map(function (current, ind) {
+            return (
+              <img
+                style={bigImageCounter === ind ? { borderColor: "#0099cc" }:null}
+                onClick={() => changeBigImageHandler(ind)}
+                src={current}
+                key={ind}
+                alt=""
+              />
+            );
+          })}
+        </div>
+      </div>): (<Loading />)}
 
-        <Details detail={props.items[0]} />
+        {item? (<Details detail={item} />): (<Loading />)}
       </div>
 
-      <Description comments={comments} onAddComment={addCommentHandler} />
+      <Description user={user} comments={comments} onAddComment={addCommentHandler} />
     </div>
   );
 }

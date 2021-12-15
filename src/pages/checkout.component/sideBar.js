@@ -1,7 +1,24 @@
+import { useState } from "react";
 import { formatedNumber } from "../../helpers";
 import { Link } from "react-router-dom";
 
 function SideBar(props) {
+
+  const [descount, setDescount] = useState(0);
+  const [promo, setPromo] = useState("");
+
+  function calculateDescount(){
+    if(promo === props.promocode){
+      setDescount(250);
+    } else{
+      setDescount(0);
+    }
+  }
+
+  function changePromo(event){
+    setPromo(event.target.value);
+  }
+
   function renderShipping(ship) {
     if (ship === "regular") {
       return 150;
@@ -10,6 +27,34 @@ function SideBar(props) {
     } else {
       return 0;
     }
+  }
+
+  function getTotalAmount(items) {
+    let sum = 0;
+    for (let i of items) {
+      sum += i.amount;
+    }
+    return sum;
+  }
+
+  function getSubTotal(items) {
+    let sum = 0;
+    for (let i of items) {
+      if (i.offerPrice > 0) {
+        sum += i.offerPrice * i.amount;
+      } else {
+        sum += i.retailPrice * i.amount;
+      }
+    }
+    return sum;
+  }
+
+  function readyToSend(){
+    const money = {
+      subtotal: getSubTotal(props.items),
+      descount: descount
+    }
+    props.onsubmit(money);
   }
 
   return (
@@ -21,11 +66,11 @@ function SideBar(props) {
           <tbody>
             <tr>
               <td>Cantidad:</td>
-              <td>({props.totalAmount}) articulos</td>
+              <td>({getTotalAmount(props.items)}) articulos</td>
             </tr>
             <tr>
               <td>Sub-total: </td>
-              <td>${formatedNumber(props.subTotal)}.00</td>
+              <td>${(formatedNumber(getSubTotal(props.items)))}.00</td>
             </tr>
             <tr>
               <td>Envio:</td>
@@ -33,35 +78,39 @@ function SideBar(props) {
             </tr>
             <tr>
               <td>
-                <input type="text" placeholder="codigo" />
+                <input onChange={changePromo} value={promo} type="text" placeholder="codigo" />
               </td>
               <td>
-                <button type="button">Verificar</button>
+                <button onClick={calculateDescount} type="button">Verificar</button>
               </td>
             </tr>
             <tr id="descount">
               <td>Descuento:</td>
-              <td>$0.00</td>
+              <td>${formatedNumber(descount)}.00</td>
             </tr>
             <tr className="total">
               <td>Total:</td>
-              {props.subTotal > 0 ? (
+              {getSubTotal(props.items) > 0 ? (
                 <td>
                   $
                   {formatedNumber(
-                    props.subTotal + renderShipping(props.shipping) - 50
+                    getSubTotal(props.items) + renderShipping(props.shipping) - descount
                   )}
                   .00
                 </td>
               ) : (
-                <td>${formatedNumber(props.subTotal)}.00</td>
+                <td>${(formatedNumber(getSubTotal(props.items)))}.00</td>
               )}
             </tr>
           </tbody>
         </table>
 
         <div className="button-actions">
-          <button className="btn" style={{ width: "100%" }}>
+          <button
+            onClick={readyToSend}
+            className="btn"
+            style={{ width: "100%" }}
+          >
             Realizar Pago
           </button>
         </div>

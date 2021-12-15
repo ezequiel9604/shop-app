@@ -20,5 +20,8 @@ You will also see any lint errors in the console.
 
 ## Here is all dependencies used in this proyect until now:
 
+- react
+- react-dom
+- react-scripts
 - react-router-dom
 

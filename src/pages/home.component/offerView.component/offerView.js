@@ -43,7 +43,7 @@ function OfferView(props) {
 
   // METHODS
   function getItemsInOffer() {
-    const arr = props.items.filter((item) => {
+    const arr = [...props.items].filter((item) => {
       return item.offerPrice > 0;
     });
     return arr.slice(0, 5);

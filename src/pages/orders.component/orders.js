@@ -42,7 +42,7 @@ function Orders(props) {
                   {new Date(current.orderDate).toLocaleDateString()}
                 </h5>
                 <h5>
-                  <Link to="/orderDetails">ver detalles del pedido</Link>
+                  <Link to="/orders/orderDetails">ver detalles del pedido</Link>
                 </h5>
               </div>
               <div>

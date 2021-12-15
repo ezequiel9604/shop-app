@@ -247,3 +247,119 @@ div.shipping-info strong {
 }
 
 
+div.cart-list-items-container{
+	width: 100%;
+	box-sizing: border-box;
+}
+
+div.cart-list-items{
+	width: 95%;
+	margin: 0 auto;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	border-bottom: 1px solid #ddd;
+}
+
+div.cart-list-items:last-child{
+	border-bottom-color: transparent;
+}
+
+div.cart-list-items div:nth-child(1){
+	width: 5%;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+}
+div.cart-list-items div:nth-child(1) input{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+div.cart-list-items div:nth-child(2){
+	width: 15%;
+	background-color: #f3f3f3;
+	border-radius: 8px;
+}
+div.cart-list-items div:nth-child(2) img{
+	width: 90px;
+	height: 90px;
+	display: block;
+	margin: 0 auto;
+}
+
+div.cart-list-items div:nth-child(3){
+	width: 50%;
+}
+div.cart-list-items div:nth-child(3) p{
+	margin-top: 10px;
+	font-family: "raleway-regular", sans-serif;
+	font-size: 13px;
+}
+div.cart-list-items div:nth-child(3) a{
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	overflow: hidden;
+
+	display: -webkit-box;
+	display: -moz-box;
+	display: -o-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	-moz-line-clamp: 2;
+	-moz-box-orient: vertical;
+	-o-line-clamp: 2;
+	-o-box-orient: vertical;	
+}
+
+div.cart-list-items div:nth-child(3) strong{
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 14px;
+}
+
+div.cart-list-items div:nth-child(3) p:last-child{
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 18px;
+	color: #4d4d4d;
+}
+
+div.cart-list-items div:nth-child(4){
+	width: 12%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "raleway-semibold", sans-serif;
+	font-size: 16px;
+}
+
+div.cart-list-items div:nth-child(4) button{
+	display: flex;
+	justify-content: center;
+	padding: 6px 10px;
+	background-color: #e6e6e6;
+	border: 1px solid #e6e6e6;
+	border-radius: 50%;
+}
+
+div.cart-list-items div:nth-child(5){
+	width: 5%;
+}
+
+div.cart-list-items div:nth-child(5) button{
+	display: flex;
+	justify-content: center;
+	padding: 5px;
+	background-color: #e6e6e6;
+	border: 1px solid #e6e6e6;
+	border-radius: 8px;
+}
+div.cart-list-items div:nth-child(5) button span{
+	font-size: 25px;
+	color: #333;
+}
+

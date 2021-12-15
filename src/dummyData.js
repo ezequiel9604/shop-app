@@ -16,9 +16,9 @@ const tlt =
   "Lorem ipsum dolor sit amet consectetur adipisicing, elit. " +
   "Repudiandae vero, enim deserunt nemo delectus pariatur soluta illo dolores nihil non.";
 
-/*export const User = {
-  name: "Natalie Portman",
-  email: "johndoe1@gmail.com",
+export const User = {
+  name: "Sarah Doe",
+  email: "sarahdoe1@gmail.com",
   image: userImage,
   address: {
     streetNo: 8,
@@ -28,13 +28,13 @@ const tlt =
   },
   phone: "897-458-1248",
   instructions: null,
-};*/
+};
 
-export const User = null;
+//export const User = null;
 
 export const Items = [
   {
-    id: "ART-025493",
+    id: "ITEM-0159025493",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -111,7 +111,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025381",
+    id: "ITEM-0159025381",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -173,7 +173,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025136",
+    id: "ITEM-0159025136",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -250,7 +250,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025014",
+    id: "ITEM-0159025014",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -327,7 +327,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025489",
+    id: "ITEM-0159025489",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -405,7 +405,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025322",
+    id: "ITEM-0159025322",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -482,7 +482,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025189",
+    id: "ITEM-0159025189",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -560,7 +560,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025777",
+    id: "ITEM-0159025777",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -638,7 +638,7 @@ export const Items = [
     ],
   },
   {
-    id: "ART-025610",
+    id: "ITEM-0159025610",
     image: [
       smartTvImage,
       smartTvImage2,
@@ -793,3 +793,5 @@ export const Order = [
     ],
   },
 ];
+
+export const PromoCode = "NEWYEAR22";

@@ -109,3 +109,54 @@ export function formatShippingMethod(method) {
     return "Gratis";
   }
 }
+
+export function getItemsOnFilter(items, fo, fp, fs, fq) {
+  let arts = [...items].filter((current) => {
+    if (fo) {
+      return (
+        current.offerPrice > 0 &&
+        current.retailPrice >= fp[0] &&
+        current.retailPrice <= fp[1]
+      );
+    }
+    return (
+      current.offerPrice >= 0 &&
+      current.retailPrice >= fp[0] &&
+      current.retailPrice <= fp[1]
+    );
+  });
+
+  arts = arts.filter((current) => {
+    if (fs === 1) {
+      return current.status === "Nuevo";
+    } else if (fs === 3) {
+      return current.status === "Usado";
+    } else if (fs === 5) {
+      return current.status === "Reparado";
+    } else if (fs === 4) {
+      return current.status === "Nuevo" || current.status === "Usado";
+    } else if (fs === 6) {
+      return current.status === "Nuevo" || current.status === "Reparado";
+    } else if (fs === 8) {
+      return current.status === "Usado" || current.status === "Reparado";
+    } else {
+      return current.status !== -1;
+    }
+  });
+
+  arts = arts.filter((current) => {
+    if (fq === 1) {
+      return current.quality <= 1;
+    } else if (fq === 2) {
+      return current.quality <= 2;
+    } else if (fq === 3) {
+      return current.quality <= 3;
+    } else if (fq === 4) {
+      return current.quality <= 4;
+    } else {
+      return current.quality <= 5;
+    }
+  });
+
+  return arts;
+}

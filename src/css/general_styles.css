@@ -130,7 +130,6 @@ main{
 }
 
 .btn-slide span{
-	/*border: 1px solid;*/
 	display: block;
 	font-size: 22px;
 	color: #4d4d4d;
@@ -140,7 +139,6 @@ main{
 /* --------------- SLIDES STYLES ---------------------- */
 
 div.slides-ctn{
-	/* border: 1px solid blue; */
 	width: 100%;
 	display: flex;
 	position: relative;
@@ -154,7 +152,6 @@ div.slides-ctn::-webkit-scrollbar{
 }
 
 div.slides{
-	/*border: 1px dashed blue;*/
 	width: 100%;
 	position: relative;
 }
@@ -236,7 +233,6 @@ div.samples .descount{
 }
 
 div.samples .samples-title{
-	/* border: 1px solid; */
 	width: 90%;
 	margin: 10px auto;
 

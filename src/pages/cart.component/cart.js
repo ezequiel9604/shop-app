@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import SideBar from "./sideBar";
 import CartItems from "./cartItems";
 

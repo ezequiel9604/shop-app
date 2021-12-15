@@ -1,22 +1,31 @@
-import { Fragment } from "react";
+import { useState, useEffect } from "react";
 import OfferView from "./offerView.component/offerView";
 import LastView from "./lastView.component/lastView";
 import OrderOfflineBanner from "./orderOfflineBanner.component/orderOfflineBanner";
 import Loading from "../loading.component/loading";
 
+import { Items } from "../../dummyData";
+
 function Home(props) {
+
+  const [itemList, setItemList] = useState([]);
+
+  useEffect(()=>{
+    setItemList(Items);
+  }, []);
+
   return (
-    <Fragment>
-      {props.items === null ? (
-        <Loading />
-      ) : (
+    <>
+      {itemList.length ? (
         <>
-          <OfferView items={props.items} />
-          <LastView items={props.items} />
+          <OfferView items={itemList} />
+          <LastView items={itemList} />
         </>
+      ) : (
+        <Loading />
       )}
       <OrderOfflineBanner />
-    </Fragment>
+    </>
   );
 }
 

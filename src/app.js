@@ -18,12 +18,11 @@ import Modal from "./layout/modal.component/modal";
 
 import Login from "./layout/login.component/login";
 import Signup from "./layout/signup.component/signup";
-import { User, Items, Departments } from "./dummyData";
+import { User, Departments } from "./dummyData";
 
 function App() {
   const departmentList = Departments;
   const [user, setUser] = useState(null);
-  const [itemList, setItemList] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
   const [cartList, setCartList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
@@ -31,7 +30,6 @@ function App() {
 
   useEffect(() => {
     setUser(User);
-    setItemList(Items);
   }, []);
 
   function addItemToFavorite(data) {
@@ -142,19 +140,19 @@ function App() {
         <FavoriteContext.Provider value={favoriteContextValue}>
           <Route path="/" exact={true}>
             <Layout user={user} departments={departmentList}>
-              <Home items={itemList} />
+              <Home />
             </Layout>
           </Route>
 
           <Route path="/searchResults">
             <Layout user={user} departments={departmentList}>
-              <SearchResults items={itemList} />
+              <SearchResults />
             </Layout>
           </Route>
 
           <Route path="/itemDetails">
             <Layout user={user} departments={departmentList}>
-              <ItemDetails items={itemList} />
+              <ItemDetails user={user} />
             </Layout>
           </Route>
 
@@ -190,13 +188,13 @@ function App() {
             </Modal>
           </Route>
 
-          <Route path="/orders">
+          <Route path="/orders" exact>
             <Layout user={user} departments={departmentList}>
               <Orders />
             </Layout>
           </Route>
 
-          <Route path="/orderDetails">
+          <Route path="/orders/orderDetails" exact>
             <Layout user={user} departments={departmentList}>
               <OrderDetails onOpenModal={null} />
             </Layout>
@@ -206,6 +204,16 @@ function App() {
             <Layout user={user} departments={departmentList}>
               <Checkout user={user} items={cartList} />
             </Layout>
+            <Modal
+              show={showModal}
+              onClose={handleModalClose}
+              title="Seguro que quiere realizar esta acción"
+            >
+              <div>
+                <button onClick={removeItemFromCart}>Si</button>
+                <button onClick={handleModalClose}>No</button>
+              </div>
+            </Modal>
           </Route>
 
           <Route path="/login">

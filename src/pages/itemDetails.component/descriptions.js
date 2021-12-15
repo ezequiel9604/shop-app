@@ -1,12 +1,9 @@
 import { useState } from "react";
-
-import "./css-styles/styles.css";
-
 import Comments from "./comments";
 import TechDetails from "./techDetails";
+import "./css-styles/styles.css";
 
 function Descriptions(props) {
-  // PROPERTIES
   const description =
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad nemo, " +
     "ea reiciendis vero exercitationem reprehenderit, voluptates doloremque! Voluptatem molestias " +
@@ -15,7 +12,6 @@ function Descriptions(props) {
 
   const [containerSwitcher, setContainerSwitcher] = useState(0);
 
-  // METHODS
   function changeContainerSwitcherHandler(id) {
     setContainerSwitcher(id);
   }
@@ -39,6 +35,7 @@ function Descriptions(props) {
     } else {
       return (
         <Comments
+          user={props.user}
           comments={props.comments}
           onAddCommentToItem={addCommentToItemHandler}
         />
@@ -46,7 +43,6 @@ function Descriptions(props) {
     }
   }
 
-  // RENDERING
   return (
     <div className="item-details-bottom">
       <div className="tablinks-container">

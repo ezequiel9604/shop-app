@@ -7,37 +7,148 @@ function PaymentInfo(props) {
   const [creditcardOwnerInput, setCreditcardOwnerInput] = useState("");
   const [creditcardCodeInput, setCreditcardCodeInput] = useState("");
 
-  const [streetNumberInput, setStreetNumberInput] = useState(props.user.address.streetNo);
-  const [streetNameInput, setStreetNameInput] = useState(props.user.address.streetName);
+  const [streetNumberInput, setStreetNumberInput] = useState(
+    props.user.address.streetNo
+  );
+  const [streetNameInput, setStreetNameInput] = useState(
+    props.user.address.streetName
+  );
   const [cityInput, setCityInput] = useState(props.user.address.city);
-  const [stateInput, setStateInput] = useState(props.user.address.state);
+  const [hoodInput, setHoodInput] = useState(props.user.address.state);
 
-  function changepaymentMethodInput(event) {
+  function changePayment(event) {
     setPaymentMethodInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: event.target.value,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: hoodInput,
+    });
   }
 
-  function changeCreditcardNumberInput(event) {
+  function changeCreditcardNumber(event) {
     setCreditcardNumberInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: event.target.value,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: hoodInput,
+    });
   }
 
   function changeExperiationDateInput(event) {
     setExperiationDateInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: event.target.value,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: hoodInput,
+    });
   }
 
   function changeCreditcardOwnerInput(event) {
     setCreditcardOwnerInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: event.target.value,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: hoodInput,
+    });
   }
 
   function changeCreditcardCodeInput(event) {
     setCreditcardCodeInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: event.target.value,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: hoodInput,
+    });
   }
 
   function changeStreetNumberInput(event) {
     setStreetNumberInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: event.target.value,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: hoodInput,
+    });
   }
 
   function changeStreetNameInput(event) {
     setStreetNameInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: event.target.value,
+      city: cityInput,
+      hood: hoodInput,
+    });
+  }
+
+  function changeCityInput(event) {
+    setCityInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: event.target.value,
+      hood: hoodInput,
+    });
+  }
+
+  function changeHoodInput(event) {
+    setHoodInput(event.target.value);
+    props.onchangePaymentInfo({
+      paymentMethod: paymentMethodInput,
+      creditCardNumber: creditcardNumberInput,
+      expDate: experiationDateInput,
+      owner: creditcardOwnerInput,
+      cvv: creditcardCodeInput,
+      streetNumber: streetNumberInput,
+      streetName: streetNameInput,
+      city: cityInput,
+      hood: event.target.value,
+    });
   }
 
   return (
@@ -45,7 +156,7 @@ function PaymentInfo(props) {
       <div className="payment-info">
         <label htmlFor="visa-card">
           <input
-            onClick={changepaymentMethodInput}
+            onClick={changePayment}
             type="radio"
             name="payment-method"
             id="visa-card"
@@ -57,7 +168,7 @@ function PaymentInfo(props) {
 
         <label htmlFor="mastercard-card">
           <input
-            onClick={changepaymentMethodInput}
+            onClick={changePayment}
             type="radio"
             name="payment-method"
             id="mastercard-card"
@@ -68,7 +179,7 @@ function PaymentInfo(props) {
 
         <label htmlFor="amex-card">
           <input
-            onClick={changepaymentMethodInput}
+            onClick={changePayment}
             type="radio"
             name="payment-method"
             id="amex-card"
@@ -79,7 +190,7 @@ function PaymentInfo(props) {
 
         <label htmlFor="discover-card">
           <input
-            onClick={changepaymentMethodInput}
+            onClick={changePayment}
             type="radio"
             name="payment-method"
             id="discover-card"
@@ -90,7 +201,7 @@ function PaymentInfo(props) {
 
         <label htmlFor="paypal">
           <input
-            onClick={changepaymentMethodInput}
+            onClick={changePayment}
             type="radio"
             name="payment-method"
             id="paypal"
@@ -100,11 +211,11 @@ function PaymentInfo(props) {
         </label>
       </div>
       {paymentMethodInput !== "paypal" ? (
-        <form action="/" method="post" className="creditCard-info">
+        <form className="creditCard-info">
           <div className="creditcard">
             <input
               type="text"
-              onChange={changeCreditcardNumberInput}
+              onChange={changeCreditcardNumber}
               defaultValue={creditcardNumberInput}
               placeholder="0000-0000-0000-0000"
             />
@@ -144,17 +255,15 @@ function PaymentInfo(props) {
               defaultValue={streetNameInput}
               placeholder="calle y apartamento"
             />
-            <select name="city" id="">
-              <option defaultValue="">{cityInput}</option>
-              <option defaultValue="">Los Frailes I</option>
-              <option defaultValue="">Los Frailes II</option>
-              <option defaultValue="">Invivienda</option>
-              <option defaultValue="">Villa Mella</option>
+            <select onChange={changeCityInput} name="city">
+              <option value="los frailes I">Los Frailes I</option>
+              <option value="los frailes II">Los Frailes II</option>
+              <option value="invivienda">Invivienda</option>
+              <option value="villa mella">Villa Mella</option>
             </select>
-            <select name="state" id="">
-              <option defaultValue="">{stateInput}</option>
-              <option defaultValue="">Santo domingo norte</option>
-              <option defaultValue="">Zona Oriental</option>
+            <select onChange={changeHoodInput} name="hood">
+              <option value="santo domingo este">Santo domingo norte</option>
+              <option value="zona oriental">Zona Oriental</option>
             </select>
           </div>
         </form>
