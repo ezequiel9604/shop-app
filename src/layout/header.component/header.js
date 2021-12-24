@@ -51,7 +51,7 @@ function Header(props) {
 
   function handleSubmit(event){
     event.preventDefault();
-    window.location.assign("/searchResults?keyword="+itemName);
+    //window.location.assign("/searchResults?keyword="+itemName);
   }
 
   return (

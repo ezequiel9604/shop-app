@@ -7,21 +7,35 @@ import "./css-styles/styles.css";
 import { Items } from "../../dummyData";
 
 function ItemDetails(props) {
-  const [user, setUser] = useState(props.user)
+  const [user] = useState(props.user)
   const [item, setItem] = useState(null);
   const [comments, setComments] = useState([]);
   const [bigImageCounter, setBigImageCounter] = useState(0);
 
   useEffect(()=>{
-    
-    const url = new URL(window.location.href);
-    const itemid = url.searchParams.get("id");
-    const arr = [...Items].filter((curr)=>{
-      return curr.id === itemid;
+
+    fetch("http://localhost:8080/",{
+      headers: { "Content-Type":"application/json"}
+    })
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(data){
+
+      const url = new URL(window.location.href);
+      const itemid = url.searchParams.get("id");
+      const arr = [...data].filter((curr)=>{
+        return curr.id === itemid;
+      });
+
+      setItem(arr[0]);
+      setComments(arr[0].comments);
+
+    })
+    .catch(function(error){
+      alert(error);
     });
 
-    setItem(arr[0]);
-    setComments(arr[0].comments);
   }, []);
 
   function changeBigImageHandler(counter) {
@@ -40,9 +54,10 @@ function ItemDetails(props) {
         {item? 
         (<div className="slide-show">
         <div className="img-zoom">
+          
           <img
+            src={require(`../../images/${item.image[bigImageCounter]}`).default}
             id="big-img"
-            src={item.image[bigImageCounter]}
             alt=""
           />
         </div>
@@ -51,8 +66,8 @@ function ItemDetails(props) {
             return (
               <img
                 style={bigImageCounter === ind ? { borderColor: "#0099cc" }:null}
+                src={require(`../../images/${current}`).default}
                 onClick={() => changeBigImageHandler(ind)}
-                src={current}
                 key={ind}
                 alt=""
               />

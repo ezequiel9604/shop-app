@@ -14,7 +14,7 @@ function SampleSingle(props) {
         </span>
       )}
       <Link to={"/itemDetails?id="+props.item.id} className="samples-header">
-        <img src={props.item.image[0]} alt="" />
+        <img src={require(`../../images/${props.item.image[0]}`).default} alt="" />
       </Link>
 
       {props.children}

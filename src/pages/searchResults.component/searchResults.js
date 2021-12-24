@@ -4,7 +4,6 @@ import SideBarFilter from "./sideBarFilter.component/sideBarFilter";
 import SamplesColumn from "../samples.component/samplesColumn";
 import { getItemsOnFilter, setQuality } from "../../helpers";
 import { CartContext } from "../../store/context";
-import { Items } from "../../dummyData";
 import "./css-styles/styles.css";
 
 function SearchResults(props) {
@@ -16,7 +15,18 @@ function SearchResults(props) {
   const { cartList, addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
-    setItems(Items);
+    fetch("http://localhost:8080/",{
+      headers: { "Content-Type":"application/json"}
+    })
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(data){
+      setItems(data);
+    })
+    .catch(function(error){
+      alert(error);
+    });
   }, []);
 
   function changeFilterByOffers(value) {

@@ -53,12 +53,12 @@ function Comments(props) {
         return (
           <div className="result-comments" key={current.id}>
             <div>
-              <img src={current.image} alt="" />
+              <img src={require(`../../images/${current.image}`).default} alt="" />
             </div>
             <div>
               <div className="result-comments-headers">
                 <Link to="/">{current.userName}</Link>
-                <time>publicado: {current.date.toDateString()}</time>
+                <time>publicado: {new Date(current.date).toLocaleDateString()}</time>
               </div>
               <div className="result-comments-sections">{current.text}</div>
             </div>

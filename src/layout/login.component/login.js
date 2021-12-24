@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Alert from "../alert.component/alert";
-
 import "./css-styles/styles.css";
 
-function Login() {
-  //  PROPERTIES
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
-  const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
+function Login(props) {
 
-  // METHODS
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [emailInput, setEmailInput] = useState("johndoe@gmail.com");
+  const [passwordInput, setPasswordInput] = useState("mypassword");
+
   function hideAlertHandler() {
     setIsAlertOpen(false);
   }
@@ -23,22 +21,53 @@ function Login() {
     setPasswordInput(event.target.value);
   }
 
-  function verificationHandler() {
-    if (emailInput === "" || passwordInput === "") {
+  function submitHandler(ev) {
+    ev.preventDefault();
+    if (emailInput && passwordInput) {
+      
+      fetch("http://localhost:8080/login",{
+        method: "POST",
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          email: emailInput,
+          psw: passwordInput,
+        }),
+      })
+      .then(function(res){
+        return res.text();
+      })
+      .then(function(data){
+
+        if(JSON.parse(data)){
+          localStorage.setItem("auth_user", data);
+          window.location.assign("http://localhost:3000");
+        }
+        else{
+          setIsAlertOpen(true);
+        }
+        
+      })
+      .catch(function(err){
+        alert(err);
+      });
+      
+    } else{
       setIsAlertOpen(true);
-    } else {
-      console.log("data sent");
     }
+    
+    
+
   }
 
-  // RENDERING
   return (
     <div id="login">
       <Link to="/" className="login-logo">
         ShopSite
       </Link>
       {isAlertOpen && <Alert />}
-      <form action="/" method="post" className="form-login">
+      <form onSubmit={submitHandler} className="form-login">
         <h3>Iniciar Sesión</h3>
         <div className="input-box">
           <label>Dirección de correo:</label>
@@ -62,8 +91,7 @@ function Login() {
         </div>
         <div className="input-box">
           <button
-            type="button"
-            onClick={verificationHandler}
+            type="submit"
             className="btn-form btn-form-login"
           >
             Iniciar Sesión

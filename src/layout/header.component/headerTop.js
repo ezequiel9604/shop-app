@@ -20,7 +20,7 @@ function HeaderTop(props) {
             </div>
           ) : (
             <div>
-              <img className="icon-img" src={props.user.image} alt="" />
+              <img className="icon-img" src={require(`../../images/${props.user.image}`).default} alt="" />
               <p>{props.user.name}</p>
             </div>
           )}

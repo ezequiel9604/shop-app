@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CartContext, FavoriteContext } from "./store/context";
 
@@ -23,15 +23,33 @@ import { User, Departments } from "./dummyData";
 function App() {
   const departmentList = Departments;
   const [user, setUser] = useState(null);
+  const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [cartList, setCartList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    setUser(User);
+
+    fetch("http://localhost:8080/",{
+      headers: { "Content-Type":"application/json"}
+    })
+    .then(function(response){
+      return response.json();
+    })
+    .then(function(data){
+      setItems(data);
+    })
+    .catch(function(error){
+      alert(error);
+    });
+
+    setUser(JSON.parse(localStorage.getItem("auth_user")));
+    //localStorage.removeItem("auth_user");
+    //setUser(localStorage.getItem("auth_user"));
   }, []);
 
+ 
   function addItemToFavorite(data) {
     let newItemToAdd = data;
     let condition = false;
@@ -134,13 +152,14 @@ function App() {
     ConfirmBeforeRemoveItemFromFavorite,
   };
 
+
   return (
     <Switch>
       <CartContext.Provider value={cartContextValue}>
         <FavoriteContext.Provider value={favoriteContextValue}>
           <Route path="/" exact={true}>
             <Layout user={user} departments={departmentList}>
-              <Home />
+              <Home items={items} />
             </Layout>
           </Route>
 
@@ -216,10 +235,12 @@ function App() {
             </Modal>
           </Route>
 
-          <Route path="/login">
-            <main>
-              <Login />
-            </main>
+          <Route path="/login" exact render={()=>{
+            if(!user){
+              return (<main><Login /></main>);
+            }
+            return <Redirect to="/" />;
+          }}>
           </Route>
 
           <Route path="/signup">
@@ -227,6 +248,15 @@ function App() {
               <Signup />
             </main>
           </Route>
+
+          <Route path="/logout" render={()=>{
+            
+            localStorage.removeItem("auth_user");
+            window.location.assign("http://localhost:3000/");
+
+          }}>
+          </Route>
+
         </FavoriteContext.Provider>
       </CartContext.Provider>
     </Switch>
